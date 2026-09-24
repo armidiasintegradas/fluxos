@@ -95,6 +95,22 @@
   @keyframes entryLogo{0%{opacity:0;transform:scale(.92);filter:blur(8px)}100%{opacity:1;transform:scale(1);filter:blur(0)}}
   @keyframes flowLine{0%{transform:translateX(-120%)}100%{transform:translateX(280%)}}
   @media(prefers-reduced-motion:reduce){.flux-entry-logo,.flux-flow-line:after{animation:none!important}}
+
+  /* Transformação — rede FLUX eletrificada */
+  #transformacao .flux-network{position:relative;min-height:340px;perspective:900px}
+  #transformacao .flux-network-lines{position:absolute;inset:28px 82px;z-index:1;pointer-events:none;overflow:visible}
+  #transformacao .flux-wire-base{fill:none;stroke:#dbeafe;stroke-width:2}
+  #transformacao .flux-wire-energy{fill:none;stroke:url(#flux-electric-gradient);stroke-width:3;stroke-linecap:round;stroke-dasharray:8 22;filter:url(#flux-glow);animation:fluxElectric 1.15s linear infinite}
+  #transformacao .flux-wire-energy.reverse{animation-direction:reverse;animation-duration:1.45s}
+  #transformacao .flux-cell{position:relative;z-index:3;display:flex;align-items:center;gap:12px;min-width:168px;padding:12px 16px;background:rgba(248,250,252,.92);border:1px solid #dbe3ef;border-radius:16px;font-size:13px;font-weight:700;color:#334155;box-shadow:0 8px 24px rgba(15,23,42,.04);transition:transform .18s ease-out,box-shadow .22s ease,border-color .22s ease;will-change:transform}
+  #transformacao .flux-cell:hover{border-color:#bfdbfe;box-shadow:0 14px 32px rgba(37,99,235,.13)}
+  #transformacao .flux-cell .material-symbols-outlined{font-size:28px}
+  #transformacao .flux-core{position:absolute;left:50%;top:50%;z-index:4;transform:translate(-50%,-50%);background:#fff;border:2px solid #a5b4fc;border-radius:22px;padding:22px 30px;text-align:center;box-shadow:0 22px 42px rgba(30,64,175,.16);transition:transform .2s ease-out;will-change:transform}
+  #transformacao .flux-side{position:absolute;top:38px;bottom:38px;display:flex;flex-direction:column;justify-content:space-between;z-index:3}
+  #transformacao .flux-side.left{left:0} #transformacao .flux-side.right{right:0}
+  @keyframes fluxElectric{to{stroke-dashoffset:-60}}
+  @media(max-width:640px){#transformacao .flux-network{min-height:540px}.flux-network-lines{display:none!important}#transformacao .flux-side{position:absolute;top:120px;bottom:20px;width:46%}#transformacao .flux-side.left{left:0}#transformacao .flux-side.right{right:0}#transformacao .flux-cell{min-width:0;width:100%;padding:10px;font-size:11px;gap:6px}#transformacao .flux-cell .material-symbols-outlined{font-size:23px}#transformacao .flux-core{top:42px;padding:14px 20px}}
+  @media(prefers-reduced-motion:reduce){#transformacao .flux-wire-energy{animation:none!important}#transformacao .flux-cell,#transformacao .flux-core{transition:none!important}}
 </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -308,41 +324,25 @@
           <span class="text-xs font-bold uppercase tracking-wider text-slate-500">UMA PLATAFORMA.</span>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Toda a operação.</h2>
         </div>
-        <div class="mt-8 relative flex items-center justify-center p-6 min-h-[260px]">
-          <div class="z-10 bg-white border-2 border-blue-600/40 shadow-xl rounded-2xl px-6 py-4 text-center">
-            <span class="text-xl font-black text-blue-900">FLUX</span>
-            <span class="text-lg font-bold text-indigo-600">OS</span>
-            <span class="block text-[10px] uppercase font-bold text-slate-400">Núcleo Central</span>
+        <div class="mt-8 flux-network" id="flux-network">
+          <svg class="flux-network-lines" viewBox="0 0 800 300" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="flux-electric-gradient" x1="0" x2="1"><stop offset="0" stop-color="#2563eb"/><stop offset=".5" stop-color="#7c3aed"/><stop offset="1" stop-color="#10b981"/></linearGradient><filter id="flux-glow"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <g class="flux-wire-base"><path d="M400 150 C300 150 260 25 85 25"/><path d="M400 150 C300 150 260 105 85 105"/><path d="M400 150 C300 150 260 195 85 195"/><path d="M400 150 C300 150 260 275 85 275"/><path d="M400 150 C500 150 540 25 715 25"/><path d="M400 150 C500 150 540 105 715 105"/><path d="M400 150 C500 150 540 195 715 195"/><path d="M400 150 C500 150 540 275 715 275"/></g>
+            <g class="flux-wire-energy"><path d="M400 150 C300 150 260 25 85 25"/><path d="M400 150 C300 150 260 105 85 105"/><path d="M400 150 C300 150 260 195 85 195"/><path d="M400 150 C300 150 260 275 85 275"/></g>
+            <g class="flux-wire-energy reverse"><path d="M400 150 C500 150 540 25 715 25"/><path d="M400 150 C500 150 540 105 715 105"/><path d="M400 150 C500 150 540 195 715 195"/><path d="M400 150 C500 150 540 275 715 275"/></g>
+          </svg>
+          <div class="flux-side left">
+            <div class="flux-cell" data-flux-cell><span class="material-symbols-outlined text-blue-600">trending_up</span>Operação</div>
+            <div class="flux-cell" data-flux-cell><span class="material-symbols-outlined text-purple-600">psychology</span>Inteligência</div>
+            <div class="flux-cell" data-flux-cell><span class="material-symbols-outlined text-indigo-600">pie_chart</span>Indicadores</div>
+            <div class="flux-cell" data-flux-cell><span class="material-symbols-outlined text-emerald-600">payments</span>Custos</div>
           </div>
-          <div class="absolute inset-0 flex items-center justify-between pointer-events-none">
-            <div class="space-y-4">
-              <div class="px-3 py-1.5 bg-slate-50 rounded-xl text-xs font-semibold text-slate-700 border border-slate-200 flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-blue-600 text-sm">trending_up</span> Operação
-              </div>
-              <div class="px-3 py-1.5 bg-slate-50 rounded-xl text-xs font-semibold text-slate-700 border border-slate-200 flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-purple-600 text-sm">psychology</span> Inteligência
-              </div>
-              <div class="px-3 py-1.5 bg-slate-50 rounded-xl text-xs font-semibold text-slate-700 border border-slate-200 flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-indigo-600 text-sm">pie_chart</span> Indicadores
-              </div>
-              <div class="px-3 py-1.5 bg-slate-50 rounded-xl text-xs font-semibold text-slate-700 border border-slate-200 flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-emerald-600 text-sm">payments</span> Custos
-              </div>
-            </div>
-            <div class="space-y-4 text-right">
-              <div class="px-3 py-1.5 bg-slate-50 rounded-xl text-xs font-semibold text-slate-700 border border-slate-200 flex items-center gap-1.5 justify-end">
-                Pessoas <span class="material-symbols-outlined text-blue-600 text-sm">group</span>
-              </div>
-              <div class="px-3 py-1.5 bg-slate-50 rounded-xl text-xs font-semibold text-slate-700 border border-slate-200 flex items-center gap-1.5 justify-end">
-                Suprimentos <span class="material-symbols-outlined text-amber-600 text-sm">inventory_2</span>
-              </div>
-              <div class="px-3 py-1.5 bg-slate-50 rounded-xl text-xs font-semibold text-slate-700 border border-slate-200 flex items-center gap-1.5 justify-end">
-                Qualidade <span class="material-symbols-outlined text-emerald-600 text-sm">verified</span>
-              </div>
-              <div class="px-3 py-1.5 bg-slate-50 rounded-xl text-xs font-semibold text-slate-700 border border-slate-200 flex items-center gap-1.5 justify-end">
-                Documentos <span class="material-symbols-outlined text-slate-600 text-sm">folder</span>
-              </div>
-            </div>
+          <div class="flux-core" data-flux-cell><span class="text-2xl font-black text-blue-900">FLUX</span> <span class="text-xl font-bold text-indigo-600">OS</span><span class="block text-[10px] uppercase font-bold text-slate-400 mt-1">Núcleo Central</span></div>
+          <div class="flux-side right">
+            <div class="flux-cell justify-end" data-flux-cell>Pessoas<span class="material-symbols-outlined text-blue-600">group</span></div>
+            <div class="flux-cell justify-end" data-flux-cell>Suprimentos<span class="material-symbols-outlined text-amber-600">inventory_2</span></div>
+            <div class="flux-cell justify-end" data-flux-cell>Qualidade<span class="material-symbols-outlined text-emerald-600">verified</span></div>
+            <div class="flux-cell justify-end" data-flux-cell>Documentos<span class="material-symbols-outlined text-slate-600">folder</span></div>
           </div>
         </div>
       </div>
@@ -1812,6 +1812,25 @@
   }
 
 
+
+  function initFluxNetworkMotion(){
+    const net=document.getElementById('flux-network');
+    if(!net||net.dataset.motionInit==='1')return;
+    net.dataset.motionInit='1';
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    const cells=[...net.querySelectorAll('[data-flux-cell]')];
+    net.addEventListener('pointermove',e=>{
+      const nr=net.getBoundingClientRect();
+      cells.forEach(cell=>{
+        const r=cell.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+        const dx=e.clientX-cx,dy=e.clientY-cy,dist=Math.hypot(dx,dy),reach=230;
+        if(dist<reach){const force=(1-dist/reach)*9;cell.style.transform=`translate(${dx/dist*force||0}px,${dy/dist*force||0}px) scale(${1+(1-dist/reach)*.025})`;}
+        else cell.style.transform='';
+      });
+    });
+    net.addEventListener('pointerleave',()=>cells.forEach(c=>c.style.transform=''));
+  }
+
   function initAutomationMotion(){
     const el=document.getElementById('automation-flow');
     if(!el||el.dataset.motionInit==='1')return;
@@ -1871,6 +1890,7 @@
     updateBrandPreview();
     initDashboardMotion();
     initAutomationMotion();
+    initFluxNetworkMotion();
   });
 </script>
 
