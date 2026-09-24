@@ -276,6 +276,27 @@
 #painel-tempo-real .panel-title .gradient-text{background:none!important;color:#fff!important;-webkit-text-fill-color:#fff!important;text-shadow:none!important}
 #painel-tempo-real .panel-intro{color:#eaf2ff!important;opacity:1!important}
 #painel-tempo-real .panel-intro .user-name-display{color:#fff!important;-webkit-text-fill-color:#fff!important;font-weight:800!important}
+
+/* AUTOMAÇÃO 07 — V2 sem núcleo FLUX central */
+#automation-flow.automation-v2{background:radial-gradient(circle at 50% 0,#f5f9ff,transparent 38%),#fff}
+#automation-flow .automation-pill{display:inline-block;padding:.35rem .8rem;border-radius:999px;background:#eef2ff;color:#64748b;font-size:.65rem;font-weight:900;letter-spacing:.08em}
+#automation-flow h2 span{color:#2563eb}#automation-flow>.text-center>p{margin:.55rem auto 0;color:#64748b;font-size:.8rem;max-width:640px}
+#automation-flow .automation-compare{display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1.15fr);gap:1rem;align-items:stretch}
+#automation-flow .automation-side{position:relative;border-radius:1.6rem;padding:1.25rem;overflow:hidden}
+#automation-flow .automation-side.manual{background:linear-gradient(145deg,#fff7f7,#fff1f2);border:1px solid #fecdd3}
+#automation-flow .automation-side.flux{background:linear-gradient(145deg,#f0fdfa,#eff6ff);border:1px solid #a7f3d0}
+#automation-flow .automation-side-head span{display:inline-block;border-radius:999px;padding:.3rem .65rem;font-size:.62rem;font-weight:900}.automation-side.manual .automation-side-head span{background:#ffe4e6;color:#e11d48}.automation-side.flux .automation-side-head span{background:#d1fae5;color:#047857}
+#automation-flow .automation-side-head h3{font-size:1.05rem;line-height:1.2;font-weight:900;color:#0f172a;margin:.65rem 0 1rem}
+#automation-flow .automation-task{display:flex;align-items:center;gap:.7rem;padding:.75rem;margin-top:.55rem;background:rgba(255,255,255,.9);border-radius:1rem;border:1px solid rgba(226,232,240,.9);box-shadow:0 8px 25px -24px #0f172a}
+#automation-flow .automation-task>i{width:2rem;height:2rem;border-radius:.7rem;display:grid;place-items:center;font-size:1rem;font-style:normal}.automation-side.manual .automation-task>i{background:#fff1f2;color:#e11d48}.automation-side.flux .automation-task>i{background:#ecfdf5;color:#059669}
+#automation-flow .automation-task div{min-width:0;flex:1}.automation-task b,.automation-task small{display:block}.automation-task b{font-size:.7rem;color:#0f172a}.automation-task small{font-size:.58rem;color:#64748b;margin-top:.1rem}.automation-task em{width:1.45rem;height:1.45rem;border-radius:50%;display:grid;place-items:center;background:#d1fae5;color:#059669;font-size:.65rem;font-style:normal;font-weight:900}
+#automation-flow .automation-bottom{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.75rem;padding:.75rem;border-radius:1rem;background:rgba(255,255,255,.55)}.automation-bottom>div{display:grid;grid-template-columns:auto 1fr;gap:0 .4rem}.automation-bottom i{grid-row:1/3;color:#e11d48;font-size:1rem}.automation-bottom b{font-size:.6rem}.automation-bottom small{font-size:.52rem;color:#64748b}
+#automation-flow .automation-transition{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#64748b}.automation-transition>small{font-size:.65rem;font-weight:900;letter-spacing:.08em}.automation-transition>b{font-size:.68rem;color:#2563eb;margin-top:.25rem}.automation-arrow{width:76px;height:44px;margin:.5rem 0;border-radius:999px;background:linear-gradient(90deg,#eff6ff,#dbeafe);display:grid;place-items:center}.automation-arrow span{font-size:2rem;color:#2563eb}
+#automation-flow .automation-actions{margin-top:1rem;display:grid;gap:.45rem;text-align:left}.automation-actions span{display:flex;align-items:center;gap:.35rem;font-size:.57rem;font-weight:800;text-transform:uppercase}.automation-actions i{font-size:.9rem;color:#2563eb}
+#automation-flow .automation-dashboard-mini{position:absolute;right:-1rem;top:1rem;width:43%;padding:.8rem;border-radius:1rem;background:rgba(255,255,255,.82);border:1px solid #bfdbfe;box-shadow:0 16px 32px -24px #2563eb;transform:rotate(-1.5deg)}.mini-top{display:flex;justify-content:space-between;font-size:.5rem;color:#334155}.mini-top span{color:#059669}.mini-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.25rem;margin:.55rem 0}.mini-metrics div{padding:.35rem;background:#f8fafc;border-radius:.45rem}.mini-metrics small,.mini-metrics b{display:block}.mini-metrics small{font-size:.38rem;color:#94a3b8}.mini-metrics b{font-size:.55rem;color:#0f172a}.mini-chart{height:36px;display:flex;align-items:end;gap:3px}.mini-chart i{flex:1;background:linear-gradient(#60a5fa,#2563eb);border-radius:2px 2px 0 0}.mini-chart i:nth-child(1){height:20%}.mini-chart i:nth-child(2){height:32%}.mini-chart i:nth-child(3){height:38%}.mini-chart i:nth-child(4){height:49%}.mini-chart i:nth-child(5){height:58%}.mini-chart i:nth-child(6){height:68%}.mini-chart i:nth-child(7){height:78%}.mini-chart i:nth-child(8){height:94%}
+#automation-flow .automation-side.flux .automation-side-head{padding-right:42%}
+#automation-flow .automation-gains{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-top:.75rem;padding:.75rem;border-radius:1rem;background:rgba(209,250,229,.65)}.automation-gains div{padding:0 .4rem;border-right:1px solid #a7f3d0}.automation-gains div:last-child{border:0}.automation-gains b,.automation-gains small{display:block}.automation-gains b{font-size:.58rem;color:#047857}.automation-gains small{font-size:.5rem;color:#64748b;margin-top:.1rem}
+@media(max-width:900px){#automation-flow .automation-compare{grid-template-columns:1fr}.automation-transition{padding:.5rem}.automation-actions{grid-template-columns:repeat(4,1fr)!important}.automation-arrow{transform:rotate(90deg)}#automation-flow .automation-dashboard-mini{position:relative;right:auto;top:auto;width:100%;transform:none;margin-bottom:.75rem}#automation-flow .automation-side.flux .automation-side-head{padding-right:0}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -1153,45 +1174,41 @@
   </div>
 
   <!-- 07 — AUTOMAÇÃO -->
-  <section class="bg-white rounded-3xl p-8 sm:p-12 card-border shadow-sm overflow-hidden" id="automation-flow">
+  <section class="automation-v2 rounded-3xl p-7 sm:p-10 card-border shadow-sm overflow-hidden" id="automation-flow">
     <div class="text-xs font-bold tracking-widest text-slate-400 uppercase">07 — Automação</div>
-    <div class="text-center max-w-2xl mx-auto my-6">
-      <span class="text-xs font-bold uppercase tracking-wider text-slate-500">MENOS TAREFAS MANUAIS</span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Mais tempo para gerir.</h2>
+    <div class="text-center max-w-3xl mx-auto mt-2 mb-7">
+      <span class="automation-pill">MENOS TAREFAS MANUAIS</span>
+      <h2 class="text-3xl sm:text-5xl font-black text-slate-950 mt-2">Mais tempo para <span>gerir.</span></h2>
+      <p>O FLUX OS transforma rotinas manuais em uma operação integrada, atualizada e pronta para decisão.</p>
     </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-8" id="automation-grid">
-      <div class="space-y-3 bg-rose-50/70 p-6 rounded-2xl border border-rose-200">
-        <div class="text-xs font-bold text-rose-600 uppercase tracking-wider mb-2">Antes (Manual)</div>
-        <div class="p-3 bg-white rounded-xl border border-rose-100 text-xs text-slate-500 flex items-center gap-2">
-          <span class="material-symbols-outlined text-rose-400 text-sm">description</span> <span class="automation-old">Relatórios manuais demorados</span>
-        </div>
-        <div class="p-3 bg-white rounded-xl border border-rose-100 text-xs text-slate-500 flex items-center gap-2">
-          <span class="material-symbols-outlined text-rose-400 text-sm">content_paste_search</span> <span class="automation-old">Coleta de dados fragmentada</span>
-        </div>
-        <div class="p-3 bg-white rounded-xl border border-rose-100 text-xs text-slate-500 flex items-center gap-2">
-          <span class="material-symbols-outlined text-rose-400 text-sm">inventory</span> <span class="automation-old">Checagem manual de estoques</span>
-        </div>
+
+    <div class="automation-compare">
+      <div class="automation-side manual">
+        <div class="automation-side-head"><span>ANTES (MANUAL)</span><h3>Processos fragmentados,<br>retrabalho e perda de tempo.</h3></div>
+        <div class="automation-task"><i class="material-symbols-outlined">description</i><div><b>Relatórios manuais demorados</b><small>Dados dispersos e consolidação manual</small></div></div>
+        <div class="automation-task"><i class="material-symbols-outlined">search</i><div><b>Coleta de dados fragmentada</b><small>Informações em diferentes sistemas</small></div></div>
+        <div class="automation-task"><i class="material-symbols-outlined">inventory_2</i><div><b>Checagem manual de estoques</b><small>Risco de erros e falta de atualização</small></div></div>
+        <div class="automation-bottom"><div><i class="material-symbols-outlined">schedule</i><b>Muito tempo gasto</b><small>em tarefas operacionais</small></div><div><i class="material-symbols-outlined">warning</i><b>Maior risco de erros</b><small>e informações desatualizadas</small></div></div>
       </div>
 
-      <div class="flex flex-col items-center justify-center p-6 text-center">
-        <div class="automation-core relative w-16 h-16 bg-blue-600 rounded-2xl shadow-lg shadow-blue-500/30 flex items-center justify-center text-white font-extrabold text-base"><span class="absolute inset-0 rounded-2xl border border-blue-300/60"></span>FLUX</div>
-        <span class="text-xs font-semibold text-slate-500 mt-3 flex items-center gap-1">
-          <span class="material-symbols-outlined text-sm text-blue-600">sync</span> Automação Contínua
-        </span>
+      <div class="automation-transition">
+        <small>DO MANUAL</small>
+        <div class="automation-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+        <b>AO AUTOMÁTICO</b>
+        <div class="automation-actions"><span><i class="material-symbols-outlined">bolt</i>Conecta</span><span><i class="material-symbols-outlined">layers</i>Organiza</span><span><i class="material-symbols-outlined">play_arrow</i>Executa</span><span><i class="material-symbols-outlined">monitoring</i>Informa</span></div>
       </div>
 
-      <div class="space-y-3 bg-emerald-50/70 p-6 rounded-2xl border border-emerald-200">
-        <div class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">Com FLUX OS</div>
-        <div class="p-3 bg-white rounded-xl border border-emerald-200 text-xs text-slate-800 font-medium flex items-center gap-2">
-          <span class="material-symbols-outlined text-emerald-600 text-base">check_circle</span> Processos 100% automatizados
+      <div class="automation-side flux">
+        <div class="automation-side-head"><span>COM FLUX OS</span><h3>Processos integrados, automação<br>e controle em tempo real.</h3></div>
+        <div class="automation-dashboard-mini">
+          <div class="mini-top"><b>Operação em tempo real</b><span>● Online</span></div>
+          <div class="mini-metrics"><div><small>Processos</small><b>100%</b></div><div><small>Alertas</small><b>0</b></div><div><small>Tempo recuperado</small><b>72h</b></div></div>
+          <div class="mini-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
-        <div class="p-3 bg-white rounded-xl border border-emerald-200 text-xs text-slate-800 font-medium flex items-center gap-2">
-          <span class="material-symbols-outlined text-emerald-600 text-base">check_circle</span> Alertas em tempo real
-        </div>
-        <div class="p-3 bg-white rounded-xl border border-emerald-200 text-xs text-slate-800 font-medium flex items-center gap-2">
-          <span class="material-symbols-outlined text-emerald-600 text-base">check_circle</span> Foco em estratégia e expansão
-        </div>
+        <div class="automation-task"><i class="material-symbols-outlined">bolt</i><div><b>Processos automatizados</b><small>Execução contínua e menos retrabalho</small></div><em>✓</em></div>
+        <div class="automation-task"><i class="material-symbols-outlined">notifications</i><div><b>Alertas em tempo real</b><small>Informação certa para a decisão certa</small></div><em>✓</em></div>
+        <div class="automation-task"><i class="material-symbols-outlined">bar_chart</i><div><b>Foco em estratégia e expansão</b><small>Mais tempo para o que realmente importa</small></div><em>✓</em></div>
+        <div class="automation-gains"><div><b>Menos tempo</b><small>em tarefas manuais</small></div><div><b>Mais produtividade</b><small>e decisões mais rápidas</small></div><div><b>Operação atualizada</b><small>em tempo real</small></div></div>
       </div>
     </div>
   </section>
