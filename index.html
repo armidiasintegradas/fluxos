@@ -465,6 +465,20 @@
 .journey-caption{position:absolute;left:0;right:0;bottom:.25rem;display:flex;align-items:center;justify-content:center;gap:.5rem;color:#93c5fd;font-size:.46rem;font-weight:800;letter-spacing:.08em}.journey-caption i{width:18px;height:1px;background:rgba(147,197,253,.35)}
 @keyframes journeyDot{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:100%;opacity:0}}@keyframes journeyCard{0%,100%{transform:translateX(0);border-color:rgba(147,197,253,.15)}50%{transform:translateX(4px);border-color:rgba(96,165,250,.38)}}@keyframes journeyPulse{0%,100%{transform:scale(1);box-shadow:0 20px 60px -30px rgba(59,130,246,.8)}50%{transform:scale(1.035);box-shadow:0 20px 70px -22px rgba(124,58,237,.85)}}@keyframes journeyScreen{0%,100%{transform:perspective(600px) rotateY(-5deg) translateY(0)}50%{transform:perspective(600px) rotateY(-2deg) translateY(-5px)}}@keyframes journeyBars{0%,100%{filter:saturate(.85);transform:scaleY(.94);transform-origin:bottom}50%{filter:saturate(1.3);transform:scaleY(1);transform-origin:bottom}}
 @media(max-width:850px){.meeting-journey{grid-template-columns:1fr 28px .8fr 28px 1.1fr;min-height:300px}.journey-stack span{padding:.45rem;font-size:.5rem}.journey-caption{display:none}.journey-dialog .material-symbols-outlined{font-size:1.6rem}.journey-screen{padding:.6rem}.journey-bars{height:55px}}@media(max-width:560px){.meeting-journey{grid-template-columns:1fr;gap:.7rem;padding-bottom:.5rem}.journey-flow{width:2px;height:25px;margin:auto;background:linear-gradient(rgba(96,165,250,.12),rgba(96,165,250,.7),rgba(167,139,250,.15))}.journey-flow b{left:-2px!important;animation:journeyDotY 2.2s linear infinite}.journey-dialog{aspect-ratio:auto;min-height:120px}.journey-screen{transform:none}.journey-stage>small{text-align:left}}@keyframes journeyDotY{0%{top:0;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
+
+/* Demonstração — resultado da conversa, sem diagrama de etapas */
+.meeting-outcome{min-height:390px;display:flex;flex-direction:column;justify-content:center;gap:1rem;padding:1rem .2rem;position:relative}
+.outcome-kicker{display:flex;align-items:center;gap:.5rem;color:#93c5fd;font-size:.55rem;font-weight:900;letter-spacing:.12em}.outcome-kicker span{width:22px;height:1px;background:#60a5fa}
+.outcome-window{position:relative;overflow:hidden;border-radius:1.5rem;padding:1rem;background:linear-gradient(145deg,rgba(248,250,252,.98),rgba(219,234,254,.95));color:#0f172a;border:1px solid rgba(191,219,254,.8);box-shadow:0 28px 70px -32px rgba(0,0,0,.65);animation:outcomeFloat 6s ease-in-out infinite}
+.outcome-window:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-70px;top:-90px;background:rgba(59,130,246,.13);filter:blur(2px)}
+.outcome-top{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding-bottom:.7rem;border-bottom:1px solid #dbeafe}.outcome-brand{font-size:.62rem;font-weight:900;color:#2563eb}.outcome-brand b{font-weight:500;color:#64748b}.outcome-live{display:flex;align-items:center;gap:.35rem;font-size:.48rem;color:#64748b}.outcome-live i{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 0 4px rgba(16,185,129,.12);animation:outcomeBlink 1.7s ease-in-out infinite}
+.outcome-welcome{font-size:.6rem;color:#64748b;margin:.85rem 0 .65rem}.outcome-welcome strong{color:#0f172a;font-size:.78rem;margin-left:.2rem}
+.outcome-grid{display:grid;grid-template-columns:1.45fr .8fr;gap:.65rem}.outcome-main{padding:.9rem;border-radius:1rem;background:#fff;border:1px solid #dbeafe}.outcome-main small,.outcome-side small{font-size:.43rem;font-weight:900;letter-spacing:.08em;color:#64748b}.outcome-main>strong{display:block;font-size:.74rem;line-height:1.3;margin:.35rem 0 .7rem}.outcome-progress{height:5px;border-radius:999px;background:#e2e8f0;overflow:hidden}.outcome-progress i{display:block;width:76%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#2563eb,#8b5cf6);animation:outcomeBuild 3.5s ease-in-out infinite}.outcome-tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.65rem}.outcome-tags span{padding:.28rem .4rem;border-radius:999px;background:#eff6ff;color:#2563eb;font-size:.43rem;font-weight:800}
+.outcome-side{display:grid;gap:.45rem}.outcome-side>div{padding:.65rem;border-radius:.8rem;background:rgba(255,255,255,.78);border:1px solid #dbeafe;transition:.3s ease}.outcome-side>div:nth-child(2){animation:outcomeCard 4s ease-in-out infinite}.outcome-side b{display:block;font-size:.58rem;margin-top:.2rem}
+.outcome-pulse{display:flex;align-items:center;gap:.25rem;height:15px;margin-top:.75rem}.outcome-pulse span{width:4px;border-radius:4px;background:#3b82f6;animation:outcomeWave 1.2s ease-in-out infinite}.outcome-pulse span:nth-child(1){height:5px}.outcome-pulse span:nth-child(2){height:11px;animation-delay:-.2s}.outcome-pulse span:nth-child(3){height:7px;animation-delay:-.4s}.outcome-pulse span:nth-child(4){height:14px;animation-delay:-.6s}.outcome-pulse span:nth-child(5){height:8px;animation-delay:-.8s}
+.outcome-statement{text-align:center;color:#bfdbfe;font-size:.67rem;line-height:1.5}.outcome-statement strong{color:#fff;font-size:.74rem}
+@keyframes outcomeFloat{0%,100%{transform:translateY(0) rotate(.15deg)}50%{transform:translateY(-6px) rotate(-.15deg)}}@keyframes outcomeBlink{50%{opacity:.35;box-shadow:0 0 0 8px rgba(16,185,129,0)}}@keyframes outcomeBuild{0%{width:18%}55%,100%{width:92%}}@keyframes outcomeWave{0%,100%{transform:scaleY(.65);opacity:.55}50%{transform:scaleY(1.15);opacity:1}}@keyframes outcomeCard{0%,100%{border-color:#dbeafe;transform:translateX(0)}50%{border-color:#93c5fd;transform:translateX(-3px)}}
+@media(max-width:850px){.meeting-outcome{min-height:330px}.outcome-grid{grid-template-columns:1fr}.outcome-side{grid-template-columns:repeat(3,1fr)}}@media(max-width:560px){.outcome-side{grid-template-columns:1fr}.outcome-window{padding:.8rem}.outcome-statement br{display:none}}@media(prefers-reduced-motion:reduce){.outcome-window,.outcome-live i,.outcome-progress i,.outcome-pulse span,.outcome-side>div{animation:none}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -1546,29 +1560,27 @@
         <span class="flux-meeting-note"><span class="material-symbols-outlined">schedule</span> Sem compromisso · conversa personalizada</span>
       </div>
     </div>
-    <div class="flux-meeting-visual meeting-journey" aria-hidden="true">
-      <div class="journey-stage journey-company">
-        <small>SUA REALIDADE</small>
-        <div class="journey-stack">
-          <span><i></i>Processos</span><span><i></i>Dados</span><span><i></i>Pessoas</span><span><i></i>Desafios</span>
+    <div class="flux-meeting-visual meeting-outcome" aria-hidden="true">
+      <div class="outcome-kicker"><span></span> UMA CONVERSA. UM SISTEMA COM A SUA CARA.</div>
+      <div class="outcome-window">
+        <div class="outcome-top"><div class="outcome-brand">FLUX <b>OS</b></div><div class="outcome-live"><i></i> configurando</div></div>
+        <div class="outcome-welcome">Pensado para <strong class="user-org-display">SUA EMPRESA</strong></div>
+        <div class="outcome-grid">
+          <div class="outcome-main">
+            <small>OPERAÇÃO CONECTADA</small>
+            <strong>Uma plataforma que entende<br>como sua empresa trabalha.</strong>
+            <div class="outcome-progress"><i></i></div>
+            <div class="outcome-tags"><span>Processos</span><span>Dados</span><span>Automação</span><span>Inteligência</span></div>
+          </div>
+          <div class="outcome-side">
+            <div><small>IDENTIDADE</small><b>Sua marca</b></div>
+            <div><small>PROCESSOS</small><b>Sua realidade</b></div>
+            <div><small>DECISÕES</small><b>Seus indicadores</b></div>
+          </div>
         </div>
+        <div class="outcome-pulse"><span></span><span></span><span></span><span></span><span></span></div>
       </div>
-      <div class="journey-flow flow-a"><b></b><b></b><b></b></div>
-      <div class="journey-stage journey-conversation">
-        <small>NOSSA CONVERSA</small>
-        <div class="journey-dialog"><span class="material-symbols-outlined">forum</span><strong>ENTENDER</strong><em>antes de construir</em></div>
-      </div>
-      <div class="journey-flow flow-b"><b></b><b></b><b></b></div>
-      <div class="journey-stage journey-result">
-        <small>SEU SISTEMA</small>
-        <div class="journey-screen">
-          <div class="journey-screen-top"><span>FLUX</span><i></i></div>
-          <strong class="user-org-display">SUA EMPRESA</strong>
-          <div class="journey-bars"><i></i><i></i><i></i><i></i></div>
-          <div class="journey-status"><span></span>Configurado para sua operação</div>
-        </div>
-      </div>
-      <div class="journey-caption">SUA REALIDADE <i></i> NOSSA CONVERSA <i></i> CONSTRUÇÃO CONJUNTA <i></i> SEU FLUX</div>
+      <p class="outcome-statement">Não começamos mostrando um software.<br><strong>Começamos entendendo a sua empresa.</strong></p>
     </div>
   </div>
   <div class="flux-meeting-bottom"><span>VOCÊ TRAZ O DESAFIO.</span><i></i><strong>NÓS DESENHAMOS AS POSSIBILIDADES.</strong></div>
