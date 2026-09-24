@@ -392,6 +392,12 @@
 @keyframes fldStatusFocus{0%,16%,100%{background:transparent;transform:translateX(0)}8%{background:rgba(255,255,255,.045);transform:translateX(3px)}}
 @keyframes fldStatusDot{0%,100%{transform:scale(.88);filter:brightness(.9)}50%{transform:scale(1.22);filter:brightness(1.35)}}
 @media(prefers-reduced-motion:reduce){.flux-live-dashboard .fld-ring,.flux-live-dashboard .fld-ring:before,.flux-live-dashboard .fld-status li,.flux-live-dashboard .fld-status li i{animation:none!important}}
+
+/* Status Geral — build-up 0 → 92% */
+@property --fld-progress{syntax:"<percentage>";inherits:false;initial-value:0%}
+.flux-live-dashboard .fld-ring{--fld-progress:0%;background:conic-gradient(#2de2b0 0 var(--fld-progress),#15354a var(--fld-progress) 100%)!important;animation:fldRingBuild 2.4s cubic-bezier(.22,.8,.25,1) forwards,fldRingBreath 3.2s ease-in-out 2.4s infinite!important}
+.flux-live-dashboard .fld-ring-number{display:block;font-size:22px;line-height:1;font-weight:900;color:#fff}
+@keyframes fldRingBuild{0%{--fld-progress:0%;filter:drop-shadow(0 0 0 rgba(45,226,176,0))}100%{--fld-progress:92%;filter:drop-shadow(0 0 8px rgba(45,226,176,.22))}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -511,7 +517,7 @@
           </div>
           <div class="fld-charts">
             <div class="fld-production"><header><b>▥ &nbsp; Produção — Últimos 7 dias</b><small>7 dias⌄</small></header><div class="fld-linechart"><div class="gridlines"></div><svg viewBox="0 0 600 145" preserveAspectRatio="none"><defs><linearGradient id="fluxArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b82f6" stop-opacity=".35"/><stop offset="1" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 115 C55 105 70 75 125 82 S205 92 255 70 S340 42 390 57 S475 72 600 35 L600 145 L0 145Z"/><path class="line" d="M0 115 C55 105 70 75 125 82 S205 92 255 70 S340 42 390 57 S475 72 600 35"/><circle cx="0" cy="115" r="5"/><circle cx="125" cy="82" r="5"/><circle cx="255" cy="70" r="5"/><circle cx="390" cy="57" r="5"/><circle class="pulse-point" cx="600" cy="35" r="7"/></svg><div class="fld-days"><span>18 Set</span><span>19 Set</span><span>20 Set</span><span>21 Set</span><span>22 Set</span><span>23 Set</span><span>24 Set</span></div></div></div>
-            <div class="fld-status"><header><b>◉ &nbsp; Status Geral da Operação</b></header><div class="fld-statusbody"><div class="fld-ring"><span>92%<small>Operação<br>ativa</small></span></div><ul><li><i class="green"></i>Operação <b>98%</b></li><li><i class="blue"></i>Suprimentos <b>85%</b></li><li><i class="violet"></i>Qualidade <b>90%</b></li><li><i class="amber"></i>Documentos <b>88%</b></li><li><i class="rose"></i>Inteligência <b>94%</b></li></ul></div></div>
+            <div class="fld-status"><header><b>◉ &nbsp; Status Geral da Operação</b></header><div class="fld-statusbody"><div class="fld-ring"><span><b class="fld-ring-number">0%</b><small>Operação<br>ativa</small></span></div><ul><li><i class="green"></i>Operação <b>98%</b></li><li><i class="blue"></i>Suprimentos <b>85%</b></li><li><i class="violet"></i>Qualidade <b>90%</b></li><li><i class="amber"></i>Documentos <b>88%</b></li><li><i class="rose"></i>Inteligência <b>94%</b></li></ul></div></div>
           </div>
         </main>
       </div>
@@ -2754,5 +2760,23 @@
     // Inicia com o módulo Operação selecionado
     document.addEventListener('DOMContentLoaded',()=>selectOperationalNode('operacao'));
   
+</script>
+
+<script>
+(function(){
+  function animateFlux92(){
+    const el=document.querySelector('.fld-ring-number');
+    if(!el)return;
+    const duration=2400,start=performance.now();
+    function tick(now){
+      const p=Math.min(1,(now-start)/duration);
+      const eased=1-Math.pow(1-p,3);
+      el.textContent=Math.round(92*eased)+'%';
+      if(p<1)requestAnimationFrame(tick);else el.textContent='92%';
+    }
+    requestAnimationFrame(tick);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',animateFlux92);else animateFlux92();
+})();
 </script>
 </body></html>
