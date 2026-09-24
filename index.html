@@ -353,6 +353,20 @@
 #automation-flow .auto07-summary{margin-top:auto;display:grid;gap:.4rem;padding:.68rem .75rem;border-radius:.9rem}.manual-summary{grid-template-columns:1fr 1fr;background:rgba(255,255,255,.58)}.flux-summary{grid-template-columns:repeat(3,1fr);background:rgba(209,250,229,.72)}.auto07-summary>div{display:flex;align-items:center;gap:.48rem;min-width:0}.auto07-summary>div+div{border-left:1px solid;padding-left:.65rem}.manual-summary>div+div{border-color:#fda4af}.flux-summary>div+div{border-color:#6ee7b7}.auto07-summary i{font-size:1.35rem}.manual-summary i{color:#e11d48}.flux-summary i{color:#059669}.auto07-summary b,.auto07-summary small{display:block}.auto07-summary b{font-size:.58rem;color:#0f172a}.auto07-summary small{font-size:.49rem;color:#607395}.flux-summary b{color:#047857}
 #automation-flow .auto07-bridge{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#64748b}.auto07-bridge>b{font-size:.68rem}.auto07-bridge>strong{font-size:.7rem;color:#1769f5;margin:.4rem 0}.auto07-arrows{display:flex;align-items:center;height:58px;margin:.3rem 0}.auto07-arrows i{width:31px;height:31px;border-top:9px solid;border-right:9px solid;transform:rotate(45deg);margin-left:-10px;border-radius:3px}.auto07-arrows i:nth-child(1){border-color:#eef5ff}.auto07-arrows i:nth-child(2){border-color:#bcd7ff}.auto07-arrows i:nth-child(3){border-color:#1769f5}.auto07-bridge hr{width:35px;border-color:#bfdbfe;margin:.45rem 0}.auto07-bridge>span{width:88px;display:flex;align-items:center;gap:.45rem;margin:.18rem 0;font-size:.57rem;font-weight:800;color:#64748b}.auto07-bridge>span i{font-size:1rem;color:#64748b}
 @media(max-width:900px){#automation-flow.auto07-flat{padding:1.4rem 1rem}.auto07-layout{grid-template-columns:1fr!important}.auto07-bridge{padding:.35rem}.auto07-arrows{transform:rotate(90deg)}.auto07-bridge>span{display:none!important}.auto07-panel{min-height:0!important}.auto07-summary{margin-top:.8rem!important}}
+
+/* 07 — setas animadas: fluxo contínuo manual → automático */
+#automation-flow .auto07-arrows{position:relative;display:flex;align-items:center;justify-content:center;width:112px;height:62px;overflow:visible;transform:translateX(-4px)}
+#automation-flow .auto07-arrows i{width:34px!important;height:34px!important;margin-left:-8px!important;border-width:0 9px 9px 0!important;border-style:solid!important;border-radius:4px!important;transform:rotate(-45deg)!important;animation:auto07FlowArrow 1.65s cubic-bezier(.4,0,.2,1) infinite!important;filter:drop-shadow(0 4px 7px rgba(37,99,235,.08))}
+#automation-flow .auto07-arrows i:nth-child(1){border-color:#e8f1ff!important;animation-delay:0s!important}
+#automation-flow .auto07-arrows i:nth-child(2){border-color:#a9ceff!important;animation-delay:.18s!important}
+#automation-flow .auto07-arrows i:nth-child(3){border-color:#1769f5!important;animation-delay:.36s!important;filter:drop-shadow(0 5px 9px rgba(23,105,245,.24))}
+@keyframes auto07FlowArrow{
+  0%,100%{opacity:.45;transform:translateX(-5px) rotate(-45deg) scale(.92)}
+  42%{opacity:1;transform:translateX(5px) rotate(-45deg) scale(1.06)}
+  72%{opacity:.72;transform:translateX(9px) rotate(-45deg) scale(1)}
+}
+@media(prefers-reduced-motion:reduce){#automation-flow .auto07-arrows i{animation:none!important}}
+@media(max-width:900px){#automation-flow .auto07-arrows{transform:rotate(90deg)!important}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
