@@ -367,6 +367,18 @@
 }
 @media(prefers-reduced-motion:reduce){#automation-flow .auto07-arrows i{animation:none!important}}
 @media(max-width:900px){#automation-flow .auto07-arrows{transform:rotate(90deg)!important}}
+
+/* FLUX OS — PAINEL INTEGRADO V2 / animação contínua */
+.flux-live-dashboard{max-width:1120px;margin:0 auto;background:linear-gradient(145deg,#081426,#0b1729 55%,#071321);color:#dbe7f7;border:1px solid #203149;border-radius:22px;box-shadow:0 30px 60px -34px #020617;overflow:hidden;text-align:left}
+.fld-top{height:58px;padding:0 22px;display:grid;grid-template-columns:1fr minmax(240px,360px) 1fr;align-items:center;border-bottom:1px solid #1d2c40}.fld-brand,.fld-user{display:flex;align-items:center;gap:8px}.fld-brand b{font-size:12px;color:#b9c7da}.fld-dot{width:11px;height:11px;border-radius:50%}.fld-dot.red{background:#fb5964}.fld-dot.amber{background:#fbbf24}.fld-dot.green{background:#2dd4a0}.fld-search{height:34px;border:1px solid #26384f;background:#122239;border-radius:18px;display:flex;align-items:center;gap:8px;padding:0 12px;color:#71849d;font-size:10px}.fld-search span{font-size:16px}.fld-search kbd{margin-left:auto;font-size:9px;color:#9fb0c5}.fld-user{justify-content:flex-end}.fld-user>span{font-size:17px}.fld-user>i{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#123e8d;color:#fff;font-style:normal}.fld-user div{display:grid}.fld-user b{font-size:11px}.fld-user small{font-size:8px;color:#71849d}
+.fld-body{display:grid;grid-template-columns:220px 1fr;min-height:390px}.fld-side{border-right:1px solid #1d2c40;padding:16px 16px;display:flex;flex-direction:column;gap:5px}.fld-side button{position:relative;border:0;background:none;color:#8ea0b8;display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;font-size:11px;text-align:left}.fld-side button span{font-size:17px}.fld-side button.active{background:linear-gradient(110deg,#0f3b89,#12377a);color:#62a9ff}.fld-side .status{position:absolute;right:12px;width:7px;height:7px;border-radius:50%;animation:fldPulse 1.8s infinite}.green{background:#20d9a0}.amber{background:#fbbf24}.blue{background:#3b82f6}.violet{background:#8b5cf6}.rose{background:#fb7185}.fld-online{margin-top:auto;border:1px solid #20354e;background:#102238;border-radius:12px;padding:10px;display:flex;align-items:center;gap:8px}.fld-online>span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#0c4b48;color:#2de2b0}.fld-online div{display:grid}.fld-online b{font-size:10px;color:#35e0b3}.fld-online small{font-size:7px;color:#71849d}
+.fld-main{padding:18px 22px}.fld-welcome{display:flex;justify-content:space-between;align-items:center}.fld-welcome h3{font-size:22px;font-weight:800;color:#fff}.fld-welcome h3 span{color:#4b9cff}.fld-welcome p{font-size:10px;color:#8da0b8}.fld-live{min-width:140px;padding:10px 14px;border-radius:14px;background:#0d3a39;display:grid;grid-template-columns:auto 1fr;gap:0 8px;align-items:center}.fld-live i{grid-row:1/3;width:10px;height:10px;border-radius:50%;background:#20d9a0;box-shadow:0 0 16px #20d9a0;animation:fldPulse 1.5s infinite}.fld-live b{font-size:10px;color:#2de2b0}.fld-live small{font-size:7px;color:#82a7a2}
+.fld-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}.fld-kpis>div{position:relative;height:112px;padding:12px;border:1px solid #26384f;background:linear-gradient(145deg,#14243a,#101d30);border-radius:14px;overflow:hidden}.fld-kpis>div>span{float:left;margin-right:8px;font-size:18px}.fld-kpis small,.fld-kpis b,.fld-kpis em{display:block}.fld-kpis small{font-size:9px;color:#a4b3c6}.fld-kpis b{font-size:18px;line-height:1.25}.fld-kpis em{font-style:normal;font-size:7px;color:#667b95}.fld-kpis .blue{color:#54a3ff}.fld-kpis .amber{color:#fbbf24}.fld-kpis .rose{color:#fb7185}.fld-kpis .violet{color:#8b8cff}.fld-kpis svg{position:absolute;left:12px;right:12px;bottom:9px;width:70%;height:24px}.fld-kpis path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-dasharray:120;animation:fldDraw 3.5s ease-in-out infinite}
+.fld-charts{display:grid;grid-template-columns:1.65fr 1fr;gap:12px;margin-top:12px}.fld-production,.fld-status{height:180px;border:1px solid #26384f;background:linear-gradient(145deg,#102035,#0d192a);border-radius:14px;padding:12px}.fld-production header,.fld-status header{display:flex;justify-content:space-between;font-size:10px}.fld-production header small{border:1px solid #29405c;border-radius:8px;padding:3px 8px;color:#9badc2}.fld-linechart{position:relative;height:130px;margin-top:5px}.gridlines{position:absolute;inset:8px 0 22px;background:repeating-linear-gradient(to bottom,transparent 0 25px,#203047 26px);opacity:.55}.fld-linechart svg{position:absolute;left:10px;right:10px;top:10px;width:calc(100% - 20px);height:90px;overflow:visible}.fld-linechart .area{fill:url(#fluxArea)}.fld-linechart .line{fill:none;stroke:#559bff;stroke-width:3;stroke-dasharray:900;animation:fldLine 5s linear infinite}.fld-linechart circle{fill:#dbeafe;stroke:#3b82f6;stroke-width:3}.fld-linechart .pulse-point{animation:fldPoint 1.4s ease-in-out infinite;transform-origin:600px 35px}.fld-days{position:absolute;left:8px;right:8px;bottom:2px;display:flex;justify-content:space-between;font-size:7px;color:#72849a}
+.fld-statusbody{display:flex;align-items:center;justify-content:center;gap:18px;height:145px}.fld-ring{width:108px;height:108px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#2de2b0 0 92%,#15354a 92%);position:relative;animation:fldRingGlow 2.5s ease-in-out infinite}.fld-ring:after{content:"";position:absolute;inset:10px;background:#0e1c2e;border-radius:50%}.fld-ring span{position:relative;z-index:1;text-align:center;font-size:22px;font-weight:900;color:#fff}.fld-ring small{display:block;font-size:7px;font-weight:400;color:#8da0b8}.fld-status ul{display:grid;gap:7px;font-size:8px;color:#91a3b9}.fld-status li{display:grid;grid-template-columns:8px 1fr auto;align-items:center;gap:6px}.fld-status li i{width:7px;height:7px;border-radius:50%}.fld-status li b{color:#e6edf7}
+@keyframes fldPulse{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:1;transform:scale(1.18)}}@keyframes fldDraw{0%{stroke-dashoffset:120;opacity:.35}55%,100%{stroke-dashoffset:0;opacity:1}}@keyframes fldLine{0%{stroke-dashoffset:900}55%,100%{stroke-dashoffset:0}}@keyframes fldPoint{0%,100%{transform:scale(.75);filter:drop-shadow(0 0 2px #3b82f6)}50%{transform:scale(1.35);filter:drop-shadow(0 0 8px #60a5fa)}}@keyframes fldRingGlow{0%,100%{filter:drop-shadow(0 0 0 rgba(45,226,176,0))}50%{filter:drop-shadow(0 0 9px rgba(45,226,176,.28))}}
+@media(max-width:800px){.fld-top{grid-template-columns:1fr auto}.fld-search{display:none}.fld-body{grid-template-columns:1fr}.fld-side{display:none}.fld-main{padding:14px}.fld-kpis{grid-template-columns:repeat(2,1fr)}.fld-charts{grid-template-columns:1fr}.fld-status{display:none}.fld-welcome p{max-width:210px}.flux-live-dashboard{border-radius:16px}}
+@media(prefers-reduced-motion:reduce){.flux-live-dashboard *{animation:none!important}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -459,59 +471,36 @@
       </div>
     </div>
 
-    <!-- Mockup Desktop da Tela Principal -->
-    <div class="relative max-w-4xl mx-auto bg-[#0c1322] rounded-2xl p-4 sm:p-6 text-slate-100 shadow-xl border border-slate-800 text-left">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-        <div class="flex items-center space-x-2">
-          <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-          <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
-          <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-          <span class="ml-2 text-xs font-semibold text-slate-400">FLUX OS — Painel Integrado</span>
-        </div>
-        <div class="text-[11px] text-emerald-400 flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Operação Ativa
-        </div>
+    <!-- FLUX OS — Painel Integrado V2 -->
+    <div class="flux-live-dashboard">
+      <div class="fld-top">
+        <div class="fld-brand"><span class="fld-dot red"></span><span class="fld-dot amber"></span><span class="fld-dot green"></span><b>FLUX OS — Painel Integrado</b></div>
+        <div class="fld-search"><span class="material-symbols-outlined">search</span>Buscar em todo o sistema...<kbd>⌘ K</kbd></div>
+        <div class="fld-user"><span class="material-symbols-outlined">notifications</span><i>A</i><div><b class="user-name-display">Alex</b><small>Administrador</small></div></div>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="hidden md:flex flex-col space-y-1.5 text-xs text-slate-400 border-r border-slate-800 pr-4">
-          <div class="p-2 bg-blue-600/20 text-blue-400 rounded-lg font-medium flex items-center gap-2">
-            <span class="material-symbols-outlined text-sm">dashboard</span> Visão Geral
+      <div class="fld-body">
+        <aside class="fld-side">
+          <button class="active"><span class="material-symbols-outlined">dashboard</span>Visão Geral</button>
+          <button><span class="material-symbols-outlined">trending_up</span>Operação<i class="status green"></i></button>
+          <button><span class="material-symbols-outlined">inventory_2</span>Suprimentos<i class="status amber"></i></button>
+          <button><span class="material-symbols-outlined">folder</span>Documentos<i class="status blue"></i></button>
+          <button><span class="material-symbols-outlined">verified</span>Qualidade<i class="status violet"></i></button>
+          <button><span class="material-symbols-outlined">psychology</span>Inteligência<i class="status rose"></i></button>
+          <div class="fld-online"><span class="material-symbols-outlined">track_changes</span><div><b>Sistema Online</b><small>Todos os módulos operacionais</small></div></div>
+        </aside>
+        <main class="fld-main">
+          <div class="fld-welcome"><div><h3>Olá, <span class="user-name-display">Alex</span></h3><p>Panorama consolidado da sua operação na <span class="user-org-display">AR Mídias Integradas</span>.</p></div><div class="fld-live"><i></i><b>Operação Ativa</b><small>Todos os sistemas online</small></div></div>
+          <div class="fld-kpis">
+            <div class="blue"><span class="material-symbols-outlined">bar_chart</span><small>Produção</small><b>+8,4%</b><em>em relação ao período anterior</em><svg viewBox="0 0 100 22"><path d="M0 18 C12 18,14 8,25 12 S38 17,48 10 S61 4,70 9 S86 11,100 3"/></svg></div>
+            <div class="amber"><span class="material-symbols-outlined">inventory_2</span><small>Suprimentos</small><b>2 itens</b><em>em nível crítico</em><svg viewBox="0 0 100 22"><path d="M0 18 C12 16,16 9,27 12 S39 4,49 9 S61 16,72 8 S86 12,100 4"/></svg></div>
+            <div class="rose"><span class="material-symbols-outlined">notifications</span><small>Atenção</small><b>3 ativ.</b><em>precisam alinhamento</em><svg viewBox="0 0 100 22"><path d="M0 18 C13 18,17 7,29 10 S40 16,50 8 S64 6,73 12 S89 8,100 4"/></svg></div>
+            <div class="violet"><span class="material-symbols-outlined">description</span><small>Documentos</small><b>1 pend.</b><em>vence esta semana</em><svg viewBox="0 0 100 22"><path d="M0 18 C12 14,18 16,27 11 S40 17,51 9 S65 12,76 7 S89 8,100 3"/></svg></div>
           </div>
-          <div class="p-2 hover:bg-slate-800/40 rounded-lg flex items-center gap-2"><span class="material-symbols-outlined text-sm">trending_up</span> Operação</div>
-          <div class="p-2 hover:bg-slate-800/40 rounded-lg flex items-center gap-2"><span class="material-symbols-outlined text-sm">inventory_2</span> Suprimentos</div>
-          <div class="p-2 hover:bg-slate-800/40 rounded-lg flex items-center gap-2"><span class="material-symbols-outlined text-sm">folder</span> Documentos</div>
-          <div class="p-2 hover:bg-slate-800/40 rounded-lg flex items-center gap-2"><span class="material-symbols-outlined text-sm">verified</span> Qualidade</div>
-          <div class="p-2 hover:bg-slate-800/40 rounded-lg flex items-center gap-2"><span class="material-symbols-outlined text-sm">psychology</span> Inteligência</div>
-        </div>
-        <div class="md:col-span-3 space-y-4">
-          <div>
-            <h2 class="text-sm font-semibold text-white">Olá, <span class="user-name-display text-blue-400">Alex</span></h2>
-            <p class="text-xs text-slate-400">Panorama consolidado da sua operação na <span class="user-org-display text-slate-200">AR Mídias Integradas</span>.</p>
+          <div class="fld-charts">
+            <div class="fld-production"><header><b>▥ &nbsp; Produção — Últimos 7 dias</b><small>7 dias⌄</small></header><div class="fld-linechart"><div class="gridlines"></div><svg viewBox="0 0 600 145" preserveAspectRatio="none"><defs><linearGradient id="fluxArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b82f6" stop-opacity=".35"/><stop offset="1" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 115 C55 105 70 75 125 82 S205 92 255 70 S340 42 390 57 S475 72 600 35 L600 145 L0 145Z"/><path class="line" d="M0 115 C55 105 70 75 125 82 S205 92 255 70 S340 42 390 57 S475 72 600 35"/><circle cx="0" cy="115" r="5"/><circle cx="125" cy="82" r="5"/><circle cx="255" cy="70" r="5"/><circle cx="390" cy="57" r="5"/><circle class="pulse-point" cx="600" cy="35" r="7"/></svg><div class="fld-days"><span>18 Set</span><span>19 Set</span><span>20 Set</span><span>21 Set</span><span>22 Set</span><span>23 Set</span><span>24 Set</span></div></div></div>
+            <div class="fld-status"><header><b>◉ &nbsp; Status Geral da Operação</b></header><div class="fld-statusbody"><div class="fld-ring"><span>92%<small>Operação<br>ativa</small></span></div><ul><li><i class="green"></i>Operação <b>98%</b></li><li><i class="blue"></i>Suprimentos <b>85%</b></li><li><i class="violet"></i>Qualidade <b>90%</b></li><li><i class="amber"></i>Documentos <b>88%</b></li><li><i class="rose"></i>Inteligência <b>94%</b></li></ul></div></div>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            <div class="bg-slate-800/70 p-3 rounded-xl border border-slate-700/60">
-              <span class="text-[10px] text-slate-400 block font-medium">Produção</span>
-              <span class="text-base font-bold text-blue-400">+8,4%</span>
-              <span class="text-[9px] text-slate-500 block">em relação ao período</span>
-            </div>
-            <div class="bg-slate-800/70 p-3 rounded-xl border border-slate-700/60">
-              <span class="text-[10px] text-amber-300 block font-medium">Suprimentos</span>
-              <span class="text-base font-bold text-amber-400">2 itens</span>
-              <span class="text-[9px] text-slate-500 block">nível crítico</span>
-            </div>
-            <div class="bg-slate-800/70 p-3 rounded-xl border border-slate-700/60">
-              <span class="text-[10px] text-rose-300 block font-medium">Atenção</span>
-              <span class="text-base font-bold text-rose-400">3 ativ.</span>
-              <span class="text-[9px] text-slate-500 block">precisam alinhamento</span>
-            </div>
-            <div class="bg-slate-800/70 p-3 rounded-xl border border-slate-700/60">
-              <span class="text-[10px] text-indigo-300 block font-medium">Documentos</span>
-              <span class="text-base font-bold text-indigo-400">1 pend.</span>
-              <span class="text-[9px] text-slate-500 block">vence esta semana</span>
-            </div>
-          </div>
-        </div>
+        </main>
       </div>
     </div>
   </section>
