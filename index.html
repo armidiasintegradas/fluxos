@@ -379,6 +379,19 @@
 @keyframes fldPulse{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:1;transform:scale(1.18)}}@keyframes fldDraw{0%{stroke-dashoffset:120;opacity:.35}55%,100%{stroke-dashoffset:0;opacity:1}}@keyframes fldLine{0%{stroke-dashoffset:900}55%,100%{stroke-dashoffset:0}}@keyframes fldPoint{0%,100%{transform:scale(.75);filter:drop-shadow(0 0 2px #3b82f6)}50%{transform:scale(1.35);filter:drop-shadow(0 0 8px #60a5fa)}}@keyframes fldRingGlow{0%,100%{filter:drop-shadow(0 0 0 rgba(45,226,176,0))}50%{filter:drop-shadow(0 0 9px rgba(45,226,176,.28))}}
 @media(max-width:800px){.fld-top{grid-template-columns:1fr auto}.fld-search{display:none}.fld-body{grid-template-columns:1fr}.fld-side{display:none}.fld-main{padding:14px}.fld-kpis{grid-template-columns:repeat(2,1fr)}.fld-charts{grid-template-columns:1fr}.fld-status{display:none}.fld-welcome p{max-width:210px}.flux-live-dashboard{border-radius:16px}}
 @media(prefers-reduced-motion:reduce){.flux-live-dashboard *{animation:none!important}}
+
+/* Status Geral — animação contínua refinada */
+#automation-flow + *{} /* keep cascade boundary */
+.flux-live-dashboard .fld-ring{--pct:92;position:relative;background:conic-gradient(#2de2b0 0 92%,#15354a 92%);animation:fldRingBreath 3.2s ease-in-out infinite}
+.flux-live-dashboard .fld-ring:before{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(45,226,176,.08);animation:fldRadar 3.2s ease-out infinite}
+.flux-live-dashboard .fld-status li{position:relative;padding:4px 7px;border-radius:8px;transition:.35s ease;animation:fldStatusFocus 10s ease-in-out infinite}
+.flux-live-dashboard .fld-status li:nth-child(1){animation-delay:0s}.flux-live-dashboard .fld-status li:nth-child(2){animation-delay:2s}.flux-live-dashboard .fld-status li:nth-child(3){animation-delay:4s}.flux-live-dashboard .fld-status li:nth-child(4){animation-delay:6s}.flux-live-dashboard .fld-status li:nth-child(5){animation-delay:8s}
+.flux-live-dashboard .fld-status li i{animation:fldStatusDot 2s ease-in-out infinite}.flux-live-dashboard .fld-status li:nth-child(2) i{animation-delay:.2s}.flux-live-dashboard .fld-status li:nth-child(3) i{animation-delay:.4s}.flux-live-dashboard .fld-status li:nth-child(4) i{animation-delay:.6s}.flux-live-dashboard .fld-status li:nth-child(5) i{animation-delay:.8s}
+@keyframes fldRingBreath{0%,100%{filter:drop-shadow(0 0 1px rgba(45,226,176,.12))}50%{filter:drop-shadow(0 0 11px rgba(45,226,176,.32))}}
+@keyframes fldRadar{0%{transform:scale(.96);opacity:.55}75%,100%{transform:scale(1.16);opacity:0}}
+@keyframes fldStatusFocus{0%,16%,100%{background:transparent;transform:translateX(0)}8%{background:rgba(255,255,255,.045);transform:translateX(3px)}}
+@keyframes fldStatusDot{0%,100%{transform:scale(.88);filter:brightness(.9)}50%{transform:scale(1.22);filter:brightness(1.35)}}
+@media(prefers-reduced-motion:reduce){.flux-live-dashboard .fld-ring,.flux-live-dashboard .fld-ring:before,.flux-live-dashboard .fld-status li,.flux-live-dashboard .fld-status li i{animation:none!important}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
