@@ -45,7 +45,30 @@
     .card-border {
       border: 1px solid #e2e8f0;
     }
-  </style>
+  
+  /* Motion do painel de indicadores — preserva o layout aprovado */
+  #dashboard-grid .dash-card { opacity: 1; transform: translateY(0); }
+  #dashboard-grid.flux-motion-ready .dash-card { opacity: 0; transform: translateY(18px); }
+  #dashboard-grid.flux-motion-ready.flux-in-view .dash-card {
+    opacity: 1; transform: translateY(0);
+    transition: opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .25s ease;
+    transition-delay: calc(var(--flux-i, 0) * 85ms);
+  }
+  #dashboard-grid .flux-progress { transform-origin: left center; transform: scaleX(1); }
+  #dashboard-grid.flux-motion-ready .flux-progress { transform: scaleX(0); }
+  #dashboard-grid.flux-motion-ready.flux-in-view .flux-progress {
+    transform: scaleX(1); transition: transform 1.15s cubic-bezier(.2,.8,.2,1);
+    transition-delay: calc(260ms + var(--flux-i, 0) * 85ms);
+  }
+  #dashboard-grid.flux-in-view .flux-alert-dot { animation: fluxAlert 1.6s ease-in-out infinite; }
+  #dashboard-grid.flux-in-view .flux-avatar { animation: fluxAvatar .45s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(500ms + var(--avatar-i, 0) * 90ms); }
+  @keyframes fluxAlert { 0%,100% { transform:scale(1); opacity:1 } 50% { transform:scale(1.55); opacity:.55 } }
+  @keyframes fluxAvatar { from { opacity:0; transform:translateY(8px) scale(.88) } to { opacity:1; transform:translateY(0) scale(1) } }
+  @media (prefers-reduced-motion: reduce) {
+    #dashboard-grid.flux-motion-ready .dash-card, #dashboard-grid.flux-motion-ready .flux-progress { opacity:1; transform:none; transition:none; }
+    #dashboard-grid .flux-alert-dot, #dashboard-grid .flux-avatar { animation:none !important; }
+  }
+</style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 
@@ -588,7 +611,7 @@
       <div class="dash-card border-2 border-indigo-200 bg-gradient-to-b from-indigo-50/40 via-white to-white rounded-2xl p-6 cursor-pointer hover:border-indigo-500 hover:shadow-lg transition-all group" data-category="gestor diretoria operacao planejamento" onclick="openDecisionDrawer()" data-mod="desvio">
         <div class="flex items-center justify-between mb-3">
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-rose-100 text-rose-700">
-            <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Desvio Crítico
+            <span class="flux-alert-dot w-1.5 h-1.5 rounded-full bg-rose-500"></span> Desvio Crítico
           </span>
           <span class="text-xs text-indigo-600 font-semibold flex items-center gap-0.5">
             Analisar Decisão <span class="material-symbols-outlined text-sm">arrow_forward</span>
@@ -597,7 +620,7 @@
         <div class="flex items-baseline justify-between mt-2">
           <div>
             <span class="text-xs font-medium text-slate-500 block">Produtividade Semanal</span>
-            <span class="text-3xl font-black text-rose-600 tracking-tight">↓ 6,2%</span>
+            <span class="text-3xl font-black text-rose-600 tracking-tight" data-count="-6.2" data-format="percent" data-prefix="↓ ">↓ 6,2%</span>
           </div>
           <div class="text-right">
             <span class="text-[11px] text-slate-400 block">Meta: 92%</span>
@@ -623,11 +646,11 @@
         </div>
         <span class="text-xs text-slate-500 block">Previsto vs Realizado</span>
         <div class="flex items-baseline justify-between mt-1">
-          <span class="text-2xl font-black text-slate-900">R$ 14,2M</span>
+          <span class="text-2xl font-black text-slate-900" data-count="14.2" data-format="moneyM">R$ 14,2M</span>
           <span class="text-xs font-semibold text-emerald-600">Economia +1,8%</span>
         </div>
         <div class="w-full bg-slate-200 h-2 rounded-full mt-4 overflow-hidden">
-          <div class="bg-blue-600 h-2 rounded-full" style="width: 76%"></div>
+          <div class="flux-progress bg-blue-600 h-2 rounded-full" style="width: 76%"></div>
         </div>
         <div class="flex justify-between text-[11px] text-slate-500 mt-2">
           <span class="">Executado: 76,4%</span>
@@ -645,11 +668,11 @@
         </div>
         <span class="text-xs text-slate-500 block">Conclusão de Frentes</span>
         <div class="flex items-baseline justify-between mt-1">
-          <span class="text-2xl font-black text-slate-900">68,4%</span>
+          <span class="text-2xl font-black text-slate-900" data-count="68.4" data-format="percent">68,4%</span>
           <span class="text-xs font-semibold text-blue-600">+2,1% mês</span>
         </div>
         <div class="w-full bg-slate-200 h-2 rounded-full mt-4 overflow-hidden">
-          <div class="bg-indigo-600 h-2 rounded-full" style="width: 68.4%"></div>
+          <div class="flux-progress bg-indigo-600 h-2 rounded-full" style="width: 68.4%"></div>
         </div>
         <div class="flex justify-between text-[11px] text-slate-500 mt-2">
           <span class="">22 de 30 frentes ativas</span>
@@ -667,7 +690,7 @@
         </div>
         <span class="text-xs text-slate-500 block">Ponto de Pedido Crítico</span>
         <div class="flex items-baseline justify-between mt-1">
-          <span class="text-2xl font-black text-amber-600">2 itens</span>
+          <span class="text-2xl font-black text-amber-600" data-count="2" data-format="items">2 itens</span>
           <span class="text-xs font-semibold text-slate-600">Aço CA-50 / Conexões</span>
         </div>
         <div class="mt-4 p-2.5 bg-amber-50 rounded-xl border border-amber-100 text-[11px] text-amber-900 flex justify-between items-center">
@@ -686,7 +709,7 @@
         </div>
         <span class="text-xs text-slate-500 block">Verificação de Serviços</span>
         <div class="flex items-baseline justify-between mt-1">
-          <span class="text-2xl font-black text-slate-900">98,6%</span>
+          <span class="text-2xl font-black text-slate-900" data-count="98.6" data-format="percent">98,6%</span>
           <span class="text-xs font-semibold text-emerald-600">Aprovados</span>
         </div>
         <div class="mt-4 flex items-center justify-between text-xs text-slate-600 pt-2 border-t border-slate-200">
@@ -705,14 +728,14 @@
         </div>
         <span class="text-xs text-slate-500 block">Eficiência de Apontamento</span>
         <div class="flex items-baseline justify-between mt-1">
-          <span class="text-2xl font-black text-slate-900">94,2%</span>
+          <span class="text-2xl font-black text-slate-900" data-count="94.2" data-format="percent">94,2%</span>
           <span class="text-xs font-semibold text-blue-600">Eficiência</span>
         </div>
         <div class="mt-4 flex -space-x-2 overflow-hidden py-1">
-          <span class="inline-block h-7 w-7 rounded-full bg-blue-500 text-[10px] text-white font-bold flex items-center justify-center border-2 border-white">AL</span>
-          <span class="inline-block h-7 w-7 rounded-full bg-indigo-500 text-[10px] text-white font-bold flex items-center justify-center border-2 border-white">RC</span>
-          <span class="inline-block h-7 w-7 rounded-full bg-purple-500 text-[10px] text-white font-bold flex items-center justify-center border-2 border-white">MG</span>
-          <span class="inline-block h-7 w-7 rounded-full bg-slate-300 text-[10px] text-slate-700 font-bold flex items-center justify-center border-2 border-white">+39</span>
+          <span class="flux-avatar inline-block h-7 w-7 rounded-full bg-blue-500 text-[10px] text-white font-bold flex items-center justify-center border-2 border-white">AL</span>
+          <span class="flux-avatar inline-block h-7 w-7 rounded-full bg-indigo-500 text-[10px] text-white font-bold flex items-center justify-center border-2 border-white">RC</span>
+          <span class="flux-avatar inline-block h-7 w-7 rounded-full bg-purple-500 text-[10px] text-white font-bold flex items-center justify-center border-2 border-white">MG</span>
+          <span class="flux-avatar inline-block h-7 w-7 rounded-full bg-slate-300 text-[10px] text-slate-700 font-bold flex items-center justify-center border-2 border-white">+39</span>
         </div>
       </div>
     </div>
@@ -1710,10 +1733,58 @@
     alert('Simulação enviada com sucesso! A equipe entrará em contato via WhatsApp com os números consolidados.');
   }
 
+
+  function initDashboardMotion() {
+    const grid = document.getElementById('dashboard-grid');
+    if (!grid || grid.dataset.motionInit === '1') return;
+    grid.dataset.motionInit = '1';
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const cards = [...grid.querySelectorAll('.dash-card')];
+    cards.forEach((card, i) => {
+      card.style.setProperty('--flux-i', i);
+      card.querySelectorAll('.flux-progress').forEach(el => el.style.setProperty('--flux-i', i));
+    });
+    grid.querySelectorAll('.flux-avatar').forEach((el, i) => el.style.setProperty('--avatar-i', i));
+    if (reduced) return;
+    grid.classList.add('flux-motion-ready');
+
+    const formatValue = (el, value) => {
+      const type = el.dataset.format;
+      if (type === 'moneyM') return 'R$ ' + value.toFixed(1).replace('.', ',') + 'M';
+      if (type === 'items') return Math.round(value) + ' itens';
+      const prefix = el.dataset.prefix || '';
+      return prefix + value.toFixed(1).replace('.', ',') + '%';
+    };
+    const animateCount = el => {
+      const target = Number(el.dataset.count);
+      if (!Number.isFinite(target)) return;
+      const start = performance.now(), duration = 1050;
+      const step = now => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = formatValue(el, target * eased);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const reveal = () => {
+      if (grid.classList.contains('flux-in-view')) return;
+      grid.classList.add('flux-in-view');
+      grid.querySelectorAll('[data-count]').forEach(animateCount);
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        if (entries.some(e => e.isIntersecting)) { reveal(); io.disconnect(); }
+      }, { threshold: 0.22 });
+      io.observe(grid);
+    } else reveal();
+  }
+
   // Inicialização no carregamento
   window.addEventListener('DOMContentLoaded', () => {
     calculateSimulator();
     updateBrandPreview();
+    initDashboardMotion();
   });
 </script>
 
