@@ -1153,20 +1153,20 @@
     <div class="space-y-3 max-w-5xl mx-auto">
       <div class="role-nav-track flex flex-wrap items-center justify-center gap-2">
         <span class="role-label text-xs font-bold uppercase tracking-wider mr-1">VER COMO:</span>
-        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-blue-700 shadow-sm border border-slate-300 transition-all" onclick="filterByRole('diretoria', this)">Diretoria</button>
-        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 transition-all" onclick="filterByRole('gestor', this)">Gestor</button>
-        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 transition-all" onclick="filterByRole('operacao', this)">Operação</button>
-        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 transition-all" onclick="filterByRole('suprimentos', this)">Suprimentos</button>
-        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 transition-all" onclick="filterByRole('qualidade', this)">Qualidade</button>
+        <button class="role-btn is-active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all" aria-selected="true" onclick="filterByRole('diretoria', this)">Diretoria</button>
+        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all" onclick="filterByRole('gestor', this)">Gestor</button>
+        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all" onclick="filterByRole('operacao', this)">Operação</button>
+        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all" onclick="filterByRole('suprimentos', this)">Suprimentos</button>
+        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all" onclick="filterByRole('qualidade', this)">Qualidade</button>
       </div><div class="text-center"><span id="role-context-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100"><span class="material-symbols-outlined text-xs">view_quilt</span> Painel configurado para: Diretoria &amp; Decisão Estratégica</span></div>
       
       <div class="panel-tabs flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl border">
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-blue-700 shadow-sm" onclick="filterDashboard('todos', this)">Todos</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900" onclick="filterDashboard('financeiro', this)">Financeiro</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900" onclick="filterDashboard('operacao', this)">Operação</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900" onclick="filterDashboard('planejamento', this)">Planejamento</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900" onclick="filterDashboard('suprimentos', this)">Suprimentos</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900" onclick="filterDashboard('qualidade', this)">Qualidade</button>
+        <button class="dash-tab is-active px-3.5 py-1.5 rounded-xl text-xs font-bold" aria-selected="true" onclick="filterDashboard('todos', this)">Todos</button>
+        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('financeiro', this)">Financeiro</button>
+        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('operacao', this)">Operação</button>
+        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('planejamento', this)">Planejamento</button>
+        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('suprimentos', this)">Suprimentos</button>
+        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('qualidade', this)">Qualidade</button>
       </div>
     </div>
 
@@ -2242,9 +2242,10 @@
         e.preventDefault(); const d=e.key==='ArrowRight'?1:-1; buttons[(i+d+buttons.length)%buttons.length].focus();
       });
     }));
-    const activeRole=groups[0][0],activeTab=groups[1][0];
-    if(activeRole) activeRole.classList.add('is-active');
-    if(activeTab) activeTab.classList.add('is-active');
+    groups.forEach(buttons=>{
+      const selected=buttons.find(b=>b.classList.contains('is-active'))||buttons[0];
+      setPanelActive(buttons,selected);
+    });
   }
 
     function openPersonalizeModal() {
