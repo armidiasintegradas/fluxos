@@ -143,6 +143,23 @@
   #problema,#transformacao{grid-column:1 / -1;width:100%;min-width:0}
   #problema{min-height:0}
   #transformacao{min-height:0}
+
+  /* Refinamento seção 03 — palco operacional */
+  #transformacao{background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(248,251,255,.96));padding-top:30px!important}
+  #transformacao>header{margin-bottom:18px!important}
+  #transformacao>header h1{letter-spacing:-.045em}
+  #transformacao>header p:last-of-type{max-width:650px;margin-left:auto;margin-right:auto}
+  #transformacao .relative.w-full.min-h-\[700px\]{min-height:620px!important;margin-top:0!important;margin-bottom:0!important}
+  #transformacao #network-canvas{inset:0 2.5%;width:95%;height:100%;opacity:.94}
+  #transformacao .node-card{border-color:rgba(203,213,225,.78);background:rgba(255,255,255,.94);box-shadow:0 10px 25px -18px rgba(15,23,42,.28)}
+  #transformacao .node-card:hover{transform:translateY(-3px) scale(1.012);box-shadow:0 16px 34px -16px rgba(37,99,235,.22)}
+  #transformacao .node-card.active-node{transform:translateY(-2px) scale(1.012);box-shadow:0 15px 35px -18px rgba(37,99,235,.3),0 0 0 2px #2563eb}
+  #transformacao .node-card h3{letter-spacing:-.02em}
+  #transformacao #central-core{box-shadow:0 28px 65px -26px rgba(37,99,235,.36),0 0 0 1px rgba(147,197,253,.3);backdrop-filter:blur(18px)}
+  #transformacao #central-core button{box-shadow:0 8px 18px -8px rgba(37,99,235,.48)}
+  #transformacao #module-detail-drawer{margin-top:12px!important;border-color:rgba(226,232,240,.9);box-shadow:0 20px 55px -35px rgba(15,23,42,.18)}
+  #transformacao #module-detail-drawer .grid{gap:12px}
+  @media(min-width:1024px){#transformacao .lg\:col-span-3:first-child{padding-right:10px}#transformacao .lg\:col-span-3:last-child{padding-left:10px}}
 </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -368,7 +385,7 @@
       </h1>
       <div class="h-1 w-20 bg-gradient-to-r from-sky-400 via-blue-600 to-indigo-600 rounded-full mx-auto mb-4"></div>
       <p class="text-slate-600 text-sm md:text-base font-medium">
-        Todos os setores da sua empresa unificados em um único ecossistema reativo em tempo real.
+        Toda a operação conectada em um único ecossistema, com dados e decisões em tempo real.
       </p>
 
       <!-- Seletor de Modo de Visualização do Bloco -->
@@ -383,7 +400,7 @@
     </header>
 
     <!-- PALCO CENTRAL INTERATIVO -->
-    <div class="relative w-full min-h-[700px] flex items-center justify-center my-2">
+    <div class="relative w-full min-h-[620px] flex items-center justify-center my-0">
 
       <!-- CAMADA SVG DE CONEXÕES / S-CURVES COM PARTÍCULAS -->
       <svg id="network-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1200 750" preserveAspectRatio="xMidYMid meet">
@@ -658,7 +675,7 @@
 
           <!-- Mensagem Contextual do Núcleo -->
           <div id="center-status-tip" class="mt-4 text-center max-w-[260px] text-xs text-slate-500 font-medium">
-            Clique em qualquer módulo ao redor para inspecionar os fluxos de dados em tempo real.
+            Selecione um módulo para acompanhar seus dados e indicadores em tempo real.
           </div>
 
         </div>
