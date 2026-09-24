@@ -79,9 +79,45 @@
   @keyframes fluxCore{0%,100%{transform:scale(1);box-shadow:0 10px 22px rgba(59,130,246,.24)}50%{transform:scale(1.06);box-shadow:0 14px 34px rgba(59,130,246,.42)}}
   @keyframes autoResult{from{opacity:.2;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
   @media(prefers-reduced-motion:reduce){#automation-flow .automation-core{animation:none!important}#automation-flow *{animation:none!important;transition:none!important}}
+
+  /* Entrada FLUX OS */
+  #flux-entry{position:fixed;inset:0;z-index:100;background:#f8fafc;display:none;align-items:center;justify-content:center;padding:24px}
+  #flux-entry.is-visible{display:flex}
+  #flux-splash{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#020617,#0f172a 58%,#172554);transition:opacity .65s ease,visibility .65s ease}
+  #flux-splash.is-done{opacity:0;visibility:hidden}
+  .flux-entry-logo{display:flex;align-items:baseline;gap:7px;animation:entryLogo 1.25s cubic-bezier(.2,.8,.2,1) both}
+  .flux-entry-logo .flux{font-size:clamp(46px,8vw,88px);font-weight:900;letter-spacing:-.07em;color:#fff}
+  .flux-entry-logo .os{font-size:clamp(32px,5vw,58px);font-weight:800;color:#818cf8}
+  .flux-flow-line{height:2px;width:min(360px,68vw);margin:24px auto 0;background:#1e293b;overflow:hidden;border-radius:99px}
+  .flux-flow-line:after{content:"";display:block;width:42%;height:100%;background:linear-gradient(90deg,transparent,#60a5fa,#8b5cf6,transparent);animation:flowLine 1.25s ease-in-out infinite}
+  #flux-welcome{width:min(520px,100%);opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .55s ease,transform .55s ease}
+  #flux-welcome.is-ready{opacity:1;transform:none;pointer-events:auto}
+  @keyframes entryLogo{0%{opacity:0;transform:scale(.92);filter:blur(8px)}100%{opacity:1;transform:scale(1);filter:blur(0)}}
+  @keyframes flowLine{0%{transform:translateX(-120%)}100%{transform:translateX(280%)}}
+  @media(prefers-reduced-motion:reduce){.flux-entry-logo,.flux-flow-line:after{animation:none!important}}
 </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
+<!-- ENTRADA FLUX OS -->
+<div id="flux-entry" aria-modal="true" role="dialog">
+  <div id="flux-splash">
+    <div class="text-center">
+      <div class="flux-entry-logo"><span class="flux">FLUX</span><span class="os">OS</span></div>
+      <div class="flux-flow-line"></div>
+      <p class="mt-5 text-[11px] sm:text-xs font-semibold tracking-[.28em] uppercase text-slate-400">Tudo conectado. Tudo no mesmo fluxo.</p>
+    </div>
+  </div>
+  <div id="flux-welcome" class="bg-white rounded-[2rem] border border-slate-200 shadow-2xl p-7 sm:p-10">
+    <div class="flex items-center gap-1.5 mb-8"><span class="text-2xl font-black tracking-tight text-blue-900">FLUX</span><span class="text-xl font-bold tracking-tight text-indigo-600">OS</span></div>
+    <div class="mb-7"><span class="text-[11px] font-bold tracking-[.2em] uppercase text-blue-600">Bem-vindo</span><h1 class="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Vamos personalizar sua experiência.</h1><p class="mt-2 text-sm text-slate-500">São só duas informações para começar.</p></div>
+    <form id="flux-entry-form" class="space-y-4" onsubmit="enterFlux(event)">
+      <div><label for="flux-entry-name" class="block text-xs font-bold text-slate-700 mb-1.5">Como você gostaria de ser chamado?</label><input id="flux-entry-name" required autocomplete="name" class="w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Seu nome"></div>
+      <div><label for="flux-entry-org" class="block text-xs font-bold text-slate-700 mb-1.5">Qual o nome do seu projeto ou empresa?</label><input id="flux-entry-org" required class="w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Projeto ou empresa"></div>
+      <button type="submit" class="w-full mt-2 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-extrabold shadow-lg shadow-blue-500/20 transition-all">ENTRAR NO FLUXO →</button>
+    </form>
+  </div>
+</div>
+
 
 <!-- Top Banner Informativo & Personalização Ativa -->
 <div class="bg-slate-900 text-white text-xs py-2 px-6 border-b border-slate-800">
@@ -1787,8 +1823,49 @@
     }else activate();
   }
 
+
+  const FLUX_ENTRY_KEY='fluxos_session_v1';
+  function applyFluxIdentity(name,org){
+    document.querySelectorAll('.user-name-display').forEach(el=>el.textContent=name);
+    document.querySelectorAll('.user-org-display').forEach(el=>el.textContent=org);
+    ['input-user-name','ob-user-name'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=name});
+    ['input-user-org','ob-user-org'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=org});
+  }
+  function showFluxEntry(playSplash=true){
+    const entry=document.getElementById('flux-entry'), splash=document.getElementById('flux-splash'), welcome=document.getElementById('flux-welcome');
+    if(!entry)return;
+    entry.classList.add('is-visible'); document.body.style.overflow='hidden';
+    welcome.classList.remove('is-ready'); splash.classList.remove('is-done');
+    const reveal=()=>{splash.classList.add('is-done');setTimeout(()=>{welcome.classList.add('is-ready');document.getElementById('flux-entry-name')?.focus()},350)};
+    if(playSplash)setTimeout(reveal,3000); else reveal();
+  }
+  function enterFlux(e){
+    e.preventDefault();
+    const name=document.getElementById('flux-entry-name').value.trim();
+    const org=document.getElementById('flux-entry-org').value.trim();
+    if(!name||!org)return;
+    localStorage.setItem(FLUX_ENTRY_KEY,JSON.stringify({name,org,enteredAt:Date.now()}));
+    applyFluxIdentity(name,org);
+    const entry=document.getElementById('flux-entry'); entry.classList.remove('is-visible'); document.body.style.overflow='';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function exitFlux(){
+    localStorage.removeItem(FLUX_ENTRY_KEY);
+    document.querySelectorAll('[id$="-modal"]').forEach(el=>{el.classList.add('hidden');el.classList.remove('flex')});
+    document.getElementById('flux-entry-name').value='';
+    document.getElementById('flux-entry-org').value='';
+    window.scrollTo({top:0,behavior:'auto'});
+    showFluxEntry(true);
+  }
+  function initFluxEntry(){
+    let session=null; try{session=JSON.parse(localStorage.getItem(FLUX_ENTRY_KEY)||'null')}catch(e){}
+    if(session?.name&&session?.org){applyFluxIdentity(session.name,session.org);return}
+    showFluxEntry(true);
+  }
+
   // Inicialização no carregamento
   window.addEventListener('DOMContentLoaded', () => {
+    initFluxEntry();
     calculateSimulator();
     updateBrandPreview();
     initDashboardMotion();
