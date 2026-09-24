@@ -114,8 +114,8 @@
   .flux-ribbon.r3{right:-50vw;left:auto;top:8vh;width:105vw;height:76vh;border-left:1px solid rgba(96,165,250,.35);box-shadow:-16px 0 80px rgba(37,99,235,.08);background:radial-gradient(ellipse at center,rgba(37,99,235,.055),transparent 67%);animation:ribbonThree 140s linear infinite}
   .flux-splash-inner{position:relative;z-index:3;display:block;width:min(680px,82vw);text-align:center;transform:translate3d(var(--flux-x,0),var(--flux-y,0),0);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
   .flux-splash-brand-wrap{position:relative;width:min(350px,39vw);margin:auto;opacity:0;animation:splashBrand 1.55s cubic-bezier(.16,1,.3,1) .15s forwards;filter:drop-shadow(0 14px 30px rgba(0,0,0,.22))}
-  .flux-splash-brand{width:100%;height:auto;display:block;margin:0;filter:brightness(0) invert(1)}
-  .flux-splash-brand-os{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;clip-path:polygon(60% 0,100% 0,100% 78%,60% 78%)}
+  .flux-splash-brand{width:100%;height:auto;display:block;margin:0;filter:none}
+  .flux-splash-brand-os{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1);clip-path:polygon(0 0,60% 0,60% 78%,0 78%)}
   .flux-splash-tag{margin-top:18px;color:#dbeafe;font-size:clamp(8px,.9vw,12px);font-weight:650;letter-spacing:.42em;text-transform:uppercase;opacity:0;animation:splashTag .9s ease .95s forwards}
   .flux-flow-line{position:relative;height:1px;width:min(310px,46vw);margin:21px auto 0;background:linear-gradient(90deg,transparent,rgba(147,197,253,.18),transparent);overflow:hidden;border-radius:99px;opacity:0;animation:splashTag .8s ease .88s forwards}
   .flux-flow-line:after{content:"";position:absolute;inset:0 auto 0 -24%;width:24%;background:linear-gradient(90deg,transparent,#bfdbfe,#6366f1,transparent);filter:drop-shadow(0 0 5px #60a5fa);animation:flowLine 2.8s cubic-bezier(.4,0,.2,1) infinite}
