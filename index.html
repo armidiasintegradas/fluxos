@@ -160,6 +160,33 @@
   #transformacao #module-detail-drawer{margin-top:12px!important;border-color:rgba(226,232,240,.9);box-shadow:0 20px 55px -35px rgba(15,23,42,.18)}
   #transformacao #module-detail-drawer .grid{gap:12px}
   @media(min-width:1024px){#transformacao .lg\:col-span-3:first-child{padding-right:10px}#transformacao .lg\:col-span-3:last-child{padding-left:10px}}
+
+  /* 08 Painel — contraste invertido azul */
+  #painel-tempo-real{position:relative;overflow:hidden;background:linear-gradient(135deg,#173b91 0%,#243887 28%,#20275f 62%,#0f172a 100%)!important;border-color:rgba(96,165,250,.22)!important;box-shadow:0 28px 70px -35px rgba(30,64,175,.65)!important}
+  #painel-tempo-real:before{content:"";position:absolute;inset:-25%;background:radial-gradient(circle at 18% 12%,rgba(37,99,235,.34),transparent 32%),radial-gradient(circle at 82% 72%,rgba(79,70,229,.2),transparent 30%);pointer-events:none}
+  #painel-tempo-real>*{position:relative;z-index:1}
+  #painel-tempo-real .panel-kicker{background:rgba(37,99,235,.18)!important;border-color:rgba(96,165,250,.38)!important;color:#93c5fd!important}
+  #painel-tempo-real .panel-live{color:#cbd5e1!important}
+  #painel-tempo-real .panel-customize{background:rgba(255,255,255,.08)!important;color:#e2e8f0!important;border:1px solid rgba(255,255,255,.1)}
+  #painel-tempo-real .panel-customize:hover{background:rgba(255,255,255,.14)!important}
+  #painel-tempo-real .panel-eyebrow{color:#94a3b8!important}
+  #painel-tempo-real .panel-title{color:#fff!important}
+  #painel-tempo-real .panel-title .gradient-text{background:linear-gradient(90deg,#38bdf8,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+  #painel-tempo-real .panel-intro{color:#cbd5e1!important}#painel-tempo-real .panel-intro .user-name-display{color:#fff!important}
+  #painel-tempo-real .role-label{color:#94a3b8!important}
+  #painel-tempo-real .role-btn{background:rgba(15,23,42,.28)!important;border:1px solid rgba(148,163,184,.18)!important;color:#cbd5e1!important;box-shadow:none!important}
+  #painel-tempo-real .role-btn:hover{background:rgba(37,99,235,.22)!important;color:#fff!important}
+  #painel-tempo-real .role-btn:first-of-type{background:linear-gradient(135deg,#2563eb,#0ea5e9)!important;color:#fff!important;border-color:rgba(125,211,252,.45)!important}
+  #painel-tempo-real #role-context-badge{background:rgba(37,99,235,.13)!important;border-color:rgba(96,165,250,.25)!important;color:#93c5fd!important}
+  #painel-tempo-real .panel-tabs{background:rgba(2,6,23,.24)!important;border-color:rgba(148,163,184,.16)!important}
+  #painel-tempo-real .dash-tab{color:#cbd5e1!important;background:transparent!important}
+  #painel-tempo-real .dash-tab:first-child{background:linear-gradient(135deg,#2563eb,#0ea5e9)!important;color:#fff!important}
+  #painel-tempo-real .dashboard-card{background:linear-gradient(145deg,rgba(15,39,88,.78),rgba(8,28,68,.82))!important;border-color:rgba(96,165,250,.25)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 18px 35px -28px rgba(0,0,0,.7)!important}
+  #painel-tempo-real .dashboard-card:hover{border-color:rgba(96,165,250,.5)!important;transform:translateY(-2px)}
+  #painel-tempo-real .dashboard-card .text-slate-900,#painel-tempo-real .dashboard-card .text-slate-800,#painel-tempo-real .dashboard-card .text-slate-700{color:#f8fafc!important}
+  #painel-tempo-real .dashboard-card .text-slate-600,#painel-tempo-real .dashboard-card .text-slate-500,#painel-tempo-real .dashboard-card .text-slate-400{color:#94a3b8!important}
+  #painel-tempo-real .dashboard-card .bg-slate-100,#painel-tempo-real .dashboard-card .bg-slate-200{background:rgba(148,163,184,.15)!important}
+  #painel-tempo-real .dashboard-card .border-slate-200,#painel-tempo-real .dashboard-card .border-slate-100{border-color:rgba(148,163,184,.18)!important}
 </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -1081,19 +1108,18 @@
   </section>
 
   <!-- 08 — PAINEL EM TEMPO REAL -->
-  <section class="bg-white rounded-3xl p-8 sm:p-12 card-border shadow-sm scroll-mt-20" id="painel-tempo-real">
+  <section class="rounded-3xl p-8 sm:p-12 card-border shadow-sm scroll-mt-20" id="painel-tempo-real">
     <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-      <div class="text-xs font-bold tracking-widest text-blue-600 uppercase bg-blue-50 px-3.5 py-1 rounded-full border border-blue-100">
-        08 — Painel em Tempo Real
+      <div class="panel-kicker text-xs font-bold tracking-widest uppercase px-3.5 py-1 rounded-full border">\n        08 — Painel em Tempo Real
       </div>
-      <div class="flex items-center gap-2 text-xs text-slate-500">
+      <div class="panel-live flex items-center gap-2 text-xs">
         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
         <span class="">Atualizado a cada 5s</span>
-      <button class="ml-2 px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-[11px] font-semibold flex items-center gap-1 transition-all" onclick="openPanelCustomizeModal()"><span class="material-symbols-outlined text-xs">tune</span> Personalizar</button></div>
+      <button class="panel-customize ml-2 px-2.5 py-1 rounded-lg text-[11px] font-semibold flex items-center gap-1 transition-all" onclick="openPanelCustomizeModal()"><span class="material-symbols-outlined text-xs">tune</span> Personalizar</button></div>
     </div>
     
     <div class="text-center max-w-3xl mx-auto my-6">
-      <span class="text-xs font-bold uppercase tracking-wider text-slate-500">SUA OPERAÇÃO. AGORA.</span>
+      <span class="panel-eyebrow text-xs font-bold uppercase tracking-wider">SUA OPERAÇÃO. AGORA.</span>
       <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">
         Tudo o que importa. <span class="gradient-text">Em tempo real.</span>
       </h2>
@@ -1105,7 +1131,7 @@
     <!-- Filtros de Perfil e Categorias -->
     <div class="space-y-3 max-w-5xl mx-auto">
       <div class="flex flex-wrap items-center justify-center gap-2">
-        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider mr-1">VER COMO:</span>
+        <span class="role-label text-xs font-bold uppercase tracking-wider mr-1">VER COMO:</span>
         <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-blue-700 shadow-sm border border-slate-300 transition-all" onclick="filterByRole('diretoria', this)">Diretoria</button>
         <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 transition-all" onclick="filterByRole('gestor', this)">Gestor</button>
         <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 transition-all" onclick="filterByRole('operacao', this)">Operação</button>
@@ -1113,7 +1139,7 @@
         <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 transition-all" onclick="filterByRole('qualidade', this)">Qualidade</button>
       </div><div class="text-center"><span id="role-context-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100"><span class="material-symbols-outlined text-xs">view_quilt</span> Painel configurado para: Diretoria &amp; Decisão Estratégica</span></div>
       
-      <div class="flex flex-wrap items-center justify-center gap-1.5 p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
+      <div class="panel-tabs flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl border">
         <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-blue-700 shadow-sm" onclick="filterDashboard('todos', this)">Todos</button>
         <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900" onclick="filterDashboard('financeiro', this)">Financeiro</button>
         <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900" onclick="filterDashboard('operacao', this)">Operação</button>
