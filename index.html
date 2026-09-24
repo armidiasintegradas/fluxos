@@ -215,6 +215,14 @@
   #painel-tempo-real p.panel-intro{color:#dbeafe!important}
   #painel-tempo-real p.panel-intro .user-name-display{color:#ffffff!important;font-weight:800!important}
   #painel-tempo-real .panel-eyebrow{color:#bfdbfe!important}
+
+  /* Painel 08 v2 — estados inequívocos + contraste alto */
+  #painel-tempo-real .panel-title{color:#fff!important}
+  #painel-tempo-real .panel-title .gradient-text{background:linear-gradient(90deg,#67e8f9,#60a5fa 48%,#c084fc)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
+  #painel-tempo-real .panel-intro{color:#dbeafe!important;opacity:1!important}
+  #painel-tempo-real .panel-intro .user-name-display{color:#fff!important}
+  #painel-tempo-real .role-btn,#painel-tempo-real .dash-tab{background:rgba(8,20,58,.42)!important;color:#dbeafe!important;border:1px solid rgba(147,197,253,.16)!important;box-shadow:none!important;outline:none!important;font-weight:500!important}
+  #painel-tempo-real .role-btn.is-active,#painel-tempo-real .dash-tab.is-active{background:linear-gradient(135deg,#0284c7,#2563eb)!important;color:#fff!important;border-color:#7dd3fc!important;box-shadow:0 0 0 1px rgba(125,211,252,.18),0 8px 22px -12px #38bdf8!important;font-weight:800!important}
 </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -2206,10 +2214,20 @@
     buttons.forEach(b=>{
       b.classList.remove('is-active','bg-white','text-blue-700','shadow-sm','border-slate-300','font-bold','bg-slate-100');
       b.setAttribute('aria-selected','false');
+      b.style.background='rgba(8,20,58,.42)';
+      b.style.color='#dbeafe';
+      b.style.borderColor='rgba(147,197,253,.16)';
+      b.style.boxShadow='none';
+      b.style.fontWeight='500';
     });
     if(active){
       active.classList.add('is-active');
       active.setAttribute('aria-selected','true');
+      active.style.background='linear-gradient(135deg,#0284c7,#2563eb)';
+      active.style.color='#fff';
+      active.style.borderColor='#7dd3fc';
+      active.style.boxShadow='0 0 0 1px rgba(125,211,252,.18),0 8px 22px -12px #38bdf8';
+      active.style.fontWeight='800';
     }
   }
   function animateVisibleDashboardCards(){
