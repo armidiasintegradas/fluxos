@@ -454,6 +454,17 @@
 .meeting-chip{position:absolute;z-index:5;display:flex;align-items:center;gap:.4rem;padding:.55rem .75rem;border-radius:999px;background:rgba(15,23,42,.82);border:1px solid rgba(147,197,253,.2);backdrop-filter:blur(10px);font-size:.62rem;font-weight:700;color:#dbeafe;box-shadow:0 12px 30px -20px #000;animation:meetingFloat 4s ease-in-out infinite}.meeting-chip .material-symbols-outlined{font-size:1rem;color:#60a5fa}.chip-a{left:3%;top:18%}.chip-b{right:0;top:27%;animation-delay:-1s}.chip-c{left:4%;bottom:20%;animation-delay:-2s}.chip-d{right:3%;bottom:16%;animation-delay:-3s}
 .flux-meeting-bottom{position:relative;z-index:2;margin-top:2rem;padding-top:1.25rem;border-top:1px solid rgba(148,163,184,.16);display:flex;justify-content:center;align-items:center;gap:.8rem;font-size:.63rem;letter-spacing:.11em;color:#94a3b8}.flux-meeting-bottom i{width:38px;height:1px;background:linear-gradient(90deg,#3b82f6,#8b5cf6)}.flux-meeting-bottom strong{color:#dbeafe}
 @keyframes meetingSpin{to{transform:rotate(360deg)}}@keyframes meetingFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@media(max-width:850px){.flux-meeting-inner{grid-template-columns:1fr}.flux-meeting-visual{min-height:300px}.meeting-center{width:190px;height:190px}.orbit-one{width:250px;height:250px}.orbit-two{width:300px;height:300px}.flux-meeting-bottom{flex-wrap:wrap;text-align:center}}@media(prefers-reduced-motion:reduce){.meeting-orbit,.meeting-chip{animation:none}}
+
+/* Demonstração — jornada da conversa à solução */
+.meeting-journey{min-height:390px;display:grid;grid-template-columns:1fr 52px .9fr 52px 1.1fr;gap:.45rem;align-items:center;padding:.8rem .2rem 2.7rem;position:relative}
+.journey-stage{position:relative;z-index:2}.journey-stage>small{display:block;text-align:center;color:#93c5fd;font-size:.54rem;font-weight:900;letter-spacing:.12em;margin-bottom:.75rem}
+.journey-stack{display:grid;gap:.48rem}.journey-stack span{position:relative;display:flex;align-items:center;gap:.55rem;padding:.65rem .75rem;border-radius:.8rem;background:rgba(15,23,42,.7);border:1px solid rgba(147,197,253,.15);font-size:.61rem;font-weight:700;color:#dbeafe;animation:journeyCard 5s ease-in-out infinite}.journey-stack span:nth-child(2){animation-delay:-1s}.journey-stack span:nth-child(3){animation-delay:-2s}.journey-stack span:nth-child(4){animation-delay:-3s}.journey-stack i{width:7px;height:7px;border-radius:50%;background:#60a5fa;box-shadow:0 0 12px #60a5fa}
+.journey-flow{height:2px;position:relative;background:linear-gradient(90deg,rgba(96,165,250,.12),rgba(96,165,250,.7),rgba(167,139,250,.15));overflow:visible}.journey-flow b{position:absolute;width:6px;height:6px;border-radius:50%;top:-2px;background:#bfdbfe;box-shadow:0 0 12px #60a5fa;animation:journeyDot 2.6s linear infinite}.journey-flow b:nth-child(2){animation-delay:-.85s}.journey-flow b:nth-child(3){animation-delay:-1.7s}
+.journey-dialog{aspect-ratio:1;border-radius:1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,rgba(37,99,235,.42),rgba(124,58,237,.22));border:1px solid rgba(191,219,254,.28);box-shadow:0 20px 60px -30px rgba(59,130,246,.8);animation:journeyPulse 4s ease-in-out infinite}.journey-dialog .material-symbols-outlined{font-size:2.3rem;color:#dbeafe}.journey-dialog strong{font-size:.68rem;letter-spacing:.1em;margin-top:.45rem}.journey-dialog em{font-style:normal;font-size:.52rem;color:#bfdbfe;margin-top:.18rem}
+.journey-screen{border-radius:1.15rem;padding:.9rem;background:rgba(248,250,252,.96);color:#0f172a;box-shadow:0 22px 60px -30px #000;transform:perspective(600px) rotateY(-5deg);animation:journeyScreen 5s ease-in-out infinite}.journey-screen-top{display:flex;justify-content:space-between;align-items:center;font-size:.52rem;font-weight:900;color:#2563eb;border-bottom:1px solid #e2e8f0;padding-bottom:.55rem}.journey-screen-top i{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 0 4px rgba(16,185,129,.1)}.journey-screen>strong{display:block;font-size:.7rem;margin:.8rem 0;color:#0f172a}.journey-bars{height:76px;display:flex;align-items:flex-end;gap:.35rem;padding:.4rem;border-radius:.6rem;background:#eff6ff}.journey-bars i{flex:1;border-radius:.2rem .2rem 0 0;background:linear-gradient(#60a5fa,#2563eb);animation:journeyBars 3s ease-in-out infinite}.journey-bars i:nth-child(1){height:35%}.journey-bars i:nth-child(2){height:55%;animation-delay:-.4s}.journey-bars i:nth-child(3){height:72%;animation-delay:-.8s}.journey-bars i:nth-child(4){height:92%;animation-delay:-1.2s}.journey-status{display:flex;align-items:center;gap:.35rem;margin-top:.65rem;font-size:.48rem;color:#64748b}.journey-status span{width:6px;height:6px;border-radius:50%;background:#10b981}
+.journey-caption{position:absolute;left:0;right:0;bottom:.25rem;display:flex;align-items:center;justify-content:center;gap:.5rem;color:#93c5fd;font-size:.46rem;font-weight:800;letter-spacing:.08em}.journey-caption i{width:18px;height:1px;background:rgba(147,197,253,.35)}
+@keyframes journeyDot{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:100%;opacity:0}}@keyframes journeyCard{0%,100%{transform:translateX(0);border-color:rgba(147,197,253,.15)}50%{transform:translateX(4px);border-color:rgba(96,165,250,.38)}}@keyframes journeyPulse{0%,100%{transform:scale(1);box-shadow:0 20px 60px -30px rgba(59,130,246,.8)}50%{transform:scale(1.035);box-shadow:0 20px 70px -22px rgba(124,58,237,.85)}}@keyframes journeyScreen{0%,100%{transform:perspective(600px) rotateY(-5deg) translateY(0)}50%{transform:perspective(600px) rotateY(-2deg) translateY(-5px)}}@keyframes journeyBars{0%,100%{filter:saturate(.85);transform:scaleY(.94);transform-origin:bottom}50%{filter:saturate(1.3);transform:scaleY(1);transform-origin:bottom}}
+@media(max-width:850px){.meeting-journey{grid-template-columns:1fr 28px .8fr 28px 1.1fr;min-height:300px}.journey-stack span{padding:.45rem;font-size:.5rem}.journey-caption{display:none}.journey-dialog .material-symbols-outlined{font-size:1.6rem}.journey-screen{padding:.6rem}.journey-bars{height:55px}}@media(max-width:560px){.meeting-journey{grid-template-columns:1fr;gap:.7rem;padding-bottom:.5rem}.journey-flow{width:2px;height:25px;margin:auto;background:linear-gradient(rgba(96,165,250,.12),rgba(96,165,250,.7),rgba(167,139,250,.15))}.journey-flow b{left:-2px!important;animation:journeyDotY 2.2s linear infinite}.journey-dialog{aspect-ratio:auto;min-height:120px}.journey-screen{transform:none}.journey-stage>small{text-align:left}}@keyframes journeyDotY{0%{top:0;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -1535,13 +1546,29 @@
         <span class="flux-meeting-note"><span class="material-symbols-outlined">schedule</span> Sem compromisso · conversa personalizada</span>
       </div>
     </div>
-    <div class="flux-meeting-visual" aria-hidden="true">
-      <div class="meeting-orbit orbit-one"></div><div class="meeting-orbit orbit-two"></div>
-      <div class="meeting-center"><span class="material-symbols-outlined">handshake</span><b>FLUX × <span class="user-org-display">SUA EMPRESA</span></b><small>Uma solução construída a partir da sua realidade.</small></div>
-      <div class="meeting-chip chip-a"><span class="material-symbols-outlined">account_tree</span>Processos</div>
-      <div class="meeting-chip chip-b"><span class="material-symbols-outlined">monitoring</span>Indicadores</div>
-      <div class="meeting-chip chip-c"><span class="material-symbols-outlined">auto_awesome</span>Inteligência</div>
-      <div class="meeting-chip chip-d"><span class="material-symbols-outlined">bolt</span>Automação</div>
+    <div class="flux-meeting-visual meeting-journey" aria-hidden="true">
+      <div class="journey-stage journey-company">
+        <small>SUA REALIDADE</small>
+        <div class="journey-stack">
+          <span><i></i>Processos</span><span><i></i>Dados</span><span><i></i>Pessoas</span><span><i></i>Desafios</span>
+        </div>
+      </div>
+      <div class="journey-flow flow-a"><b></b><b></b><b></b></div>
+      <div class="journey-stage journey-conversation">
+        <small>NOSSA CONVERSA</small>
+        <div class="journey-dialog"><span class="material-symbols-outlined">forum</span><strong>ENTENDER</strong><em>antes de construir</em></div>
+      </div>
+      <div class="journey-flow flow-b"><b></b><b></b><b></b></div>
+      <div class="journey-stage journey-result">
+        <small>SEU SISTEMA</small>
+        <div class="journey-screen">
+          <div class="journey-screen-top"><span>FLUX</span><i></i></div>
+          <strong class="user-org-display">SUA EMPRESA</strong>
+          <div class="journey-bars"><i></i><i></i><i></i><i></i></div>
+          <div class="journey-status"><span></span>Configurado para sua operação</div>
+        </div>
+      </div>
+      <div class="journey-caption">SUA REALIDADE <i></i> NOSSA CONVERSA <i></i> CONSTRUÇÃO CONJUNTA <i></i> SEU FLUX</div>
     </div>
   </div>
   <div class="flux-meeting-bottom"><span>VOCÊ TRAZ O DESAFIO.</span><i></i><strong>NÓS DESENHAMOS AS POSSIBILIDADES.</strong></div>
