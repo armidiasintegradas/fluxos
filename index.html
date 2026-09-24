@@ -237,6 +237,24 @@
 #painel-tempo-real .panel-title .gradient-text{background:linear-gradient(90deg,#93e8ff 0%,#8ab4ff 48%,#d8b4fe 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important}
 #painel-tempo-real .panel-intro{color:#dbeafe!important;opacity:1!important}
 #painel-tempo-real .panel-intro .user-name-display{color:#ffffff!important;font-weight:800!important}
+
+/* SIMULADOR — PREMISSAS V2 */
+#simulador-economico .sim-premises{background:linear-gradient(180deg,#fff,#fbfdff)}
+#simulador-economico .sim-step-num{width:2rem;height:2rem;border-radius:999px;background:#2563eb;color:#fff;display:grid;place-items:center;font-size:.78rem;font-weight:900;box-shadow:0 7px 16px -9px #2563eb}
+#simulador-economico .sim-field{display:flex;flex-direction:column;gap:.35rem;padding:1rem;border:1px solid #e2e8f0;border-radius:1rem;background:#fff;color:#475569;font-size:.7rem;font-weight:700}
+#simulador-economico .sim-field input:not([type=range]){width:100%;border:1px solid #cbd5e1;border-radius:.75rem;padding:.62rem .75rem;color:#0f172a;font-size:.8rem;background:#fff}
+#simulador-economico .sim-hours-badge{font-size:.7rem;font-weight:800;color:#e11d48;background:#fff1f2;border:1px solid #fecdd3;padding:.45rem .7rem;border-radius:.7rem}
+#simulador-economico .sim-hour-card{position:relative;display:flex;flex-direction:column;align-items:center;gap:.35rem;padding:.8rem .55rem;border:1px solid #e2e8f0;border-radius:1rem;background:#fff;text-align:center}
+#simulador-economico .sim-hour-card>.material-symbols-outlined{font-size:1.15rem;color:#2563eb;background:#eff6ff;padding:.4rem;border-radius:.65rem}
+#simulador-economico .sim-hour-card b{font-size:.67rem;color:#475569}.sim-hour-card small{font-size:.58rem;color:#94a3b8}
+#simulador-economico .sim-hour-card input{width:64px;border:0;background:#f8fafc;border-radius:.55rem;text-align:center;font-weight:900;color:#0f172a;padding:.4rem}
+#simulador-economico .sim-scenario{display:flex;min-height:118px;flex-direction:column;align-items:flex-start;gap:.2rem;padding:1rem;border:1px solid #e2e8f0;border-radius:1rem;background:#fff;text-align:left;transition:.2s}
+#simulador-economico .sim-scenario .material-symbols-outlined{color:#2563eb}.sim-scenario small{font-size:.6rem;font-style:normal;color:#64748b;font-weight:800}.sim-scenario b{font-size:.78rem;color:#0f172a}.sim-scenario em{font-size:.62rem;color:#64748b;font-style:normal}
+#simulador-economico .sim-scenario.active{border:2px solid #2563eb!important;background:#eff6ff!important;box-shadow:0 10px 24px -20px #2563eb}
+#simulador-economico .sim-impact{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;padding:1rem 1.1rem;border:1px solid #bbf7d0;border-radius:1.1rem;background:linear-gradient(100deg,#f0fdf4,#ecfdf5)}
+#simulador-economico .sim-impact .grid small{display:block;font-size:.58rem;color:#64748b}.sim-impact .grid strong{display:block;margin-top:.2rem;font-size:.9rem;color:#047857}
+#simulador-economico .sim-impact-note{width:90px;height:90px;border:9px solid #86efac;border-top-color:#059669;border-radius:999px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#fff}.sim-impact-note b{font-size:1.1rem;color:#064e3b}.sim-impact-note span{font-size:.5rem;color:#64748b}
+@media(max-width:640px){#simulador-economico .sim-impact{grid-template-columns:1fr}.sim-impact-note{margin:auto}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -1466,97 +1484,52 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-10">
-      <!-- Painel de Entradas (7 Colunas) -->
-      <div class="lg:col-span-7 bg-slate-50/70 p-6 sm:p-8 rounded-3xl border border-slate-200/80 space-y-6">
-        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-          <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Premissas Operacionais</span>
-          <button class="text-[11px] font-semibold text-blue-600 hover:underline" onclick="resetSimulatorDefaults()">Restaurar padrões</button>
+      <!-- Premissas Operacionais — experiência guiada -->
+      <div class="lg:col-span-7 sim-premises bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
+        <div class="flex items-start justify-between gap-4 border-b border-slate-200 pb-5">
+          <div><h3 class="text-lg font-extrabold text-slate-900">Premissas Operacionais</h3><p class="text-xs text-slate-500 mt-1">Defina os parâmetros do projeto. O resultado é recalculado em tempo real.</p></div>
+          <button class="text-xs font-bold text-blue-600 hover:text-blue-700" onclick="resetSimulatorDefaults()">↻ Restaurar padrões</button>
         </div>
 
-        <div class="space-y-4">
-          <div class="flex items-center gap-2">
-            <span class="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] font-bold flex items-center justify-center">1</span>
-            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wide">Dimensão do Projeto</h4>
+        <div class="sim-step mt-6">
+          <div class="flex items-center gap-3 mb-4"><span class="sim-step-num">1</span><div><h4 class="text-sm font-extrabold text-slate-900">Dimensão do Projeto</h4><p class="text-[11px] text-slate-500">Base para dimensionar o impacto financeiro.</p></div></div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <label class="sim-field"><span>Nome do Projeto</span><input id="sim-proj-name" oninput="calculateSimulator()" type="text" value="Residencial Alfa / Projeto Base"></label>
+            <div class="sim-field"><span>Valor Total do Projeto</span><strong id="sim-val-display" class="text-blue-700 text-xl">R$&nbsp;18.500.000</strong><input class="w-full accent-blue-600 mt-3" id="sim-proj-val" max="60000000" min="1000000" oninput="calculateSimulator()" step="500000" type="range" value="18500000"></div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Nome do Projeto</label>
-              <input class="w-full text-xs font-medium rounded-xl border-slate-300 py-2 bg-white" id="sim-proj-name" oninput="calculateSimulator()" type="text" value="Residencial Alfa / Projeto Base">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">
-                Valor Total: <span class="font-bold text-blue-700" id="sim-val-display">R$&nbsp;18.500.000</span>
-              </label>
-              <input class="w-full accent-blue-600 cursor-pointer" id="sim-proj-val" max="60000000" min="1000000" oninput="calculateSimulator()" step="500000" type="range" value="18500000">
-            </div>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-600 mb-1">Duração (meses)</label>
-              <input class="w-full text-xs font-medium rounded-xl border-slate-300 py-1.5 bg-white" id="sim-duration" max="72" min="3" oninput="calculateSimulator()" type="number" value="24">
-            </div>
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-600 mb-1">Equipe Gestão/Admin</label>
-              <input class="w-full text-xs font-medium rounded-xl border-slate-300 py-1.5 bg-white" id="sim-team-size" max="150" min="1" oninput="calculateSimulator()" type="number" value="15">
-            </div>
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-600 mb-1">Custo Médio/Prof. (R$)</label>
-              <input class="w-full text-xs font-medium rounded-xl border-slate-300 py-1.5 bg-white" id="sim-cost-person" oninput="calculateSimulator()" step="500" type="number" value="7000">
-            </div>
+          <div class="grid sm:grid-cols-3 gap-3 mt-3">
+            <label class="sim-field"><span>Duração do Projeto (meses)</span><input id="sim-duration" max="72" min="3" oninput="calculateSimulator()" type="number" value="24"></label>
+            <label class="sim-field"><span>Equipe Gestão/Admin</span><input id="sim-team-size" max="150" min="1" oninput="calculateSimulator()" type="number" value="15"></label>
+            <label class="sim-field"><span>Custo Médio/Profissional (R$)</span><input id="sim-cost-person" oninput="calculateSimulator()" step="500" type="number" value="7000"></label>
           </div>
         </div>
 
-        <div class="space-y-3 pt-3 border-t border-slate-200">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] font-bold flex items-center justify-center">2</span>
-              <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wide">Horas Semanais em Processos Manuais</h4>
-            </div>
-            <span class="text-xs font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-100" id="sim-total-hours-label">14h / sem por profissional</span>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
-            <div class="bg-white p-2 rounded-xl border border-slate-200">
-              <span class="text-[10px] text-slate-500 block">Busca Dados</span>
-              <input class="w-full text-center text-xs font-bold rounded border-slate-200 py-1 mt-1" id="sim-h-busca" max="20" min="0" oninput="calculateSimulator()" type="number" value="3">
-            </div>
-            <div class="bg-white p-2 rounded-xl border border-slate-200">
-              <span class="text-[10px] text-slate-500 block">Controles</span>
-              <input class="w-full text-center text-xs font-bold rounded border-slate-200 py-1 mt-1" id="sim-h-controles" max="20" min="0" oninput="calculateSimulator()" type="number" value="3">
-            </div>
-            <div class="bg-white p-2 rounded-xl border border-slate-200">
-              <span class="text-[10px] text-slate-500 block">Relatórios</span>
-              <input class="w-full text-center text-xs font-bold rounded border-slate-200 py-1 mt-1" id="sim-h-relatorios" max="20" min="0" oninput="calculateSimulator()" type="number" value="3">
-            </div>
-            <div class="bg-white p-2 rounded-xl border border-slate-200">
-              <span class="text-[10px] text-slate-500 block">Reuniões</span>
-              <input class="w-full text-center text-xs font-bold rounded border-slate-200 py-1 mt-1" id="sim-h-conferencia" max="20" min="0" oninput="calculateSimulator()" type="number" value="3">
-            </div>
-            <div class="bg-white p-2 rounded-xl border border-slate-200">
-              <span class="text-[10px] text-slate-500 block">Retrabalho</span>
-              <input class="w-full text-center text-xs font-bold rounded border-slate-200 py-1 mt-1" id="sim-h-retrabalho" max="20" min="0" oninput="calculateSimulator()" type="number" value="2">
-            </div>
+        <div class="sim-step mt-7 pt-6 border-t border-slate-200">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4"><div class="flex items-center gap-3"><span class="sim-step-num">2</span><div><h4 class="text-sm font-extrabold text-slate-900">Horas Semanais em Processos Manuais</h4><p class="text-[11px] text-slate-500">Quanto tempo cada profissional dedica hoje a tarefas operacionais?</p></div></div><span class="sim-hours-badge" id="sim-total-hours-label">14h / sem por profissional</span></div>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+            <label class="sim-hour-card"><span class="material-symbols-outlined">search</span><b>Busca de Dados</b><input id="sim-h-busca" max="20" min="0" oninput="calculateSimulator()" type="number" value="3"><small>h/sem</small></label>
+            <label class="sim-hour-card"><span class="material-symbols-outlined">fact_check</span><b>Controles</b><input id="sim-h-controles" max="20" min="0" oninput="calculateSimulator()" type="number" value="3"><small>h/sem</small></label>
+            <label class="sim-hour-card"><span class="material-symbols-outlined">description</span><b>Relatórios</b><input id="sim-h-relatorios" max="20" min="0" oninput="calculateSimulator()" type="number" value="3"><small>h/sem</small></label>
+            <label class="sim-hour-card"><span class="material-symbols-outlined">groups</span><b>Reuniões</b><input id="sim-h-conferencia" max="20" min="0" oninput="calculateSimulator()" type="number" value="3"><small>h/sem</small></label>
+            <label class="sim-hour-card"><span class="material-symbols-outlined">sync_problem</span><b>Retrabalho</b><input id="sim-h-retrabalho" max="20" min="0" oninput="calculateSimulator()" type="number" value="2"><small>h/sem</small></label>
           </div>
         </div>
 
-        <div class="pt-3 border-t border-slate-200">
-          <span class="text-xs font-bold text-slate-700 block mb-2">Grau de Otimização Estimado com FLUX OS:</span>
-          <div class="grid grid-cols-3 gap-2">
-            <button class="scenario-btn p-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:border-blue-400 transition-all text-center" onclick="setScenario(0.30, this)">
-              <span class="block text-[10px] text-slate-400 uppercase font-bold">Conservador</span>
-              <span class="">30% Recuperação</span>
-            </button>
-            <button class="scenario-btn active p-2.5 rounded-xl border-2 border-blue-600 bg-blue-50/70 text-xs font-bold text-blue-900 transition-all text-center" onclick="setScenario(0.50, this)">
-              <span class="block text-[10px] text-blue-600 uppercase font-bold">Intermediário</span>
-              <span class="">50% Recuperação</span>
-            </button>
-            <button class="scenario-btn p-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:border-blue-400 transition-all text-center" onclick="setScenario(0.70, this)">
-              <span class="block text-[10px] text-slate-400 uppercase font-bold">Transformação</span>
-              <span class="">70% Recuperação</span>
-            </button>
+        <div class="sim-step mt-7 pt-6 border-t border-slate-200">
+          <div class="flex items-center gap-3 mb-4"><span class="sim-step-num">3</span><div><h4 class="text-sm font-extrabold text-slate-900">Grau de Otimização Estimado com FLUX OS</h4><p class="text-[11px] text-slate-500">Escolha uma hipótese de recuperação de eficiência para comparar cenários.</p></div></div>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <button class="scenario-btn sim-scenario" onclick="setScenario(0.30,this)"><span class="material-symbols-outlined">eco</span><small>CONSERVADOR</small><b>30% Recuperação</b><em>Processos principais</em></button>
+            <button class="scenario-btn sim-scenario active" onclick="setScenario(0.50,this)"><span class="material-symbols-outlined">rocket_launch</span><small>INTERMEDIÁRIO</small><b>50% Recuperação</b><em>Integração e padronização</em></button>
+            <button class="scenario-btn sim-scenario" onclick="setScenario(0.70,this)"><span class="material-symbols-outlined">monitoring</span><small>TRANSFORMAÇÃO</small><b>70% Recuperação</b><em>Automação avançada</em></button>
           </div>
         </div>
+
+        <div class="sim-impact mt-6">
+          <div><span class="text-[11px] font-bold uppercase tracking-wider text-emerald-700">Potencial calculado com suas premissas</span><div class="grid grid-cols-3 gap-3 mt-3"><div><small>Horas recuperadas</small><strong id="sim-hours-recovered">—</strong></div><div><small>Capacidade equivalente</small><strong id="sim-people-equivalent">—</strong></div><div><small>Custo manual evitável</small><strong id="sim-manual-cost">—</strong></div></div></div>
+          <div class="sim-impact-note"><b id="sim-recovery-pct">50%</b><span>recuperação estimada</span></div>
+        </div>
+        <p class="mt-3 text-[10px] leading-relaxed text-slate-400">Simulação indicativa baseada nas premissas informadas. Os valores representam potencial de eficiência e não constituem garantia de economia.</p>
       </div>
-
       <!-- Resultados & ROI (5 Colunas) -->
       <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
         <div class="bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-blue-800/40 relative overflow-hidden">
@@ -2140,6 +2113,14 @@
 
     const monthlySaving = teamMonthlyManualCost * currentScenarioRatio;
     const totalSaving = monthlySaving * duration;
+    const recoveredHoursProject = totalHoursPerWeek * 4.33 * teamSize * duration * currentScenarioRatio;
+    const recoveredHoursMonth = totalHoursPerWeek * 4.33 * teamSize * currentScenarioRatio;
+    const peopleEquivalent = recoveredHoursMonth / 176;
+    const manualCostProject = teamMonthlyManualCost * duration;
+    const hrsEl=document.getElementById('sim-hours-recovered'); if(hrsEl) hrsEl.textContent=Math.round(recoveredHoursProject).toLocaleString('pt-BR')+' h';
+    const pplEl=document.getElementById('sim-people-equivalent'); if(pplEl) pplEl.textContent=peopleEquivalent.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+' prof.';
+    const costEl=document.getElementById('sim-manual-cost'); if(costEl) costEl.textContent=formatBRL(manualCostProject);
+    const recEl=document.getElementById('sim-recovery-pct'); if(recEl) recEl.textContent=Math.round(currentScenarioRatio*100)+'%';
     const pctProject = (totalSaving / projVal) * 100;
 
     document.getElementById('sim-months-label').textContent = `${duration} meses`;
