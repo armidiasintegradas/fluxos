@@ -223,6 +223,14 @@
   #painel-tempo-real .panel-intro .user-name-display{color:#fff!important}
   #painel-tempo-real .role-btn,#painel-tempo-real .dash-tab{background:rgba(8,20,58,.42)!important;color:#dbeafe!important;border:1px solid rgba(147,197,253,.16)!important;box-shadow:none!important;outline:none!important;font-weight:500!important}
   #painel-tempo-real .role-btn.is-active,#painel-tempo-real .dash-tab.is-active{background:linear-gradient(135deg,#0284c7,#2563eb)!important;color:#fff!important;border-color:#7dd3fc!important;box-shadow:0 0 0 1px rgba(125,211,252,.18),0 8px 22px -12px #38bdf8!important;font-weight:800!important}
+
+/* PANEL08_FINAL_STATE */
+#painel-tempo-real .panel-title{color:#fff!important}
+#painel-tempo-real .panel-title .gradient-text{background:linear-gradient(90deg,#7dd3fc,#60a5fa 45%,#c084fc)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
+#painel-tempo-real .panel-intro{color:#dbeafe!important}
+#painel-tempo-real .panel-intro .user-name-display{color:#fff!important}
+#painel-tempo-real .role-btn,#painel-tempo-real .dash-tab{padding:.45rem .95rem;border-radius:.8rem;background:#172554!important;color:#cbd5e1!important;border:1px solid rgba(148,163,184,.2)!important;box-shadow:none!important;font-weight:500!important;transition:.2s ease}
+#painel-tempo-real .role-btn.is-active,#painel-tempo-real .dash-tab.is-active{background:linear-gradient(135deg,#0ea5e9,#2563eb)!important;color:#fff!important;border-color:#7dd3fc!important;box-shadow:0 0 0 1px rgba(125,211,252,.25),0 8px 18px -10px #38bdf8!important;font-weight:800!important}
 </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -1168,20 +1176,20 @@
     <div class="space-y-3 max-w-5xl mx-auto">
       <div class="role-nav-track flex flex-wrap items-center justify-center gap-2">
         <span class="role-label text-xs font-bold uppercase tracking-wider mr-1">VER COMO:</span>
-        <button class="role-btn is-active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all" aria-selected="true" onclick="filterByRole('diretoria', this)">Diretoria</button>
-        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all" onclick="filterByRole('gestor', this)">Gestor</button>
-        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all" onclick="filterByRole('operacao', this)">Operação</button>
-        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all" onclick="filterByRole('suprimentos', this)">Suprimentos</button>
-        <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all" onclick="filterByRole('qualidade', this)">Qualidade</button>
+        <button class="role-btn" aria-selected="true" onclick="filterByRole('diretoria', this)">Diretoria</button>
+        <button class="role-btn" onclick="filterByRole('gestor', this)">Gestor</button>
+        <button class="role-btn" onclick="filterByRole('operacao', this)">Operação</button>
+        <button class="role-btn" onclick="filterByRole('suprimentos', this)">Suprimentos</button>
+        <button class="role-btn" onclick="filterByRole('qualidade', this)">Qualidade</button>
       </div><div class="text-center"><span id="role-context-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100"><span class="material-symbols-outlined text-xs">view_quilt</span> Painel configurado para: Diretoria &amp; Decisão Estratégica</span></div>
       
       <div class="panel-tabs flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl border">
-        <button class="dash-tab is-active px-3.5 py-1.5 rounded-xl text-xs font-bold" aria-selected="true" onclick="filterDashboard('todos', this)">Todos</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('financeiro', this)">Financeiro</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('operacao', this)">Operação</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('planejamento', this)">Planejamento</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('suprimentos', this)">Suprimentos</button>
-        <button class="dash-tab px-3.5 py-1.5 rounded-xl text-xs font-medium" onclick="filterDashboard('qualidade', this)">Qualidade</button>
+        <button class="dash-tab" aria-selected="true" onclick="filterDashboard('todos', this)">Todos</button>
+        <button class="dash-tab" onclick="filterDashboard('financeiro', this)">Financeiro</button>
+        <button class="dash-tab" onclick="filterDashboard('operacao', this)">Operação</button>
+        <button class="dash-tab" onclick="filterDashboard('planejamento', this)">Planejamento</button>
+        <button class="dash-tab" onclick="filterDashboard('suprimentos', this)">Suprimentos</button>
+        <button class="dash-tab" onclick="filterDashboard('qualidade', this)">Qualidade</button>
       </div>
     </div>
 
@@ -2211,23 +2219,14 @@
   }
 
   function setPanelActive(buttons, active){
-    buttons.forEach(b=>{
-      b.classList.remove('is-active','bg-white','text-blue-700','shadow-sm','border-slate-300','font-bold','bg-slate-100');
+    buttons.forEach(function(b){
+      b.className = b.classList.contains('role-btn') ? 'role-btn' : 'dash-tab';
       b.setAttribute('aria-selected','false');
-      b.style.background='rgba(8,20,58,.42)';
-      b.style.color='#dbeafe';
-      b.style.borderColor='rgba(147,197,253,.16)';
-      b.style.boxShadow='none';
-      b.style.fontWeight='500';
+      b.removeAttribute('style');
     });
     if(active){
       active.classList.add('is-active');
       active.setAttribute('aria-selected','true');
-      active.style.background='linear-gradient(135deg,#0284c7,#2563eb)';
-      active.style.color='#fff';
-      active.style.borderColor='#7dd3fc';
-      active.style.boxShadow='0 0 0 1px rgba(125,211,252,.18),0 8px 22px -12px #38bdf8';
-      active.style.fontWeight='800';
     }
   }
   function animateVisibleDashboardCards(){
