@@ -118,6 +118,16 @@
   @keyframes fluxElectric{to{stroke-dashoffset:-62}}
   @media(max-width:900px){#transformacao .flux-network{min-height:760px}.flux-network-lines{display:none!important}#transformacao .flux-core{top:90px;width:190px;height:130px}#transformacao .flux-core:before{width:230px;height:230px}#transformacao .flux-core:after{width:280px;height:280px}#transformacao .flux-side{top:205px;bottom:0;width:48%;gap:12px;justify-content:flex-start}#transformacao .flux-cell{width:100%;grid-template-columns:54px 1fr;min-height:86px;padding:11px;border-radius:20px}.flux-cell-arrow{display:none!important}#transformacao .flux-icon{width:54px;height:54px;border-radius:16px}#transformacao .flux-icon .material-symbols-outlined{font-size:30px}.flux-cell-title{font-size:14px!important}.flux-cell-desc{font-size:10px!important}}
   @media(max-width:560px){#transformacao{padding:26px 18px 32px}#transformacao .flux-network{min-height:790px}#transformacao .flux-side{width:47%}#transformacao .flux-cell{grid-template-columns:1fr;text-align:center;justify-items:center;min-height:125px}.flux-cell-desc{display:none!important}#transformacao .flux-icon{width:58px;height:58px}}
+
+  /* Master interativo da seção 03 */
+  @keyframes pulseRing{0%{transform:scale(.92);opacity:.8}50%{opacity:.35}100%{transform:scale(1.48);opacity:0}}
+  .pulse-ring-1{animation:pulseRing 3.2s cubic-bezier(.4,0,.2,1) infinite}.pulse-ring-2{animation:pulseRing 3.2s cubic-bezier(.4,0,.2,1) infinite 1.6s}
+  @keyframes dashStream{to{stroke-dashoffset:-40}}
+  .dash-flow{stroke-dasharray:8 14;animation:dashStream 1.8s linear infinite}.dash-flow-reverse{stroke-dasharray:8 14;animation:dashStream 1.8s linear infinite reverse}
+  @keyframes subtleFloatA{0%{transform:translateY(0)}100%{transform:translateY(-5px)}}@keyframes subtleFloatB{0%{transform:translateY(-4px)}100%{transform:translateY(2px)}}
+  .float-a{animation:subtleFloatA 4.5s ease-in-out infinite alternate}.float-b{animation:subtleFloatB 5.2s ease-in-out infinite alternate}
+  .node-card{transition:all .3s cubic-bezier(.16,1,.3,1)}.node-card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 20px 35px -10px rgba(37,99,235,.15),0 0 0 2px rgba(59,130,246,.3)}.node-card.active-node{border-color:#3b82f6;box-shadow:0 20px 40px -10px rgba(37,99,235,.25),0 0 0 2.5px #2563eb;transform:scale(1.03)}
+  @media(max-width:1023px){#transformacao #network-canvas{display:none}#transformacao .min-h-\[700px\]{min-height:auto}#transformacao .float-a,#transformacao .float-b{animation:none}}
 </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -324,31 +334,480 @@
       </div>
     </section>
 
-    <section class="bg-white rounded-3xl p-8 card-border shadow-sm flex flex-col justify-between" id="transformacao">
-      <div>
-        <div class="text-xs font-bold tracking-widest text-slate-400 uppercase">03 — A transformação</div>
-        <div class="mt-4 text-center">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">UMA PLATAFORMA.</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Toda a operação.</h2>
-        </div>
-        <div class="mt-8 flux-network" id="flux-network">
-          <svg class="flux-network-lines" viewBox="0 0 700 330" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="flux-electric-gradient" x1="0" x2="1"><stop offset="0" stop-color="#2563eb"/><stop offset=".35" stop-color="#7c3aed"/><stop offset=".68" stop-color="#f59e0b"/><stop offset="1" stop-color="#10b981"/></linearGradient><filter id="flux-glow"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g class="flux-wire-base"><path d="M350 165 C250 165 250 25 0 25"/><path d="M350 165 C250 165 250 110 0 110"/><path d="M350 165 C250 165 250 220 0 220"/><path d="M350 165 C250 165 250 305 0 305"/><path d="M350 165 C450 165 450 25 700 25"/><path d="M350 165 C450 165 450 110 700 110"/><path d="M350 165 C450 165 450 220 700 220"/><path d="M350 165 C450 165 450 305 700 305"/></g><g class="flux-wire-energy"><path d="M350 165 C250 165 250 25 0 25"/><path d="M350 165 C250 165 250 110 0 110"/><path d="M350 165 C250 165 250 220 0 220"/><path d="M350 165 C250 165 250 305 0 305"/></g><g class="flux-wire-energy reverse"><path d="M350 165 C450 165 450 25 700 25"/><path d="M350 165 C450 165 450 110 700 110"/><path d="M350 165 C450 165 450 220 700 220"/><path d="M350 165 C450 165 450 305 700 305"/></g></svg>
-          <div class="flux-side left">
-            <div class="flux-cell" data-flux-cell style="--cell-border:#bfdbfe;--cell-gradient:linear-gradient(145deg,#38bdf8,#2563eb);--cell-glow:rgba(37,99,235,.3);--arrow-bg:#eff6ff;--arrow-color:#2563eb"><div class="flux-icon"><span class="material-symbols-outlined">trending_up</span></div><div class="flux-cell-copy"><span class="flux-cell-title">Operação</span><span class="flux-cell-desc">Planejamento, execução e controle</span></div><span class="flux-cell-arrow"><span class="material-symbols-outlined">chevron_right</span></span></div>
-            <div class="flux-cell" data-flux-cell style="--cell-border:#ddd6fe;--cell-gradient:linear-gradient(145deg,#c026d3,#7c3aed);--cell-glow:rgba(124,58,237,.3);--arrow-bg:#f5f3ff;--arrow-color:#7c3aed"><div class="flux-icon"><span class="material-symbols-outlined">psychology</span></div><div class="flux-cell-copy"><span class="flux-cell-title">Inteligência</span><span class="flux-cell-desc">IA, alertas e recomendações</span></div><span class="flux-cell-arrow"><span class="material-symbols-outlined">chevron_right</span></span></div>
-            <div class="flux-cell" data-flux-cell style="--cell-border:#c7d2fe;--cell-gradient:linear-gradient(145deg,#60a5fa,#4338ca);--cell-glow:rgba(67,56,202,.28);--arrow-bg:#eef2ff;--arrow-color:#4f46e5"><div class="flux-icon"><span class="material-symbols-outlined">pie_chart</span></div><div class="flux-cell-copy"><span class="flux-cell-title">Indicadores</span><span class="flux-cell-desc">Dashboards em tempo real</span></div><span class="flux-cell-arrow"><span class="material-symbols-outlined">chevron_right</span></span></div>
-            <div class="flux-cell" data-flux-cell style="--cell-border:#a7f3d0;--cell-gradient:linear-gradient(145deg,#34d399,#059669);--cell-glow:rgba(5,150,105,.28);--arrow-bg:#ecfdf5;--arrow-color:#059669"><div class="flux-icon"><span class="material-symbols-outlined">payments</span></div><div class="flux-cell-copy"><span class="flux-cell-title">Custos</span><span class="flux-cell-desc">Orçamentos, medição e financeiro</span></div><span class="flux-cell-arrow"><span class="material-symbols-outlined">chevron_right</span></span></div>
+    <section id="transformacao" class="w-full bg-white/80 backdrop-blur-xl border border-slate-200/80 rounded-3xl p-6 md:p-10 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.06)] relative overflow-hidden">
+    
+    <!-- Efeitos de iluminação de fundo / ambient glow -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-blue-100/40 via-indigo-50/20 to-sky-100/40 rounded-full blur-2xl pointer-events-none"></div>
+
+    <!-- CABEÇALHO DO BLOCO (Fiel à identidade e hierarquia) -->
+    <header class="text-center relative z-10 mb-8 max-w-2xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100/80 text-blue-700 text-xs font-bold tracking-widest uppercase mb-3">
+        <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+        03 — A TRANSFORMAÇÃO
+      </div>
+      <p class="text-xs md:text-sm font-extrabold tracking-[0.25em] text-slate-400 uppercase mb-2">UMA PLATAFORMA.</p>
+      <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-none mb-3">
+        Toda a operação.
+      </h1>
+      <div class="h-1 w-20 bg-gradient-to-r from-sky-400 via-blue-600 to-indigo-600 rounded-full mx-auto mb-4"></div>
+      <p class="text-slate-600 text-sm md:text-base font-medium">
+        Todos os setores da sua empresa unificados em um único ecossistema reativo em tempo real.
+      </p>
+
+      <!-- Seletor de Modo de Visualização do Bloco -->
+      <div class="flex items-center justify-center gap-2 mt-5 p-1 bg-slate-100/80 backdrop-blur rounded-2xl w-fit mx-auto border border-slate-200/60 shadow-inner">
+        <button id="btn-mode-flow" onclick="switchVisualMode('flow')" class="px-4 py-1.5 rounded-xl text-xs font-bold transition-all bg-white text-blue-700 shadow-sm">
+          Fluxo em Rede (Convergência)
+        </button>
+        <button id="btn-mode-radar" onclick="switchVisualMode('radar')" class="px-4 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-600 hover:text-slate-900">
+          Monitoramento Ativo (Live Status)
+        </button>
+      </div>
+    </header>
+
+    <!-- PALCO CENTRAL INTERATIVO -->
+    <div class="relative w-full min-h-[700px] flex items-center justify-center my-2">
+
+      <!-- CAMADA SVG DE CONEXÕES / S-CURVES COM PARTÍCULAS -->
+      <svg id="network-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1200 750" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <!-- Gradientes dos Conectores -->
+          <linearGradient id="grad-op" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0284c7" />
+            <stop offset="100%" stop-color="#38bdf8" />
+          </linearGradient>
+          <linearGradient id="grad-int" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#7c3aed" />
+            <stop offset="100%" stop-color="#c084fc" />
+          </linearGradient>
+          <linearGradient id="grad-ind" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2563eb" />
+            <stop offset="100%" stop-color="#60a5fa" />
+          </linearGradient>
+          <linearGradient id="grad-cust" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#059669" />
+            <stop offset="100%" stop-color="#34d399" />
+          </linearGradient>
+
+          <linearGradient id="grad-pes" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#ea580c" />
+            <stop offset="100%" stop-color="#fb923c" />
+          </linearGradient>
+          <linearGradient id="grad-sup" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#d97706" />
+            <stop offset="100%" stop-color="#fbbf24" />
+          </linearGradient>
+          <linearGradient id="grad-qua" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#0d9488" />
+            <stop offset="100%" stop-color="#2dd4bf" />
+          </linearGradient>
+          <linearGradient id="grad-doc" x1="100%" y1="0%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#475569" />
+            <stop offset="100%" stop-color="#94a3b8" />
+          </linearGradient>
+
+          <!-- Filtro de brilho para nós centrais -->
+          <filter id="glow-fx" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Guias de Fundo Radiais e de Pulso (Centro: 600, 375) -->
+        <g opacity="0.6">
+          <circle cx="600" cy="375" r="140" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="4 6" />
+          <circle cx="600" cy="375" r="230" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="6 8" />
+          <circle cx="600" cy="375" r="320" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="8 12" opacity="0.5" />
+        </g>
+
+        <!-- TRILHAS DE FLUXO ESQUERDA (Cards X~330 -> Centro X~480) -->
+        <!-- 1. Operação -->
+        <path d="M 330 140 C 420 140, 420 330, 480 330" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        <path id="stream-op" class="dash-flow" d="M 330 140 C 420 140, 420 330, 480 330" fill="none" stroke="url(#grad-op)" stroke-width="3" stroke-linecap="round" />
+        
+        <!-- 2. Inteligência -->
+        <path d="M 330 295 C 410 295, 430 355, 480 355" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        <path id="stream-int" class="dash-flow" d="M 330 295 C 410 295, 430 355, 480 355" fill="none" stroke="url(#grad-int)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- 3. Indicadores -->
+        <path d="M 330 455 C 410 455, 430 395, 480 395" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        <path id="stream-ind" class="dash-flow" d="M 330 455 C 410 455, 430 395, 480 395" fill="none" stroke="url(#grad-ind)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- 4. Custos -->
+        <path d="M 330 610 C 420 610, 420 420, 480 420" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        <path id="stream-cust" class="dash-flow" d="M 330 610 C 420 610, 420 420, 480 420" fill="none" stroke="url(#grad-cust)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- TRILHAS DE FLUXO DIREITA (Cards X~870 -> Centro X~720) -->
+        <!-- 5. Pessoas -->
+        <path d="M 870 140 C 780 140, 780 330, 720 330" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        <path id="stream-pes" class="dash-flow-reverse" d="M 870 140 C 780 140, 780 330, 720 330" fill="none" stroke="url(#grad-pes)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- 6. Suprimentos -->
+        <path d="M 870 295 C 790 295, 770 355, 720 355" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        <path id="stream-sup" class="dash-flow-reverse" d="M 870 295 C 790 295, 770 355, 720 355" fill="none" stroke="url(#grad-sup)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- 7. Qualidade -->
+        <path d="M 870 455 C 790 455, 770 395, 720 395" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        <path id="stream-qua" class="dash-flow-reverse" d="M 870 455 C 790 455, 770 395, 720 395" fill="none" stroke="url(#grad-qua)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- 8. Documentos -->
+        <path d="M 870 610 C 780 610, 780 420, 720 420" fill="none" stroke="#e2e8f0" stroke-width="2.5" />
+        <path id="stream-doc" class="dash-flow-reverse" d="M 870 610 C 780 610, 780 420, 720 420" fill="none" stroke="url(#grad-doc)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- PINS DE CONEXÃO & PARTÍCULAS DE DADOS DINÂMICAS -->
+        <!-- Pinos no lado do Núcleo -->
+        <circle cx="480" cy="330" r="5" fill="#0284c7" stroke="#ffffff" stroke-width="2" />
+        <circle cx="480" cy="355" r="5" fill="#7c3aed" stroke="#ffffff" stroke-width="2" />
+        <circle cx="480" cy="395" r="5" fill="#2563eb" stroke="#ffffff" stroke-width="2" />
+        <circle cx="480" cy="420" r="5" fill="#059669" stroke="#ffffff" stroke-width="2" />
+
+        <circle cx="720" cy="330" r="5" fill="#ea580c" stroke="#ffffff" stroke-width="2" />
+        <circle cx="720" cy="355" r="5" fill="#d97706" stroke="#ffffff" stroke-width="2" />
+        <circle cx="720" cy="395" r="5" fill="#0d9488" stroke="#ffffff" stroke-width="2" />
+        <circle cx="720" cy="420" r="5" fill="#475569" stroke="#ffffff" stroke-width="2" />
+
+        <!-- Esferas de Energia Viajando nas Linhas (AnimateMotion SVG) -->
+        <circle r="4" fill="#38bdf8" filter="url(#glow-fx)">
+          <animateMotion dur="2.4s" path="M 330 140 C 420 140, 420 330, 480 330" repeatCount="indefinite" />
+        </circle>
+        <circle r="4" fill="#c084fc" filter="url(#glow-fx)">
+          <animateMotion dur="2.8s" path="M 330 295 C 410 295, 430 355, 480 355" repeatCount="indefinite" />
+        </circle>
+        <circle r="4" fill="#60a5fa" filter="url(#glow-fx)">
+          <animateMotion dur="2.1s" path="M 330 455 C 410 455, 430 395, 480 395" repeatCount="indefinite" />
+        </circle>
+        <circle r="4" fill="#34d399" filter="url(#glow-fx)">
+          <animateMotion dur="2.6s" path="M 330 610 C 420 610, 420 420, 480 420" repeatCount="indefinite" />
+        </circle>
+
+        <circle r="4" fill="#fb923c" filter="url(#glow-fx)">
+          <animateMotion dur="2.5s" path="M 870 140 C 780 140, 780 330, 720 330" repeatCount="indefinite" />
+        </circle>
+        <circle r="4" fill="#fbbf24" filter="url(#glow-fx)">
+          <animateMotion dur="2.9s" path="M 870 295 C 790 295, 770 355, 720 355" repeatCount="indefinite" />
+        </circle>
+        <circle r="4" fill="#2dd4bf" filter="url(#glow-fx)">
+          <animateMotion dur="2.2s" path="M 870 455 C 790 455, 770 395, 720 395" repeatCount="indefinite" />
+        </circle>
+        <circle r="4" fill="#94a3b8" filter="url(#glow-fx)">
+          <animateMotion dur="2.7s" path="M 870 610 C 780 610, 780 420, 720 420" repeatCount="indefinite" />
+        </circle>
+      </svg>
+
+      <!-- GRADE DE CONTEÚDO PRINCIPAL (3 COLUNAS: ESQUERDA, NÚCLEO, DIREITA) -->
+      <div class="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+
+        <!-- ================= COLUNA ESQUERDA (4 MÓDULOS) ================= -->
+        <div class="lg:col-span-4 flex flex-col gap-4">
+
+          <!-- 1. Operação -->
+          <div id="node-operacao" onclick="selectOperationalNode('operacao')" class="node-card float-a cursor-pointer p-4 bg-white/95 rounded-2xl border border-slate-200/90 shadow-sm flex items-center justify-between group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-13 h-13 p-3 rounded-2xl bg-gradient-to-tr from-sky-600 to-sky-400 text-white shadow-lg shadow-sky-500/25 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-slate-900 group-hover:text-sky-600 transition-colors">Operação</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200">98.4% ativa</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium leading-relaxed">Planejamento, execução e controle de frentes</p>
+              </div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-all shadow-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </div>
           </div>
-          <div class="flux-core" data-flux-cell><div class="flux-core-brand">FLUX <b>OS</b></div><div class="flux-core-sub">Núcleo Central</div></div>
-          <div class="flux-side right">
-            <div class="flux-cell" data-flux-cell style="--cell-border:#fed7aa;--cell-gradient:linear-gradient(145deg,#fb923c,#f97316);--cell-glow:rgba(249,115,22,.28);--arrow-bg:#fff7ed;--arrow-color:#f97316"><div class="flux-icon"><span class="material-symbols-outlined">group</span></div><div class="flux-cell-copy"><span class="flux-cell-title">Pessoas</span><span class="flux-cell-desc">Equipes, produtividade e acessos</span></div><span class="flux-cell-arrow"><span class="material-symbols-outlined">chevron_right</span></span></div>
-            <div class="flux-cell" data-flux-cell style="--cell-border:#fde68a;--cell-gradient:linear-gradient(145deg,#facc15,#f59e0b);--cell-glow:rgba(245,158,11,.28);--arrow-bg:#fffbeb;--arrow-color:#f59e0b"><div class="flux-icon"><span class="material-symbols-outlined">inventory_2</span></div><div class="flux-cell-copy"><span class="flux-cell-title">Suprimentos</span><span class="flux-cell-desc">Compras, estoque e consumo</span></div><span class="flux-cell-arrow"><span class="material-symbols-outlined">chevron_right</span></span></div>
-            <div class="flux-cell" data-flux-cell style="--cell-border:#99f6e4;--cell-gradient:linear-gradient(145deg,#2dd4bf,#059669);--cell-glow:rgba(5,150,105,.28);--arrow-bg:#f0fdfa;--arrow-color:#0d9488"><div class="flux-icon"><span class="material-symbols-outlined">verified_user</span></div><div class="flux-cell-copy"><span class="flux-cell-title">Qualidade</span><span class="flux-cell-desc">Inspeções, checklists e conformidade</span></div><span class="flux-cell-arrow"><span class="material-symbols-outlined">chevron_right</span></span></div>
-            <div class="flux-cell" data-flux-cell style="--cell-border:#cbd5e1;--cell-gradient:linear-gradient(145deg,#94a3b8,#475569);--cell-glow:rgba(71,85,105,.24);--arrow-bg:#f1f5f9;--arrow-color:#64748b"><div class="flux-icon"><span class="material-symbols-outlined">description</span></div><div class="flux-cell-copy"><span class="flux-cell-title">Documentos</span><span class="flux-cell-desc">Projetos, laudos e registros</span></div><span class="flux-cell-arrow"><span class="material-symbols-outlined">chevron_right</span></span></div>
+
+          <!-- 2. Inteligência -->
+          <div id="node-inteligencia" onclick="selectOperationalNode('inteligencia')" class="node-card float-b cursor-pointer p-4 bg-white/95 rounded-2xl border border-slate-200/90 shadow-sm flex items-center justify-between group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-13 h-13 p-3 rounded-2xl bg-gradient-to-tr from-purple-600 to-purple-400 text-white shadow-lg shadow-purple-500/25 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-slate-900 group-hover:text-purple-600 transition-colors">Inteligência</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 border border-purple-200">IA Conectada</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium leading-relaxed">IA, alertas preditivos e recomendações de ação</p>
+              </div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all shadow-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+
+          <!-- 3. Indicadores -->
+          <div id="node-indicadores" onclick="selectOperationalNode('indicadores')" class="node-card float-a cursor-pointer p-4 bg-white/95 rounded-2xl border border-slate-200/90 shadow-sm flex items-center justify-between group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-13 h-13 p-3 rounded-2xl bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-lg shadow-blue-500/25 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors">Indicadores</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">Tempo Real</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium leading-relaxed">Dashboards consolidados e metas operacionais</p>
+              </div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+
+          <!-- 4. Custos -->
+          <div id="node-custos" onclick="selectOperationalNode('custos')" class="node-card float-b cursor-pointer p-4 bg-white/95 rounded-2xl border border-slate-200/90 shadow-sm flex items-center justify-between group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-13 h-13 p-3 rounded-2xl bg-gradient-to-tr from-emerald-600 to-emerald-400 text-white shadow-lg shadow-emerald-500/25 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors">Custos</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">100% Auditado</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium leading-relaxed">Orçamentos, medição, fluxo de caixa e financeiro</p>
+              </div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= CENTRO: NÚCLEO CENTRAL FLUX OS ================= -->
+        <div class="lg:col-span-4 flex flex-col items-center justify-center relative py-6">
+
+          <!-- Ondas de Luz Expansiva do Núcleo -->
+          <div class="absolute w-64 h-64 rounded-full border-2 border-blue-400/40 pulse-ring-1 pointer-events-none"></div>
+          <div class="absolute w-64 h-64 rounded-full border-2 border-indigo-500/30 pulse-ring-2 pointer-events-none"></div>
+          
+          <!-- Placa / Núcleo Glassmorphism -->
+          <div class="relative w-64 md:w-72 bg-gradient-to-b from-white to-blue-50/90 rounded-3xl p-6 border-2 border-blue-200 shadow-[0_20px_50px_-10px_rgba(37,99,235,0.25)] flex flex-col items-center text-center backdrop-blur-2xl z-30 transition-all hover:scale-105">
+            
+            <!-- Barra Superior do Núcleo com Status de Pulso -->
+            <div class="flex items-center justify-between w-full mb-4 px-1">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-500">CONECTADO</span>
+              </div>
+              <span id="flux-packets-counter" class="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">
+                1.420 op/s
+              </span>
+            </div>
+
+            <!-- LOGOTIPO FLUX OS NO CENTRO -->
+            <div class="my-2">
+              <h2 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-none">
+                FLUX<span class="text-blue-600"> OS</span>
+              </h2>
+              <p class="text-xs font-extrabold tracking-[0.25em] text-slate-400 uppercase mt-1">
+                NÚCLEO CENTRAL
+              </p>
+            </div>
+
+            <!-- Indicador de convergência dinâmica -->
+            <div class="w-full mt-4 pt-4 border-t border-slate-100 flex flex-col gap-2">
+              <div class="flex justify-between items-center text-[11px] text-slate-500 font-semibold">
+                <span>Convergência de Dados</span>
+                <span id="sync-rate-txt" class="text-blue-600 font-bold">100% Sincronizado</span>
+              </div>
+              <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <div id="sync-progress-bar" class="h-full bg-gradient-to-r from-sky-400 via-blue-600 to-purple-600 rounded-full w-full transition-all duration-500"></div>
+              </div>
+            </div>
+
+            <!-- Botão de Disparo / Simular Evento Geral -->
+            <button onclick="triggerGlobalPulse()" class="mt-4 w-full py-2 px-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold shadow-md shadow-blue-500/25 transition-all flex items-center justify-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Sincronizar Toda Operação
+            </button>
+          </div>
+
+          <!-- Mensagem Contextual do Núcleo -->
+          <div id="center-status-tip" class="mt-4 text-center max-w-[260px] text-xs text-slate-500 font-medium">
+            Clique em qualquer módulo ao redor para inspecionar os fluxos de dados em tempo real.
+          </div>
+
+        </div>
+
+        <!-- ================= COLUNA DIREITA (4 MÓDULOS) ================= -->
+        <div class="lg:col-span-4 flex flex-col gap-4">
+
+          <!-- 5. Pessoas -->
+          <div id="node-pessoas" onclick="selectOperationalNode('pessoas')" class="node-card float-a cursor-pointer p-4 bg-white/95 rounded-2xl border border-slate-200/90 shadow-sm flex items-center justify-between group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-13 h-13 p-3 rounded-2xl bg-gradient-to-tr from-orange-600 to-orange-400 text-white shadow-lg shadow-orange-500/25 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-slate-900 group-hover:text-orange-600 transition-colors">Pessoas</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200">126 colaboradores</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium leading-relaxed">Equipes, produtividade, acessos e cargos</p>
+              </div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all shadow-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+
+          <!-- 6. Suprimentos -->
+          <div id="node-suprimentos" onclick="selectOperationalNode('suprimentos')" class="node-card float-b cursor-pointer p-4 bg-white/95 rounded-2xl border border-slate-200/90 shadow-sm flex items-center justify-between group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-13 h-13 p-3 rounded-2xl bg-gradient-to-tr from-amber-600 to-amber-400 text-white shadow-lg shadow-amber-500/25 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-slate-900 group-hover:text-amber-600 transition-colors">Suprimentos</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">2 itens críticos</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium leading-relaxed">Compras, estoque, consumo e cotações</p>
+              </div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all shadow-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+
+          <!-- 7. Qualidade -->
+          <div id="node-qualidade" onclick="selectOperationalNode('qualidade')" class="node-card float-a cursor-pointer p-4 bg-white/95 rounded-2xl border border-slate-200/90 shadow-sm flex items-center justify-between group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-13 h-13 p-3 rounded-2xl bg-gradient-to-tr from-teal-600 to-teal-400 text-white shadow-lg shadow-teal-500/25 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-slate-900 group-hover:text-teal-600 transition-colors">Qualidade</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200">PBQP-H / ISO</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium leading-relaxed">Inspeções, checklists e conformidade técnica</p>
+              </div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-all shadow-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+
+          <!-- 8. Documentos -->
+          <div id="node-documentos" onclick="selectOperationalNode('documentos')" class="node-card float-b cursor-pointer p-4 bg-white/95 rounded-2xl border border-slate-200/90 shadow-sm flex items-center justify-between group">
+            <div class="flex items-center gap-3.5">
+              <div class="w-13 h-13 p-3 rounded-2xl bg-gradient-to-tr from-slate-600 to-slate-400 text-white shadow-lg shadow-slate-500/25 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-slate-900 group-hover:text-slate-600 transition-colors">Documentos</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">1 a vencer</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium leading-relaxed">Projetos, laudos, contratos e registros legais</p>
+              </div>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-slate-600 group-hover:text-white transition-all shadow-sm">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- PAINEL DE INSPEÇÃO E DRILL-DOWN DINÂMICO (ABRE AO CLICAR EM UM NÓ) -->
+    <section id="module-detail-drawer" class="mt-8 pt-6 border-t border-slate-200/80 bg-slate-50/60 rounded-2xl p-6 transition-all duration-300">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+        <div class="flex items-center gap-3">
+          <div id="drawer-badge" class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+            <!-- Icone Dinâmico -->
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h4 id="drawer-title" class="text-lg font-bold text-slate-900">Operação Integrada</h4>
+              <span id="drawer-tag" class="text-xs font-semibold px-2 py-0.5 rounded bg-blue-100 text-blue-800">Conexão Bidirecional</span>
+            </div>
+            <p id="drawer-desc" class="text-xs text-slate-500">Mapeamento em tempo real das frentes de serviço e produtividade operacional.</p>
+          </div>
+        </div>
+
+        <!-- Indicadores Imediatos do Módulo Selecionado -->
+        <div class="flex items-center gap-3">
+          <div class="bg-white border border-slate-200 px-3.5 py-2 rounded-xl text-right">
+            <span class="block text-[10px] text-slate-400 font-bold uppercase">Latência de Sincronia</span>
+            <span id="drawer-latency" class="text-sm font-black text-slate-800 font-mono">14ms</span>
+          </div>
+          <div class="bg-white border border-slate-200 px-3.5 py-2 rounded-xl text-right">
+            <span class="block text-[10px] text-slate-400 font-bold uppercase">Estado de Integridade</span>
+            <span id="drawer-health" class="text-sm font-black text-emerald-600 flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 100% OK
+            </span>
           </div>
         </div>
       </div>
+
+      <!-- Métricas em 3 colunas para o módulo inspecionado -->
+      <div id="drawer-cards-grid" class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
+        <!-- Card 1 -->
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200/90 shadow-2xs">
+          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Avanço Físico de Campo</div>
+          <div class="text-xl font-black text-slate-900">82.4% <span class="text-xs font-medium text-emerald-600">▲ +1.8%</span></div>
+          <div class="text-xs text-slate-400 mt-1">4 obras com atualização nos últimos 12 min</div>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200/90 shadow-2xs">
+          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Apontamentos Validados</div>
+          <div class="text-xl font-black text-blue-600">1.240 <span class="text-xs font-medium text-slate-400">hoje</span></div>
+          <div class="text-xs text-slate-400 mt-1">Nenhum gargalo de conferência pendente</div>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200/90 shadow-2xs">
+          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Alerta Preventivo FLUX IA</div>
+          <div class="text-sm font-bold text-slate-800">Pavimento 4 liberado para concretagem</div>
+          <div class="text-xs text-emerald-600 font-semibold mt-1">Checklist 100% em conformidade</div>
+        </div>
+      </div>
     </section>
+
+    <!-- RODAPÉ INFORMATIVO DA TRANSFORMAÇÃO -->
+    <footer class="mt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+        <span>Arquitetura Reativa FLUX OS — Zero silos operacionais.</span>
+      </div>
+      <div>
+        <span>Clique nos cartões para inspecionar os subsistemas operacionais</span>
+      </div>
+    </footer>
+
+  </section>
   </div>
 
   <!-- 04 — TUDO CONECTADO -->
@@ -1903,4 +2362,204 @@
 
 
 
+<script>
+
+    // DADOS DOS MÓDULOS OPERACIONAIS
+    const operationalData = {
+      operacao: {
+        title: "Operação & Campo",
+        tag: "Execução em Tempo Real",
+        desc: "Planejamento, acompanhamento de campo, avanço diário e alocação de frentes sem atraso de informação.",
+        color: "bg-sky-600",
+        latency: "12ms",
+        health: "100% Operacional",
+        cards: [
+          { title: "Avanço Físico Médio", value: "82.4%", sub: "4 projetos ativos monitorados", tag: "▲ +1.8%" },
+          { title: "Apontamentos Diários", value: "1.240", sub: "Validação direta da ponta ao gestor", tag: "Hoje" },
+          { title: "Recomendação IA", value: "Frente de armação adiantada", sub: "Realoque equipe para Pavimento 5", tag: "Otimização" }
+        ]
+      },
+      inteligencia: {
+        title: "FLUX Intelligence (IA)",
+        tag: "Camada Preditiva & Análise",
+        desc: "Transforma dados fragmentados em diagnósticos imediatos, prioridades do dia e alertas de risco antes do prejuízo.",
+        color: "bg-purple-600",
+        latency: "8ms",
+        health: "Modelos Ativos",
+        cards: [
+          { title: "Perguntas Respondidas", value: "348", sub: "Consultas de diretoria e gestão", tag: "Tempo Real" },
+          { title: "Desvios Identificados", value: "2", sub: "1 em suprimentos e 1 em produtividade", tag: "Alerta" },
+          { title: "Plano de Resolução", value: "3 Ações Sugeridas", sub: "Geração instantânea de diretrizes", tag: "Disponível" }
+        ]
+      },
+      indicadores: {
+        title: "Indicadores & Dashboards",
+        tag: "Gestão à Vista",
+        desc: "Consolidação unificada de métricas estratégicas, táticas e operacionais sem necessidade de consolidar planilhas.",
+        color: "bg-blue-600",
+        latency: "14ms",
+        health: "Atualizado Agora",
+        cards: [
+          { title: "KPIs Monitorados", value: "42", sub: "Produção, custos, equipe e prazos", tag: "Global" },
+          { title: "Tempo de Relatório", value: "0 min", sub: "Geração em tempo real eliminando 4.2h/sem", tag: "Economia" },
+          { title: "Confiabilidade", value: "99.8%", sub: "Auditoria contínua de apontamentos", tag: "Auditado" }
+        ]
+      },
+      custos: {
+        title: "Custos & Gestão Financeira",
+        tag: "Orçamento x Realizado",
+        desc: "Controle orçamentário transparente, medições de contratos, previsão de desembolso e controle contra estouros.",
+        color: "bg-emerald-600",
+        latency: "15ms",
+        health: "Equilibrado",
+        cards: [
+          { title: "Volume sob Gestão", value: "R$ 48,7M", sub: "Controle integrado com suprimentos", tag: "4 Obras" },
+          { title: "Desvio Financeiro", value: "-0.4%", sub: "Dentro da margem de tolerância", tag: "Saudável" },
+          { title: "Economia Potencial", value: "R$ 463.308", sub: "Eliminação de retrabalhos e burocracia", tag: "FLUX OS" }
+        ]
+      },
+      pessoas: {
+        title: "Pessoas, Equipes & Produtividade",
+        tag: "Gestão de Colaboradores",
+        desc: "Controle de efetivo, produtividade por equipe, apontamento biométrico/digital e matriz de responsabilidades.",
+        color: "bg-orange-600",
+        latency: "10ms",
+        health: "126 Integrados",
+        cards: [
+          { title: "Colaboradores Ativos", value: "126", sub: "Engenharia, campo e administrativo", tag: "100% Presentes" },
+          { title: "Produtividade Semanal", value: "94.2%", sub: "Recuperação após ajuste de armação", tag: "▲ +2.4%" },
+          { title: "Acessos & Treinamentos", value: "100% em dia", sub: "Normas regulamentadoras e NR-18", tag: "Conforme" }
+        ]
+      },
+      suprimentos: {
+        title: "Suprimentos, Estoque & Compras",
+        tag: "Cadeia de Fornecimento",
+        desc: "Fluxo automatizado de pedidos, cotações com múltiplos fornecedores e aviso prévio de estoque crítico.",
+        color: "bg-amber-600",
+        latency: "11ms",
+        health: "Atenção Crítica (2)",
+        cards: [
+          { title: "Itens Críticos", value: "2 Itens", sub: "Aço CA-50 10mm e Concreto FCK 30", tag: "Atenção" },
+          { title: "Ordens de Compra", value: "14", sub: "Rastreabilidade de entrega no canteiro", tag: "Em trânsito" },
+          { title: "Previsão de Ruptura", value: "0 riscos", sub: "Fornecedor acionado via FLUX", tag: "Prevenido" }
+        ]
+      },
+      qualidade: {
+        title: "Qualidade, Inspeções & PBQP-H",
+        tag: "Conformidade & Rastreabilidade",
+        desc: "Fichas de verificação de serviço (FVS), relatórios fotográficos com geolocalização e tratamento ágil de RNCs.",
+        color: "bg-teal-600",
+        latency: "16ms",
+        health: "Certificado",
+        cards: [
+          { title: "FVS Realizadas", value: "184", sub: "Mês corrente com evidência fotográfica", tag: "Conforme" },
+          { title: "Não Conformidades", value: "3 Abertas", sub: "Todas com plano de ação em andamento", tag: "Controlado" },
+          { title: "Índice de Resolução", value: "96.5%", sub: "Tempo médio de fechamento: 48h", tag: "Ágil" }
+        ]
+      },
+      documentos: {
+        title: "Documentos, Laudos & Projetos",
+        tag: "Repositório Centralizado",
+        desc: "Controle de revisões de projetos arquitetônicos e complementares, alvarás, licenças e laudos técnicos.",
+        color: "bg-slate-600",
+        latency: "9ms",
+        health: "1 Vencimento Próximo",
+        cards: [
+          { title: "Projetos em Nuvem", value: "1.428", sub: "Garantia de equipe trabalhando na versão mais recente", tag: "BIM / CAD" },
+          { title: "Vencimentos (30 dias)", value: "1 Laudo", sub: "Alvará da Torre B em renovação", tag: "Aviso Ativo" },
+          { title: "Assinaturas Digitais", value: "100%", sub: "Validade jurídica e auditoria total", tag: "Seguro" }
+        ]
+      }
+    };
+
+    // Função de seleção de nó operacional com atualização reativa
+    function selectOperationalNode(nodeKey) {
+      const data = operationalData[nodeKey];
+      if (!data) return;
+
+      // Atualiza classes ativas nos nós
+      document.querySelectorAll('.node-card').forEach(el => el.classList.remove('active-node'));
+      const activeEl = document.getElementById(`node-${nodeKey}`);
+      if (activeEl) activeEl.classList.add('active-node');
+
+      // Atualiza gaveta de detalhes com animação suave
+      const drawer = document.getElementById('module-detail-drawer');
+      drawer.classList.add('opacity-50');
+
+      setTimeout(() => {
+        document.getElementById('drawer-title').innerText = data.title;
+        document.getElementById('drawer-tag').innerText = data.tag;
+        document.getElementById('drawer-desc').innerText = data.desc;
+        document.getElementById('drawer-latency').innerText = data.latency;
+        document.getElementById('drawer-health').innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span> ${data.health}`;
+        
+        const badge = document.getElementById('drawer-badge');
+        badge.className = `w-10 h-10 rounded-xl ${data.color} text-white flex items-center justify-center font-bold text-lg shadow-md`;
+
+        // Renderiza os 3 cards
+        const grid = document.getElementById('drawer-cards-grid');
+        grid.innerHTML = data.cards.map(c => `
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200/90 shadow-2xs hover:border-blue-300 transition-colors">
+            <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1 flex justify-between">
+              <span>${c.title}</span>
+              <span class="text-blue-600 font-semibold">${c.tag}</span>
+            </div>
+            <div class="text-xl font-black text-slate-900">${c.value}</div>
+            <div class="text-xs text-slate-400 mt-1">${c.sub}</div>
+          </div>
+        `).join('');
+
+        drawer.classList.remove('opacity-50');
+      }, 150);
+    }
+
+    // Dispara pulso visual e incrementa contador de pacotes
+    let packetCount = 1420;
+    function triggerGlobalPulse() {
+      const btn = event.target;
+      const counter = document.getElementById('flux-packets-counter');
+      const progressBar = document.getElementById('sync-progress-bar');
+      const rateTxt = document.getElementById('sync-rate-txt');
+
+      packetCount += Math.floor(Math.random() * 80) + 40;
+      counter.innerText = `${packetCount} op/s`;
+
+      // Simulação de recarga da barra
+      progressBar.style.width = '30%';
+      rateTxt.innerText = "Sincronizando nós...";
+
+      setTimeout(() => {
+        progressBar.style.width = '100%';
+        rateTxt.innerText = "100% Sincronizado";
+      }, 600);
+
+      // Efeito nos caminhos SVG
+      const streams = document.querySelectorAll('.dash-flow, .dash-flow-reverse');
+      streams.forEach(s => {
+        s.setAttribute('stroke-width', '5');
+        setTimeout(() => s.setAttribute('stroke-width', '3'), 800);
+      });
+    }
+
+    // Alternador de Modo de Visualização
+    function switchVisualMode(mode) {
+      const btnFlow = document.getElementById('btn-mode-flow');
+      const btnRadar = document.getElementById('btn-mode-radar');
+      const tip = document.getElementById('center-status-tip');
+
+      if (mode === 'flow') {
+        btnFlow.className = "px-4 py-1.5 rounded-xl text-xs font-bold transition-all bg-white text-blue-700 shadow-sm";
+        btnRadar.className = "px-4 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-600 hover:text-slate-900";
+        tip.innerText = "Clique em qualquer módulo ao redor para inspecionar os fluxos de dados em tempo real.";
+      } else {
+        btnRadar.className = "px-4 py-1.5 rounded-xl text-xs font-bold transition-all bg-white text-blue-700 shadow-sm";
+        btnFlow.className = "px-4 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-600 hover:text-slate-900";
+        tip.innerText = "Modo Monitoramento: Todos os 8 nós reportando integridade operacional contínua ao FLUX OS.";
+      }
+    }
+
+    // Inicia com o módulo Operação selecionado
+    document.addEventListener('DOMContentLoaded',()=>selectOperationalNode('operacao'));
+  
+</script>
 </body></html>
