@@ -112,7 +112,7 @@
   .flux-ribbon.r1{top:-26vh;border-bottom:1px solid rgba(125,211,252,.9);box-shadow:0 12px 34px rgba(37,99,235,.25),0 40px 110px rgba(37,99,235,.13);background:linear-gradient(180deg,rgba(37,99,235,.14),rgba(37,99,235,.025) 72%,transparent);animation:ribbonOne 80s ease-in-out infinite alternate}
   .flux-ribbon.r2{bottom:-31vh;border-top:1px solid rgba(99,102,241,.82);box-shadow:0 -12px 34px rgba(79,70,229,.22),0 -38px 105px rgba(37,99,235,.12);background:linear-gradient(0deg,rgba(49,46,129,.14),rgba(37,99,235,.02) 70%,transparent);animation:ribbonTwo 110s ease-in-out infinite alternate}
   .flux-ribbon.r3{right:-50vw;left:auto;top:8vh;width:105vw;height:76vh;border-left:1px solid rgba(96,165,250,.35);box-shadow:-16px 0 80px rgba(37,99,235,.08);background:radial-gradient(ellipse at center,rgba(37,99,235,.055),transparent 67%);animation:ribbonThree 140s linear infinite}
-  .flux-splash-inner{display:none}
+  .flux-splash-inner{position:relative;z-index:3;display:block;width:min(680px,82vw);text-align:center;transform:translate3d(var(--flux-x,0),var(--flux-y,0),0);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
   .flux-splash-brand-wrap{position:relative;width:min(350px,39vw);margin:auto;opacity:0;animation:splashBrand 1.55s cubic-bezier(.16,1,.3,1) .15s forwards;filter:drop-shadow(0 14px 30px rgba(0,0,0,.22))}
   .flux-splash-brand{width:100%;height:auto;display:block;margin:0;filter:brightness(0) invert(1)}
   .flux-splash-brand-os{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;clip-path:polygon(60% 0,100% 0,100% 78%,60% 78%)}
@@ -535,8 +535,8 @@
     </div>
     <div class="flux-splash-inner">
       <div class="flux-splash-brand-wrap">
-        <img class="flux-splash-brand" src="/fluxos/assets/brand/MarcaSite.png?v=20260924-3" alt="FLUX OS — Gestão Inteligente de Obras e Projetos">
-        <img class="flux-splash-brand-os" src="/fluxos/assets/brand/MarcaSite.png?v=20260924-3" alt="" aria-hidden="true">
+        <img class="flux-splash-brand" src="/fluxos/assets/brand/MarcaSite.png?v=20260924-4" alt="FLUX OS — Gestão Inteligente de Obras e Projetos">
+        <img class="flux-splash-brand-os" src="/fluxos/assets/brand/MarcaSite.png?v=20260924-4" alt="" aria-hidden="true">
       </div>
       <div class="flux-flow-line"></div>
       <p class="flux-splash-tag">Tudo conectado. Tudo no mesmo fluxo.</p>
