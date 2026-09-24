@@ -398,6 +398,35 @@
 .flux-live-dashboard .fld-ring{--fld-progress:0%;background:conic-gradient(#2de2b0 0 var(--fld-progress),#15354a var(--fld-progress) 100%)!important;animation:fldRingBuild 2.4s cubic-bezier(.22,.8,.25,1) forwards,fldRingBreath 3.2s ease-in-out 2.4s infinite!important}
 .flux-live-dashboard .fld-ring-number{display:block;font-size:22px;line-height:1;font-weight:900;color:#fff}
 @keyframes fldRingBuild{0%{--fld-progress:0%;filter:drop-shadow(0 0 0 rgba(45,226,176,0))}100%{--fld-progress:92%;filter:drop-shadow(0 0 8px rgba(45,226,176,.22))}}
+
+/* 02 — O PROBLEMA: mosaico 12 células, contraste cheio */
+#problema .problem-grid{margin-top:1.7rem;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.7rem}
+#problema .problem-cell{position:relative;isolation:isolate;overflow:hidden;min-height:124px;padding:1rem .65rem;border-radius:1.15rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 25px -20px rgba(15,23,42,.65);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease,filter .3s ease;animation:problemCellIn .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--pc-i)*45ms)}
+#problema .problem-cell:after{content:"";position:absolute;z-index:-1;inset:-80% -30%;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.24) 48%,transparent 58%);transform:translateX(-65%) rotate(10deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+#problema .problem-cell:hover{transform:translateY(-6px) scale(1.025);box-shadow:0 22px 34px -20px rgba(15,23,42,.55);filter:saturate(1.08)}
+#problema .problem-cell:hover:after{transform:translateX(65%) rotate(10deg)}
+#problema .problem-cell>span{font-size:2rem;margin-bottom:.55rem;color:#fff;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+#problema .problem-cell:hover>span{transform:scale(1.14) rotate(-5deg)}
+#problema .problem-cell>b{font-size:.82rem;line-height:1.1;font-weight:850}
+#problema .problem-cell>small{font-size:.62rem;line-height:1.2;margin-top:.35rem;color:rgba(255,255,255,.76);transition:color .25s ease}
+#problema .problem-cell:hover>small{color:#fff}
+#problema .problem-emerald{background:linear-gradient(145deg,#059669,#047857)}
+#problema .problem-green{background:linear-gradient(145deg,#16a34a,#15803d)}
+#problema .problem-blue{background:linear-gradient(145deg,#2563eb,#1d4ed8)}
+#problema .problem-amber{background:linear-gradient(145deg,#f59e0b,#d97706)}
+#problema .problem-indigo{background:linear-gradient(145deg,#4f46e5,#3730a3)}
+#problema .problem-sky{background:linear-gradient(145deg,#0284c7,#0369a1)}
+#problema .problem-violet{background:linear-gradient(145deg,#7c3aed,#6d28d9)}
+#problema .problem-rose{background:linear-gradient(145deg,#e11d48,#be123c)}
+#problema .problem-cyan{background:linear-gradient(145deg,#0891b2,#0e7490)}
+#problema .problem-purple{background:linear-gradient(145deg,#9333ea,#7e22ce)}
+#problema .problem-orange{background:linear-gradient(145deg,#ea580c,#c2410c)}
+#problema .problem-information{background:linear-gradient(145deg,#111c34,#071126);box-shadow:0 16px 30px -18px rgba(15,23,42,.9);animation:problemCellIn .55s cubic-bezier(.2,.8,.2,1) both,problemInfoPulse 3.2s ease-in-out .7s infinite!important}
+#problema .problem-information>span{color:#60a5fa}
+@keyframes problemCellIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes problemInfoPulse{0%,100%{box-shadow:0 16px 30px -18px rgba(15,23,42,.9)}50%{box-shadow:0 18px 36px -15px rgba(37,99,235,.48)}}
+@media(max-width:1050px){#problema .problem-grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:700px){#problema .problem-grid{grid-template-columns:repeat(2,1fr)}#problema .problem-cell{min-height:112px}}
+@media(prefers-reduced-motion:reduce){#problema .problem-cell{animation:none!important;transition:none!important}#problema .problem-cell:after{display:none}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -532,52 +561,19 @@
         <span class="text-xs font-bold uppercase tracking-wider text-slate-500">SUA EMPRESA JÁ TEM OS DADOS.</span>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Eles só estão <span class="gradient-text">espalhados.</span></h2>
       </div>
-      <div class="mt-7 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center">
-        <div class="problem-cell p-4 min-h-[118px] bg-emerald-50/70 border border-emerald-100 rounded-2xl flex flex-col items-center">
-          <span class="material-symbols-outlined text-emerald-600 text-3xl">table_chart</span>
-          <span class="text-sm font-bold text-slate-700 mt-2">Planilhas</span>
-          <span class="text-[11px] text-slate-400 mt-1 leading-tight">Múltiplas versões</span>
-        </div>
-        <div class="problem-cell p-4 min-h-[118px] bg-green-50/70 border border-green-100 rounded-2xl flex flex-col items-center">
-          <span class="material-symbols-outlined text-green-600 text-3xl">chat</span>
-          <span class="text-sm font-bold text-slate-700 mt-2">Mensagens</span>
-          <span class="text-[11px] text-slate-400 mt-1 leading-tight">Conversas soltas</span>
-        </div>
-        <div class="problem-cell p-4 min-h-[118px] bg-blue-50/70 border border-blue-100 rounded-2xl flex flex-col items-center">
-          <span class="material-symbols-outlined text-blue-600 text-3xl">mail</span>
-          <span class="text-sm font-bold text-slate-700 mt-2">E-mails</span>
-          <span class="text-[11px] text-slate-400 mt-1 leading-tight">Perdidos na caixa</span>
-        </div>
-        <div class="problem-cell p-4 min-h-[118px] bg-amber-50/70 border border-amber-100 rounded-2xl flex flex-col items-center">
-          <span class="material-symbols-outlined text-amber-600 text-3xl">description</span>
-          <span class="text-sm font-bold text-slate-700 mt-2">Documentos</span>
-          <span class="text-[11px] text-slate-400 mt-1 leading-tight">Sem indexação</span>
-        </div>
-        <div class="problem-cell p-4 min-h-[118px] bg-slate-900 text-white rounded-2xl flex flex-col items-center justify-center shadow-md">
-          <span class="material-symbols-outlined text-blue-400 text-xl mb-1">layers</span>
-          <span class="text-xs font-extrabold tracking-wider">INFORMAÇÃO</span>
-          <span class="text-[9px] text-slate-300">Descentralizada</span>
-        </div>
-        <div class="problem-cell p-4 min-h-[118px] bg-indigo-50/70 border border-indigo-100 rounded-2xl flex flex-col items-center">
-          <span class="material-symbols-outlined text-indigo-600 text-3xl">devices</span>
-          <span class="text-sm font-bold text-slate-700 mt-2">Sistemas</span>
-          <span class="text-[11px] text-slate-400 mt-1 leading-tight">Legados isolados</span>
-        </div>
-        <div class="problem-cell p-4 min-h-[118px] bg-sky-50/70 border border-sky-100 rounded-2xl flex flex-col items-center">
-          <span class="material-symbols-outlined text-sky-600 text-3xl">bar_chart</span>
-          <span class="text-sm font-bold text-slate-700 mt-2">Relatórios</span>
-          <span class="text-[11px] text-slate-400 mt-1 leading-tight">Desatualizados</span>
-        </div>
-        <div class="problem-cell p-4 min-h-[118px] bg-violet-50/70 border border-violet-100 rounded-2xl flex flex-col items-center">
-          <span class="material-symbols-outlined text-violet-600 text-3xl">group</span>
-          <span class="text-sm font-bold text-slate-700 mt-2">Pessoas</span>
-          <span class="text-[11px] text-slate-400 mt-1 leading-tight">Gargalos de comunicação</span>
-        </div>
-        <div class="problem-cell p-4 min-h-[118px] bg-rose-50/70 border border-rose-100 rounded-2xl flex flex-col items-center">
-          <span class="material-symbols-outlined text-rose-600 text-3xl">schema</span>
-          <span class="text-sm font-bold text-slate-700 mt-2">Processos</span>
-          <span class="text-[11px] text-slate-400 mt-1 leading-tight">Manuais e lentos</span>
-        </div>
+      <div class="problem-grid">
+        <div class="problem-cell problem-emerald" style="--pc-i:0"><span class="material-symbols-outlined">table_chart</span><b>Planilhas</b><small>Múltiplas versões</small></div>
+        <div class="problem-cell problem-green" style="--pc-i:1"><span class="material-symbols-outlined">chat</span><b>Mensagens</b><small>Conversas soltas</small></div>
+        <div class="problem-cell problem-blue" style="--pc-i:2"><span class="material-symbols-outlined">mail</span><b>E-mails</b><small>Perdidos na caixa</small></div>
+        <div class="problem-cell problem-amber" style="--pc-i:3"><span class="material-symbols-outlined">description</span><b>Documentos</b><small>Sem indexação</small></div>
+        <div class="problem-cell problem-indigo" style="--pc-i:4"><span class="material-symbols-outlined">devices</span><b>Sistemas</b><small>Legados isolados</small></div>
+        <div class="problem-cell problem-sky" style="--pc-i:5"><span class="material-symbols-outlined">bar_chart</span><b>Relatórios</b><small>Desatualizados</small></div>
+        <div class="problem-cell problem-violet" style="--pc-i:6"><span class="material-symbols-outlined">group</span><b>Pessoas</b><small>Gargalos de comunicação</small></div>
+        <div class="problem-cell problem-rose" style="--pc-i:7"><span class="material-symbols-outlined">schema</span><b>Processos</b><small>Manuais e lentos</small></div>
+        <div class="problem-cell problem-cyan" style="--pc-i:8"><span class="material-symbols-outlined">monitoring</span><b>Indicadores</b><small>Métricas sem contexto</small></div>
+        <div class="problem-cell problem-purple" style="--pc-i:9"><span class="material-symbols-outlined">task_alt</span><b>Tarefas</b><small>Acompanhamento disperso</small></div>
+        <div class="problem-cell problem-orange" style="--pc-i:10"><span class="material-symbols-outlined">approval</span><b>Aprovações</b><small>Decisões fora do fluxo</small></div>
+        <div class="problem-cell problem-information" style="--pc-i:11"><span class="material-symbols-outlined">layers</span><b>INFORMAÇÃO</b><small>Descentralizada</small></div>
       </div>
     </section>
 
