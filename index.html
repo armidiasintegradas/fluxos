@@ -430,6 +430,19 @@
 
 #calc-memory-panel.calc-memory-open{animation:calcMemoryReveal .42s cubic-bezier(.2,.8,.2,1) both}
 @keyframes calcMemoryReveal{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+/* 02 — Cadastro rápido da operação */
+.project-profile{position:relative;overflow:hidden}.project-profile:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-160px;top:-210px;background:rgba(59,130,246,.18);filter:blur(10px)}.project-profile>*{position:relative;z-index:1}
+.project-kicker{display:inline-flex;margin-top:1.4rem;padding:.38rem .65rem;border:1px solid rgba(147,197,253,.22);background:rgba(59,130,246,.12);border-radius:999px;font-size:.62rem;font-weight:800;letter-spacing:.12em;color:#bfdbfe}
+.project-profile-benefits{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-top:1.6rem;color:#cbd5e1;font-size:.68rem;font-weight:700}.project-profile-benefits span{display:flex;align-items:center;gap:.35rem}.project-profile-benefits i{font-style:normal;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#2563eb;color:white;font-size:.58rem}.project-profile-benefits b{color:#60a5fa}
+.project-profile-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;padding:1rem;border:1px solid rgba(148,163,184,.2);background:rgba(15,23,42,.52);backdrop-filter:blur(14px);border-radius:1.35rem;box-shadow:0 25px 50px -30px rgba(0,0,0,.7)}
+.project-profile-form label{display:flex;flex-direction:column;gap:.38rem;padding:.7rem;background:rgba(255,255,255,.055);border:1px solid rgba(148,163,184,.14);border-radius:.85rem}.project-profile-form label>span{font-size:.61rem;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:.04em}.project-profile-wide{grid-column:span 3}
+.project-profile-form input{width:100%;background:transparent!important;border:0!important;box-shadow:none!important;padding:.15rem!important;color:white!important;font-size:.85rem;font-weight:700}.project-profile-form input:focus{outline:none!important;box-shadow:none!important}
+.project-money,.project-suffix{display:flex;align-items:center;gap:.4rem}.project-money>span,.project-suffix small{font-size:.72rem;font-weight:800;color:#60a5fa;white-space:nowrap}
+.project-profile-submit{grid-column:span 3;display:flex;align-items:center;justify-content:center;gap:.7rem;min-height:54px;border-radius:.9rem;background:linear-gradient(135deg,#3b82f6,#4f46e5);font-size:.7rem;font-weight:900;box-shadow:0 14px 30px -16px #3b82f6;transition:.25s ease}.project-profile-submit:hover{transform:translateY(-2px);filter:brightness(1.08)}.project-profile-submit>span:last-child{display:flex;flex-direction:column;line-height:1.2}.project-profile-submit small{font-size:.55rem;font-weight:500;color:#dbeafe;margin-top:.15rem}
+.project-profile-confirm{display:none;grid-column:span 3;align-items:center;gap:.6rem;padding:.65rem .8rem;border-radius:.8rem;background:rgba(16,185,129,.12);border:1px solid rgba(52,211,153,.2);color:#6ee7b7}.project-profile-confirm.show{display:flex;animation:projectConfirm .4s ease both}.project-profile-confirm>span:last-child{display:flex;flex-direction:column}.project-profile-confirm b{font-size:.7rem}.project-profile-confirm small{font-size:.58rem;color:#a7f3d0}
+@keyframes projectConfirm{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:700px){.project-profile-form{grid-template-columns:1fr}.project-profile-wide,.project-profile-submit,.project-profile-confirm{grid-column:span 1}}
 </style>
 <meta name="flux-build" content="panel08-fix-20260924-1825">\n</head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -556,10 +569,32 @@
     </div>
   </section>
 
+  <!-- 02 — CADASTRO RÁPIDO DA OPERAÇÃO -->
+  <section id="cadastro-projeto" class="project-profile bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 rounded-3xl p-7 sm:p-10 text-white shadow-xl scroll-mt-20">
+    <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-8 items-center">
+      <div>
+        <div class="text-xs font-bold tracking-widest text-blue-300 uppercase">02 — Sua operação</div>
+        <span class="project-kicker">ANÁLISE PERSONALIZADA</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight mt-3">Antes de falar do FLUX,<br><span class="text-blue-300">vamos falar do seu projeto.</span></h2>
+        <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-lg">Informe cinco dados essenciais. Eles serão usados ao longo da apresentação para contextualizar a operação e alimentar a análise econômica.</p>
+        <div class="project-profile-benefits"><span><i>1</i> Você informa</span><b>→</b><span><i>2</i> O FLUX contextualiza</span><b>→</b><span><i>3</i> Você compara o potencial</span></div>
+      </div>
+      <form class="project-profile-form" onsubmit="saveProjectProfile(event)">
+        <label class="project-profile-wide"><span>Nome do projeto</span><input id="early-proj-name" required value="Residencial Alfa / Projeto Base"></label>
+        <label class="project-profile-wide"><span>Valor total do projeto</span><div class="project-money"><span>R$</span><input id="early-proj-val" type="number" min="100000" step="100000" required value="18500000"></div></label>
+        <label><span>Duração</span><div class="project-suffix"><input id="early-duration" type="number" min="1" max="120" required value="24"><small>meses</small></div></label>
+        <label><span>Equipe gestão/admin</span><div class="project-suffix"><input id="early-team" type="number" min="1" max="500" required value="15"><small>pessoas</small></div></label>
+        <label><span>Custo médio/profissional</span><div class="project-money"><span>R$</span><input id="early-cost" type="number" min="1" step="100" required value="7000"></div></label>
+        <button type="submit" class="project-profile-submit"><span class="material-symbols-outlined">auto_awesome</span><span>PERSONALIZAR MINHA ANÁLISE<small>Leva menos de 30 segundos</small></span></button>
+        <div id="project-profile-confirm" class="project-profile-confirm"><span class="material-symbols-outlined">check_circle</span><span><b>Projeto configurado.</b><small>Os próximos módulos agora usam este contexto.</small></span></div>
+      </form>
+    </div>
+  </section>
+
   <!-- 02 & 03 — O PROBLEMA E A TRANSFORMAÇÃO -->
   <div class="grid grid-cols-1 gap-8">
     <section class="bg-white rounded-3xl p-6 md:p-8 card-border shadow-sm relative overflow-hidden" id="problema">
-      <div class="text-xs font-bold tracking-widest text-slate-400 uppercase">02 — O problema</div>
+      <div class="text-xs font-bold tracking-widest text-slate-400 uppercase">03 — O problema</div>
       <div class="mt-3 text-center max-w-3xl mx-auto">
         <span class="text-xs font-bold uppercase tracking-wider text-slate-500">SUA EMPRESA JÁ TEM OS DADOS.</span>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Eles só estão <span class="gradient-text">espalhados.</span></h2>
@@ -2558,9 +2593,36 @@
     showFluxEntry(true);
   }
 
+
+  function saveProjectProfile(e){
+    if(e)e.preventDefault();
+    const name=document.getElementById('early-proj-name').value.trim()||'Projeto Base';
+    const value=Math.max(100000,parseFloat(document.getElementById('early-proj-val').value)||18500000);
+    const duration=Math.max(1,parseFloat(document.getElementById('early-duration').value)||24);
+    const team=Math.max(1,parseFloat(document.getElementById('early-team').value)||15);
+    const cost=Math.max(1,parseFloat(document.getElementById('early-cost').value)||7000);
+    const map=[['sim-proj-name',name],['sim-proj-val',value],['sim-duration',duration],['sim-team-size',team],['sim-cost-person',cost]];
+    map.forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.value=val});
+    localStorage.setItem('flux_project_profile_v1',JSON.stringify({name,value,duration,team,cost,updatedAt:Date.now()}));
+    calculateSimulator();
+    const c=document.getElementById('project-profile-confirm');if(c){c.classList.remove('show');void c.offsetWidth;c.classList.add('show')}
+    document.querySelectorAll('.project-name-display').forEach(el=>el.textContent=name);
+    setTimeout(()=>document.getElementById('problema')?.scrollIntoView({behavior:'smooth',block:'start'}),650);
+  }
+  function initProjectProfile(){
+    let p=null;try{p=JSON.parse(localStorage.getItem('flux_project_profile_v1')||'null')}catch(e){}
+    if(!p)return;
+    const early=[['early-proj-name',p.name],['early-proj-val',p.value],['early-duration',p.duration],['early-team',p.team],['early-cost',p.cost]];
+    early.forEach(([id,val])=>{const el=document.getElementById(id);if(el&&val!=null)el.value=val});
+    const sim=[['sim-proj-name',p.name],['sim-proj-val',p.value],['sim-duration',p.duration],['sim-team-size',p.team],['sim-cost-person',p.cost]];
+    sim.forEach(([id,val])=>{const el=document.getElementById(id);if(el&&val!=null)el.value=val});
+    document.querySelectorAll('.project-name-display').forEach(el=>el.textContent=p.name||'Projeto');
+  }
+
   // Inicialização no carregamento
   window.addEventListener('DOMContentLoaded', () => {
     initFluxEntry();
+    initProjectProfile();
     calculateSimulator();
     updateBrandPreview();
     initDashboardMotion();
