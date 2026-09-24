@@ -187,6 +187,23 @@
   #painel-tempo-real .dashboard-card .text-slate-600,#painel-tempo-real .dashboard-card .text-slate-500,#painel-tempo-real .dashboard-card .text-slate-400{color:#94a3b8!important}
   #painel-tempo-real .dashboard-card .bg-slate-100,#painel-tempo-real .dashboard-card .bg-slate-200{background:rgba(148,163,184,.15)!important}
   #painel-tempo-real .dashboard-card .border-slate-200,#painel-tempo-real .dashboard-card .border-slate-100{border-color:rgba(148,163,184,.18)!important}
+
+  /* Painel 08 — contraste e navegação sequencial */
+  #painel-tempo-real .panel-title{color:#fff!important}
+  #painel-tempo-real .panel-eyebrow,#painel-tempo-real .panel-intro,#painel-tempo-real .role-label{color:#bfdbfe!important}
+  #painel-tempo-real .panel-intro .user-name-display{color:#fff!important}
+  #painel-tempo-real .panel-tabs,#painel-tempo-real .role-nav-track{position:relative;overflow:hidden}
+  #painel-tempo-real .role-btn,#painel-tempo-real .dash-tab{position:relative;z-index:2}
+  #painel-tempo-real .role-btn.is-active,#painel-tempo-real .dash-tab.is-active{background:linear-gradient(135deg,#0ea5e9,#2563eb)!important;color:#fff!important;border-color:#7dd3fc!important;box-shadow:0 7px 18px -8px rgba(14,165,233,.8)!important;font-weight:800!important}
+  #painel-tempo-real .dashboard-card,#painel-tempo-real .dash-card{background:linear-gradient(145deg,rgba(15,39,88,.88),rgba(8,28,68,.92))!important;border-color:rgba(96,165,250,.24)!important;color:#fff!important}
+  #painel-tempo-real .dash-card .text-slate-900,#painel-tempo-real .dash-card .text-slate-800,#painel-tempo-real .dash-card .text-slate-700,#painel-tempo-real .dash-card .text-slate-600{color:#f8fafc!important}
+  #painel-tempo-real .dash-card .text-slate-500,#painel-tempo-real .dash-card .text-slate-400{color:#a8bad5!important}
+  #painel-tempo-real .dash-card .bg-slate-200{background:rgba(148,163,184,.2)!important}
+  #painel-tempo-real .dash-card .border-slate-200{border-color:rgba(148,163,184,.2)!important}
+  #painel-tempo-real .dash-card[data-mod="desvio"]{background:linear-gradient(145deg,rgba(56,32,75,.9),rgba(20,31,71,.95))!important}
+  #painel-tempo-real .dash-card{transition:opacity .2s ease,transform .28s cubic-bezier(.2,.8,.2,1),border-color .2s ease}
+  #painel-tempo-real .dash-card.flux-card-enter{animation:panelCardIn .36s ease both}
+  @keyframes panelCardIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
@@ -1130,7 +1147,7 @@
 
     <!-- Filtros de Perfil e Categorias -->
     <div class="space-y-3 max-w-5xl mx-auto">
-      <div class="flex flex-wrap items-center justify-center gap-2">
+      <div class="role-nav-track flex flex-wrap items-center justify-center gap-2">
         <span class="role-label text-xs font-bold uppercase tracking-wider mr-1">VER COMO:</span>
         <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-blue-700 shadow-sm border border-slate-300 transition-all" onclick="filterByRole('diretoria', this)">Diretoria</button>
         <button class="role-btn px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 transition-all" onclick="filterByRole('gestor', this)">Gestor</button>
@@ -2174,45 +2191,53 @@
     document.getElementById('executive-modal').classList.remove('flex');
   }
 
+  function setPanelActive(buttons, active){
+    buttons.forEach(b=>b.classList.remove('is-active'));
+    if(active) active.classList.add('is-active');
+  }
+  function animateVisibleDashboardCards(){
+    document.querySelectorAll('#dashboard-grid .dash-card').forEach((card,i)=>{
+      if(card.style.display!=='none'){card.classList.remove('flux-card-enter');void card.offsetWidth;card.style.animationDelay=(i*.045)+'s';card.classList.add('flux-card-enter');}
+    });
+  }
   function filterDashboard(cat, btn) {
-    document.querySelectorAll('.dash-tab').forEach(b => {
-      b.classList.remove('bg-white', 'text-blue-700', 'shadow-sm', 'font-bold');
-      b.classList.add('text-slate-600');
+    const tabs=[...document.querySelectorAll('#painel-tempo-real .dash-tab')];
+    setPanelActive(tabs,btn);
+    document.querySelectorAll('#dashboard-grid .dash-card').forEach(card=>{
+      const cats=card.getAttribute('data-category')||'';
+      card.style.display=(cat==='todos'||cats.includes(cat))?'block':'none';
     });
-    btn.classList.add('bg-white', 'text-blue-700', 'shadow-sm', 'font-bold');
-    btn.classList.remove('text-slate-600');
-
-    const cards = document.querySelectorAll('.dash-card');
-    cards.forEach(card => {
-      const cardCats = card.getAttribute('data-category') || '';
-      if (cat === 'todos' || cardCats.includes(cat)) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
+    animateVisibleDashboardCards();
   }
-
   function filterByRole(role, btn) {
-    document.querySelectorAll('.role-btn').forEach(b => {
-      b.classList.remove('bg-white', 'text-blue-700', 'shadow-sm', 'border-slate-300', 'font-bold');
-      b.classList.add('text-slate-600', 'bg-slate-100');
+    const roles=[...document.querySelectorAll('#painel-tempo-real .role-btn')];
+    setPanelActive(roles,btn);
+    document.querySelectorAll('#dashboard-grid .dash-card').forEach(card=>{
+      const cats=card.getAttribute('data-category')||'';
+      card.style.display=cats.includes(role)?'block':'none';
     });
-    btn.classList.add('bg-white', 'text-blue-700', 'shadow-sm', 'border-slate-300', 'font-bold');
-    btn.classList.remove('text-slate-600', 'bg-slate-100');
-
-    const cards = document.querySelectorAll('.dash-card');
-    cards.forEach(card => {
-      const cardCats = card.getAttribute('data-category') || '';
-      if (cardCats.includes(role)) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
+    const labels={diretoria:'Diretoria & Decisão Estratégica',gestor:'Gestão & Controle',operacao:'Operação & Campo',suprimentos:'Suprimentos & Compras',qualidade:'Qualidade & Conformidade'};
+    const badge=document.getElementById('role-context-badge'); if(badge) badge.lastChild.textContent=' Painel configurado para: '+(labels[role]||role);
+    animateVisibleDashboardCards();
+  }
+  function initPanelSequentialNavigation(){
+    const groups=[
+      [...document.querySelectorAll('#painel-tempo-real .role-btn')],
+      [...document.querySelectorAll('#painel-tempo-real .dash-tab')]
+    ];
+    groups.forEach((buttons,gi)=>buttons.forEach((btn,i)=>{
+      btn.setAttribute('aria-label',btn.textContent.trim()+' — clique para visualizar');
+      btn.addEventListener('keydown',e=>{
+        if(!['ArrowRight','ArrowLeft'].includes(e.key))return;
+        e.preventDefault(); const d=e.key==='ArrowRight'?1:-1; buttons[(i+d+buttons.length)%buttons.length].focus();
+      });
+    }));
+    const activeRole=groups[0][0],activeTab=groups[1][0];
+    if(activeRole) activeRole.classList.add('is-active');
+    if(activeTab) activeTab.classList.add('is-active');
   }
 
-  function openPersonalizeModal() {
+    function openPersonalizeModal() {
     document.getElementById('personalize-modal').classList.remove('hidden');
     document.getElementById('personalize-modal').classList.add('flex');
   }
@@ -2408,6 +2433,7 @@
     calculateSimulator();
     updateBrandPreview();
     initDashboardMotion();
+    initPanelSequentialNavigation();
     initAutomationMotion();
     initFluxNetworkMotion();
   });
