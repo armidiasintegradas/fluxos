@@ -5,6 +5,8 @@
   <link rel="apple-touch-icon" href="/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-2">
   <title>FLUX OS — Apresentação Digital Interativa &amp; Plataforma Corporativa</title>
   <meta name="description" content="FLUX OS — gestão inteligente, processos conectados, indicadores e automação em uma plataforma configurada para a sua operação.">
+  <meta name="contact:email" content="armidiasintegradas@gmail.com">
+  <meta name="contact:whatsapp" content="+55 81 97333-2227">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="FLUX OS">
@@ -28,6 +30,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
   
   <script>
+
+  const FLUX_CONTACT = Object.freeze({
+    whatsapp: '5581973332227',
+    whatsappDisplay: '(81) 97333-2227',
+    email: 'armidiasintegradas@gmail.com'
+  });
+
     tailwind.config = {
       theme: {
         extend: {
@@ -2590,7 +2599,7 @@ header .flux-brand-logo{
             </label>
           </div>
           <button class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-2" type="submit">
-            VALIDAR ESTA ANÁLISE COM O FLUX <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            QUERO VER ISSO NA PRÁTICA <span class="material-symbols-outlined text-sm">arrow_forward</span>
           </button>
         </form>
       </div>
@@ -3098,7 +3107,28 @@ header .flux-brand-logo{
 
   function handleCtaSubmit(e) {
     e.preventDefault();
-    alert('Simulação enviada com sucesso! A equipe entrará em contato via WhatsApp com os números consolidados.');
+    const form = e.currentTarget;
+    const fields = form.querySelectorAll('input');
+    const clientWhatsapp = fields[0]?.value?.trim() || '';
+    const clientEmail = fields[1]?.value?.trim() || '';
+    const clientRole = fields[2]?.value?.trim() || '';
+    const clientName = document.querySelector('.user-name-display')?.textContent?.trim() || '';
+    const orgName = document.querySelector('.user-org-display')?.textContent?.trim() || '';
+    const projectName = document.getElementById('cta-project-name')?.textContent?.trim() || '';
+    const saving = document.getElementById('cta-project-saving')?.textContent?.trim() || '';
+
+    const message = [
+      'Olá! Quero ver isso na prática.',
+      clientName ? 'Nome: ' + clientName : '',
+      orgName ? 'Empresa: ' + orgName : '',
+      projectName ? 'Projeto: ' + projectName : '',
+      saving ? 'Potencial estimado: ' + saving : '',
+      clientWhatsapp ? 'Meu WhatsApp: ' + clientWhatsapp : '',
+      clientEmail ? 'Meu e-mail: ' + clientEmail : '',
+      clientRole ? 'Cargo/Função: ' + clientRole : ''
+    ].filter(Boolean).join('\n');
+
+    window.open('https://wa.me/' + FLUX_CONTACT.whatsapp + '?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
   }
 
 
