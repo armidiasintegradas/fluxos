@@ -2951,8 +2951,61 @@ header .flux-brand-logo{
   }
 }
 
+
+/* Desktop final opportunity title — fixed 5-line standard */
+@media(min-width:768px){
+  .flux-result-title{
+    display:flex!important;
+    width:100%!important;
+    max-width:1080px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:0!important;
+    text-align:center!important;
+  }
+
+  .flux-result-desktop-line{
+    display:block!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0!important;
+    text-align:center!important;
+    color:#0f172a!important;
+    font-size:clamp(2.7rem,4.8vw,4.9rem)!important;
+    line-height:.93!important;
+    letter-spacing:-.055em!important;
+    font-weight:850!important;
+    white-space:nowrap!important;
+  }
+
+  .flux-result-desktop-project{
+    max-width:94%!important;
+    margin-bottom:10px!important;
+    font-size:clamp(2.5rem,4.55vw,4.65rem)!important;
+    line-height:.95!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  .flux-result-desktop-accent{
+    color:#2563eb!important;
+  }
+}
+
+@media(min-width:768px) and (max-width:1100px){
+  .flux-result-desktop-line{
+    font-size:clamp(2.35rem,4.7vw,3.8rem)!important;
+  }
+  .flux-result-desktop-project{
+    font-size:clamp(2.2rem,4.45vw,3.6rem)!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-FINAL-TITLE-MOBILE-5LINES-1">
+<meta name="flux-build" content="20260925-FINAL-TITLE-DESKTOP-5LINES-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -4399,9 +4452,11 @@ header .flux-brand-logo{
       </div>
 
       <h2 class="flux-result-title">
-        <span class="user-name-display">Alex</span>, identificamos uma
-        <strong>oportunidade real de ganho</strong>
-        para a sua operação.
+        <span class="flux-result-desktop-line flux-result-desktop-project user-org-display">Seu projeto</span>
+        <span class="flux-result-desktop-line">Identificamos uma</span>
+        <span class="flux-result-desktop-line flux-result-desktop-accent">oportunidade</span>
+        <span class="flux-result-desktop-line flux-result-desktop-accent">real de ganho</span>
+        <span class="flux-result-desktop-line">para sua operação.</span>
       </h2>
 
       <h2 class="flux-result-title-mobile" aria-label="Oportunidade identificada">
