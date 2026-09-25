@@ -1,8 +1,8 @@
 <!DOCTYPE html><html class="scroll-smooth" lang="pt-BR" style=""><head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <link rel="icon" type="image/png" sizes="1254x1254" href="/fluxos/assets/brand/Icon.png?v=20260924-ICON-FINAL-1">
-  <link rel="apple-touch-icon" href="/fluxos/assets/brand/Icon.png?v=20260924-ICON-FINAL-1">
+  <link rel="icon" type="image/png" href="/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-2">
+  <link rel="apple-touch-icon" href="/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-2">
   <title>FLUX OS — Apresentação Digital Interativa &amp; Plataforma Corporativa</title>
   <meta name="description" content="FLUX OS — gestão inteligente, processos conectados, indicadores e automação em uma plataforma configurada para a sua operação.">
   <meta property="og:type" content="website">
@@ -11,8 +11,8 @@
   <meta property="og:title" content="FLUX OS — Gestão inteligente para sua operação">
   <meta property="og:description" content="Sua marca. Seus processos. Seus indicadores. Seu sistema.">
   <meta property="og:url" content="https://armidiasintegradas.github.io/fluxos/">
-  <meta property="og:image" content="https://armidiasintegradas.github.io/fluxos/assets/brand/whatsapp.png?v=20260924-WHATSAPP-1">
-  <meta property="og:image:secure_url" content="https://armidiasintegradas.github.io/fluxos/assets/brand/whatsapp.png?v=20260924-WHATSAPP-1">
+  <meta property="og:image" content="https://armidiasintegradas.github.io/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-2">
+  <meta property="og:image:secure_url" content="https://armidiasintegradas.github.io/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-2">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FLUX OS — Gestão inteligente para sua operação">
   <meta name="twitter:description" content="Sua marca. Seus processos. Seus indicadores. Seu sistema.">
-  <meta name="twitter:image" content="https://armidiasintegradas.github.io/fluxos/assets/brand/whatsapp.png?v=20260924-WHATSAPP-1">
+  <meta name="twitter:image" content="https://armidiasintegradas.github.io/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-2">
   <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
@@ -1072,8 +1072,35 @@ header .flux-brand-logo{
     object-fit:contain;
   }
 }
+
+/* Canonical core brand */
+.flux-core-official-brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:74px;
+  padding:13px 16px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#020817,#111d42);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 14px 32px -24px rgba(37,99,235,.8);
+}
+.flux-core-official-brand img{
+  display:block;
+  width:min(220px,100%);
+  height:auto;
+  object-fit:contain;
+}
+@media(max-width:767px){
+  .flux-core-official-brand{
+    min-height:64px;
+    padding:11px 14px;
+    border-radius:15px;
+  }
+  .flux-core-official-brand img{width:min(195px,100%)}
+}
 </style>
-<meta name="flux-build" content="20260924-ICON-FINAL-1">
+<meta name="flux-build" content="20260924-CANONICAL-BRAND-2">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -1531,10 +1558,10 @@ header .flux-brand-logo{
 
             <!-- LOGOTIPO FLUX OS NO CENTRO -->
             <div class="my-2">
-              <h2 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-none">
-                FLUX<span class="text-blue-600"> OS</span>
-              </h2>
-              <p class="text-xs font-extrabold tracking-[0.25em] text-slate-400 uppercase mt-1">
+              <div class="flux-core-official-brand" aria-label="FLUX OS">
+                <img src="/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-2" alt="FLUX OS">
+              </div>
+              <p class="text-xs font-extrabold tracking-[0.25em] text-slate-400 uppercase mt-2">
                 NÚCLEO CENTRAL
               </p>
             </div>
