@@ -5,13 +5,13 @@
   "scope": "/fluxos/",
   "display": "standalone",
   "background_color": "#020a1c",
-  "theme_color": "#2f49f7",
+  "theme_color": "#3549f5",
   "icons": [
     {
-      "src": "/fluxos/assets/brand/flux-app-icon-192.jpg",
-      "sizes": "192x192",
+      "src": "/fluxos/assets/brand/fluxo-os-icon-oficial-20260925.jpg",
+      "sizes": "1254x1254",
       "type": "image/jpeg",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
