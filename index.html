@@ -3617,8 +3617,62 @@ body.flux-scroll-lock{
   }
 }
 
+
+/* Mobile bottom-nav cross-browser stability — Android/iOS */
+@media(max-width:767px){
+  html{
+    scroll-behavior:auto!important;
+  }
+
+  .flux-mobile-nav{
+    -webkit-backdrop-filter:blur(18px)!important;
+    backdrop-filter:blur(18px)!important;
+    transform:translate3d(0,0,0)!important;
+    backface-visibility:hidden!important;
+    -webkit-backface-visibility:hidden!important;
+    contain:layout paint!important;
+    will-change:transform!important;
+  }
+
+  .flux-mobile-nav a{
+    position:relative!important;
+    overflow:hidden!important;
+    transform:translate3d(0,0,0)!important;
+    transition:
+      background-color .22s ease,
+      color .22s ease,
+      box-shadow .22s ease,
+      transform .18s ease!important;
+  }
+
+  .flux-mobile-nav a .material-symbols-outlined,
+  .flux-mobile-nav a>span:last-child{
+    transition:color .18s ease,transform .22s cubic-bezier(.2,.8,.2,1)!important;
+  }
+
+  .flux-mobile-nav a.active{
+    transform:translate3d(0,-1px,0)!important;
+  }
+
+  .flux-mobile-nav a.active .material-symbols-outlined{
+    transform:translateY(-1px) scale(1.04)!important;
+  }
+
+  .flux-mobile-nav a:active{
+    transform:translate3d(0,0,0) scale(.985)!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .flux-mobile-nav a,
+  .flux-mobile-nav a .material-symbols-outlined,
+  .flux-mobile-nav a>span:last-child{
+    transition:none!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-MOBILE-NAV-SCROLLSPY-1">
+<meta name="flux-build" content="20260925-MOBILE-NAV-ANDROID-STABILITY-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -6120,88 +6174,167 @@ function initFluxEntry(){
 
 <script>
 
-/* Mobile bottom-nav active section sync */
+/* Mobile bottom-nav active section sync — cross-browser stable */
 (function(){
-  const mq=window.matchMedia('(max-width:767px)');
+  const MOBILE_MAX=767;
+  const TOP_OFFSET=76;
+  const ACTIVE_PROBE=132;
   let ticking=false;
+  let programmaticTarget=null;
+  let unlockTimer=0;
+  let lastActiveId='visao-geral';
 
-  function mobileNavLinks(){
+  function isMobile(){
+    return window.innerWidth<=MOBILE_MAX;
+  }
+
+  function links(){
     return Array.from(document.querySelectorAll('.flux-mobile-nav a[href^="#"]'));
   }
 
-  function setMobileNavActive(link){
-    mobileNavLinks().forEach(a=>{
-      const active=a===link;
-      a.classList.toggle('active',active);
-      if(active) a.setAttribute('aria-current','page');
+  function targetFor(link){
+    const href=link?.getAttribute('href')||'';
+    if(!href.startsWith('#')) return null;
+    return document.getElementById(decodeURIComponent(href.slice(1)));
+  }
+
+  function setActive(link){
+    if(!link) return;
+    const id=(link.getAttribute('href')||'').slice(1);
+    if(id===lastActiveId && link.classList.contains('active')) return;
+    lastActiveId=id;
+    links().forEach(a=>{
+      const on=a===link;
+      a.classList.toggle('active',on);
+      if(on) a.setAttribute('aria-current','page');
       else a.removeAttribute('aria-current');
     });
   }
 
-  function syncMobileNavToScroll(){
-    if(!mq.matches) return;
-    const links=mobileNavLinks();
-    if(!links.length) return;
-
-    const probeY=Math.min(window.innerHeight*.34,240);
-    let best=null;
-    let bestScore=Infinity;
-
-    links.forEach(link=>{
-      const id=decodeURIComponent((link.getAttribute('href')||'').slice(1));
-      const section=id&&document.getElementById(id);
-      if(!section) return;
-      const r=section.getBoundingClientRect();
-
-      // Prefer the section intersecting the reading line.
-      if(r.top<=probeY && r.bottom>=probeY){
-        const score=Math.abs(r.top-probeY);
-        if(score<bestScore){best=link;bestScore=score}
-        return;
-      }
-
-      // Fallback: nearest section to the reading line.
-      const distance=r.bottom<probeY ? probeY-r.bottom : r.top-probeY;
-      if(distance>=0 && distance<bestScore){best=link;bestScore=distance}
-    });
-
-    if(best) setMobileNavActive(best);
+  function absoluteTop(el){
+    const r=el.getBoundingClientRect();
+    return r.top + window.pageYOffset;
   }
 
-  function requestMobileNavSync(){
+  function nearestSectionLink(){
+    const all=links();
+    if(!all.length) return null;
+    const y=(window.pageYOffset||document.documentElement.scrollTop||0)+ACTIVE_PROBE;
+    let chosen=all[0];
+
+    for(const link of all){
+      const section=targetFor(link);
+      if(!section) continue;
+      if(absoluteTop(section)<=y+1) chosen=link;
+      else break;
+    }
+    return chosen;
+  }
+
+  function syncFromScroll(){
+    if(!isMobile() || programmaticTarget) return;
+    setActive(nearestSectionLink());
+  }
+
+  function scheduleSync(){
     if(ticking) return;
     ticking=true;
     requestAnimationFrame(()=>{
       ticking=false;
-      syncMobileNavToScroll();
+      syncFromScroll();
     });
   }
 
-  function initMobileBottomNav(){
-    const links=mobileNavLinks();
-    if(!links.length) return;
+  function clearProgrammatic(targetId){
+    if(programmaticTarget!==targetId) return;
+    programmaticTarget=null;
+    clearTimeout(unlockTimer);
+    scheduleSync();
+  }
 
-    links.forEach(link=>{
-      link.addEventListener('click',()=>{
-        setMobileNavActive(link);
-        // Reconcile with actual scroll position after smooth/native anchor movement.
-        setTimeout(syncMobileNavToScroll,350);
-        setTimeout(syncMobileNavToScroll,800);
-      });
+  function navigate(link,e){
+    if(e) e.preventDefault();
+    if(!isMobile()) return;
+
+    const section=targetFor(link);
+    if(!section) return;
+
+    const id=(link.getAttribute('href')||'').slice(1);
+    setActive(link);
+    programmaticTarget=id;
+    clearTimeout(unlockTimer);
+
+    const targetY=Math.max(0,absoluteTop(section)-TOP_OFFSET);
+    const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const behavior=reduce?'auto':'smooth';
+
+    // Update the URL without triggering a second native anchor scroll.
+    try{
+      if(history.replaceState) history.replaceState(null,'','#'+id);
+    }catch(_){}
+
+    window.scrollTo({top:targetY,behavior});
+
+    if(behavior==='auto'){
+      clearProgrammatic(id);
+      return;
+    }
+
+    // Android Chrome changes viewport height as the address bar collapses.
+    // Keep the clicked state locked until the real document scroll settles.
+    const watch=()=>{
+      if(programmaticTarget!==id) return;
+      const current=window.pageYOffset||document.documentElement.scrollTop||0;
+      const newTarget=Math.max(0,absoluteTop(section)-TOP_OFFSET);
+      if(Math.abs(current-newTarget)<=10){
+        clearProgrammatic(id);
+        return;
+      }
+      requestAnimationFrame(watch);
+    };
+    requestAnimationFrame(watch);
+
+    unlockTimer=setTimeout(()=>clearProgrammatic(id),1800);
+  }
+
+  function init(){
+    const all=links();
+    if(!all.length) return;
+
+    all.forEach(link=>{
+      link.addEventListener('click',e=>navigate(link,e),{passive:false});
     });
 
-    window.addEventListener('scroll',requestMobileNavSync,{passive:true});
-    window.addEventListener('resize',requestMobileNavSync,{passive:true});
-    window.addEventListener('hashchange',requestMobileNavSync);
-    mq.addEventListener?.('change',requestMobileNavSync);
+    window.addEventListener('scroll',scheduleSync,{passive:true});
+    window.addEventListener('resize',scheduleSync,{passive:true});
+    window.addEventListener('orientationchange',()=>{
+      programmaticTarget=null;
+      clearTimeout(unlockTimer);
+      setTimeout(scheduleSync,180);
+    },{passive:true});
 
-    requestMobileNavSync();
+    if(window.visualViewport){
+      window.visualViewport.addEventListener('resize',()=>{
+        // Do not recalculate active item while Chrome's URL bar is animating.
+        if(!programmaticTarget) scheduleSync();
+      },{passive:true});
+    }
+
+    document.addEventListener('visibilitychange',()=>{
+      if(!document.hidden){
+        programmaticTarget=null;
+        clearTimeout(unlockTimer);
+        setTimeout(scheduleSync,80);
+      }
+    });
+
+    scheduleSync();
   }
 
   if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',initMobileBottomNav,{once:true});
+    document.addEventListener('DOMContentLoaded',init,{once:true});
   }else{
-    initMobileBottomNav();
+    init();
   }
 })();
 
