@@ -2692,8 +2692,204 @@ header .flux-brand-logo{
   }
 }
 
+
+/* Results market mobile colors + simulator step standard */
+
+/* Marcadores 1 / 2 / 3: um único padrão visual */
+#simulador-economico .sim-step-head{
+  display:flex!important;
+  align-items:center!important;
+  gap:14px!important;
+  min-width:0!important;
+}
+#simulador-economico .sim-step-head .sim-step-num{
+  width:52px!important;
+  height:52px!important;
+  min-width:52px!important;
+  min-height:52px!important;
+  flex:0 0 52px!important;
+  padding:0!important;
+  margin:0!important;
+  border-radius:999px!important;
+  display:grid!important;
+  place-items:center!important;
+  background:linear-gradient(180deg,#3b82f6 0%,#2563eb 100%)!important;
+  color:#fff!important;
+  font-size:1.35rem!important;
+  line-height:1!important;
+  font-weight:900!important;
+  letter-spacing:-.03em!important;
+  box-shadow:0 10px 22px -15px rgba(37,99,235,.55)!important;
+}
+#simulador-economico .sim-step-head>div{
+  min-width:0!important;
+}
+#simulador-economico .sim-step-head h4{
+  margin:0 0 4px!important;
+  line-height:1.12!important;
+}
+#simulador-economico .sim-step-head p{
+  margin:0!important;
+  line-height:1.42!important;
+}
+
+@media(max-width:767px){
+  #simulador-economico .sim-step-head{
+    gap:13px!important;
+    align-items:center!important;
+  }
+  #simulador-economico .sim-step-head .sim-step-num{
+    width:48px!important;
+    height:48px!important;
+    min-width:48px!important;
+    min-height:48px!important;
+    flex-basis:48px!important;
+    font-size:1.2rem!important;
+  }
+  #simulador-economico .sim-step-head h4{
+    font-size:17px!important;
+    line-height:1.12!important;
+    letter-spacing:-.025em!important;
+  }
+  #simulador-economico .sim-step-head p{
+    font-size:12px!important;
+    line-height:1.42!important;
+    color:#64748b!important;
+  }
+
+  /* Bloco 11 — cards coloridos, contraste e destaque */
+  #resultados.market11-section{
+    padding:18px 16px 20px!important;
+    border-radius:24px!important;
+  }
+  #resultados .market11-kicker{
+    margin-bottom:18px!important;
+    font-size:10px!important;
+    line-height:1!important;
+    letter-spacing:.10em!important;
+  }
+  #resultados .market11-head{
+    margin:0 auto 20px!important;
+    text-align:center!important;
+  }
+  #resultados .market11-pill{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:34px!important;
+    padding:8px 13px!important;
+    margin-bottom:12px!important;
+    border-radius:999px!important;
+    background:#eef4ff!important;
+    color:#64748b!important;
+    font-size:10px!important;
+    line-height:1.1!important;
+    letter-spacing:.06em!important;
+  }
+  #resultados .market11-head h2{
+    margin:0!important;
+    font-size:30px!important;
+    line-height:.98!important;
+    letter-spacing:-.045em!important;
+    font-weight:900!important;
+  }
+  #resultados .market11-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:12px!important;
+    margin-top:18px!important;
+  }
+  #resultados .market11-card{
+    display:grid!important;
+    grid-template-columns:48px minmax(0,1fr)!important;
+    grid-template-areas:
+      "icon value"
+      "icon label"
+      "icon note"!important;
+    column-gap:14px!important;
+    row-gap:3px!important;
+    align-items:center!important;
+    padding:16px!important;
+    min-height:132px!important;
+    border-radius:22px!important;
+    text-align:left!important;
+    overflow:hidden!important;
+    box-shadow:0 14px 28px -24px rgba(15,23,42,.28)!important;
+  }
+  #resultados .market11-icon{
+    grid-area:icon!important;
+    width:48px!important;
+    height:48px!important;
+    border-radius:15px!important;
+    display:grid!important;
+    place-items:center!important;
+    font-size:27px!important;
+    line-height:1!important;
+    font-weight:900!important;
+  }
+  #resultados .market11-value{
+    grid-area:value!important;
+    margin:0!important;
+    font-size:31px!important;
+    line-height:1!important;
+    letter-spacing:-.045em!important;
+    font-weight:950!important;
+  }
+  #resultados .market11-label{
+    grid-area:label!important;
+    margin:0!important;
+    font-size:14px!important;
+    line-height:1.2!important;
+    font-weight:850!important;
+    color:#0f172a!important;
+  }
+  #resultados .market11-note{
+    grid-area:note!important;
+    margin:0!important;
+    font-size:11px!important;
+    line-height:1.3!important;
+    color:#64748b!important;
+  }
+
+  #resultados .market11-card--rose{
+    background:linear-gradient(135deg,#fff7f8,#fff1f2)!important;
+    border-color:#fecdd3!important;
+  }
+  #resultados .market11-card--rose .market11-icon{
+    background:#ffe4e6!important;color:#e11d48!important;
+  }
+  #resultados .market11-card--rose .market11-value{color:#e11d48!important}
+
+  #resultados .market11-card--blue{
+    background:linear-gradient(135deg,#f7fbff,#eef5ff)!important;
+    border-color:#bfdbfe!important;
+  }
+  #resultados .market11-card--blue .market11-icon{
+    background:#dbeafe!important;color:#2563eb!important;
+  }
+  #resultados .market11-card--blue .market11-value{color:#2563eb!important}
+
+  #resultados .market11-card--green{
+    background:linear-gradient(135deg,#f3fff9,#ecfdf5)!important;
+    border-color:#a7f3d0!important;
+  }
+  #resultados .market11-card--green .market11-icon{
+    background:#d1fae5!important;color:#059669!important;
+  }
+  #resultados .market11-card--green .market11-value{color:#059669!important}
+
+  #resultados .market11-card--amber{
+    background:linear-gradient(135deg,#fffaf0,#fff7ed)!important;
+    border-color:#fed7aa!important;
+  }
+  #resultados .market11-card--amber .market11-icon{
+    background:#ffedd5!important;color:#ea580c!important;
+  }
+  #resultados .market11-card--amber .market11-value{color:#ea580c!important}
+}
+
 </style>
-<meta name="flux-build" content="20260925-AUTO07-HEADER-REFINE-1">
+<meta name="flux-build" content="20260925-MARKET11-STEPS-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -3844,7 +4040,7 @@ header .flux-brand-logo{
         </div>
 
         <div class="sim-step mt-6">
-          <div class="flex items-center gap-3 mb-4"><span class="sim-step-num">1</span><div><h4 class="text-sm font-extrabold text-slate-900">Dimensão do Projeto</h4><p class="text-[11px] text-slate-500">Base para dimensionar o impacto financeiro.</p></div></div>
+          <div class="sim-step-head flex items-center gap-3 mb-4"><span class="sim-step-num">1</span><div><h4 class="text-sm font-extrabold text-slate-900">Dimensão do Projeto</h4><p class="text-[11px] text-slate-500">Base para dimensionar o impacto financeiro.</p></div></div>
           <div class="grid sm:grid-cols-2 gap-4">
             <label class="sim-field"><span>Nome do Projeto</span><input id="sim-proj-name" oninput="calculateSimulator()" type="text" value="Residencial Alfa / Projeto Base"></label>
             <div class="sim-field"><span>Valor Total do Projeto</span><strong id="sim-val-display" class="text-blue-700 text-xl">R$&nbsp;18.500.000</strong><input class="w-full accent-blue-600 mt-3" id="sim-proj-val" max="60000000" min="1000000" oninput="calculateSimulator()" step="500000" type="range" value="18500000"></div>
@@ -3857,7 +4053,7 @@ header .flux-brand-logo{
         </div>
 
         <div class="sim-step sim-hours-step mt-7 pt-6 border-t border-slate-200">
-          <div class="sim-hours-head flex flex-wrap items-center justify-between gap-3 mb-4"><div class="sim-hours-title flex items-center gap-3"><span class="sim-step-num">2</span><div><h4 class="text-sm font-extrabold text-slate-900">Horas Semanais em Processos Manuais</h4><p class="text-[11px] text-slate-500">Quanto tempo cada profissional dedica hoje a tarefas operacionais?</p></div></div><span class="sim-hours-badge" id="sim-total-hours-label">14h / sem por profissional</span></div>
+          <div class="sim-hours-head flex flex-wrap items-center justify-between gap-3 mb-4"><div class="sim-step-head sim-hours-title flex items-center gap-3"><span class="sim-step-num">2</span><div><h4 class="text-sm font-extrabold text-slate-900">Horas Semanais em Processos Manuais</h4><p class="text-[11px] text-slate-500">Quanto tempo cada profissional dedica hoje a tarefas operacionais?</p></div></div><span class="sim-hours-badge" id="sim-total-hours-label">14h / sem por profissional</span></div>
           <div class="sim-hours-grid grid grid-cols-2 sm:grid-cols-5 gap-2.5">
             <label class="sim-hour-card"><span class="material-symbols-outlined">search</span><b>Busca de Dados</b><input id="sim-h-busca" max="20" min="0" oninput="calculateSimulator()" type="number" value="3"><small>h/sem</small></label>
             <label class="sim-hour-card"><span class="material-symbols-outlined">fact_check</span><b>Controles</b><input id="sim-h-controles" max="20" min="0" oninput="calculateSimulator()" type="number" value="3"><small>h/sem</small></label>
@@ -3868,7 +4064,7 @@ header .flux-brand-logo{
         </div>
 
         <div class="sim-step mt-7 pt-6 border-t border-slate-200">
-          <div class="flex items-center gap-3 mb-4"><span class="sim-step-num">3</span><div><h4 class="text-sm font-extrabold text-slate-900">Grau de Otimização Estimado com FLUX OS</h4><p class="text-[11px] text-slate-500">Escolha uma hipótese de recuperação de eficiência para comparar cenários.</p></div></div>
+          <div class="sim-step-head flex items-center gap-3 mb-4"><span class="sim-step-num">3</span><div><h4 class="text-sm font-extrabold text-slate-900">Grau de Otimização Estimado com FLUX OS</h4><p class="text-[11px] text-slate-500">Escolha uma hipótese de recuperação de eficiência para comparar cenários.</p></div></div>
           <div class="grid sm:grid-cols-3 gap-3">
             <button class="scenario-btn sim-scenario" onclick="setScenario(0.30,this)"><span class="material-symbols-outlined">eco</span><small>CONSERVADOR</small><b>30% Recuperação</b><em>Processos principais</em></button>
             <button class="scenario-btn sim-scenario active" onclick="setScenario(0.50,this)"><span class="material-symbols-outlined">rocket_launch</span><small>INTERMEDIÁRIO</small><b>50% Recuperação</b><em>Integração e padronização</em></button>
@@ -3944,32 +4140,36 @@ header .flux-brand-logo{
   </section>
 
   <!-- 11 — RESULTADOS E BENCHMARKS -->
-  <section class="bg-white rounded-3xl p-8 sm:p-12 card-border shadow-sm" id="resultados">
-    <div class="text-xs font-bold tracking-widest text-slate-400 uppercase">11 — Resultados de Mercado</div>
-    <div class="text-center max-w-2xl mx-auto my-6">
-      <span class="text-xs font-bold uppercase tracking-wider text-slate-500">EFICIÊNCIA QUE APARECE NOS NÚMEROS</span>
+  <section class="market11-section bg-white rounded-3xl p-8 sm:p-12 card-border shadow-sm" id="resultados">
+    <div class="market11-kicker text-xs font-bold tracking-widest text-slate-400 uppercase">11 — Resultados de Mercado</div>
+    <div class="market11-head text-center max-w-2xl mx-auto my-6">
+      <span class="market11-pill text-xs font-bold uppercase tracking-wider text-slate-500">EFICIÊNCIA QUE APARECE NOS NÚMEROS</span>
       <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">Resultados que fazem diferença.</h2>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-      <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-center">
-        <span class="text-3xl font-extrabold text-blue-600 block">↓ 30–60%</span>
-        <span class="text-sm font-semibold text-slate-800 mt-2 block">Retrabalho administrativo*</span>
-        <span class="text-[11px] text-slate-400 mt-1 block">menos erros manuais</span>
+    <div class="market11-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+      <div class="market11-card market11-card--rose p-6 bg-slate-50 rounded-2xl border border-slate-100 text-center">
+        <span class="market11-icon" aria-hidden="true">↓</span>
+        <span class="market11-value text-3xl font-extrabold text-blue-600 block">30–60%</span>
+        <span class="market11-label text-sm font-semibold text-slate-800 mt-2 block">Retrabalho administrativo*</span>
+        <span class="market11-note text-[11px] text-slate-400 mt-1 block">menos erros manuais</span>
       </div>
-      <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-center">
-        <span class="text-3xl font-extrabold text-blue-600 block">↓ até 95%</span>
-        <span class="text-sm font-semibold text-slate-800 mt-2 block">Tempo de consolidação*</span>
-        <span class="text-[11px] text-slate-400 mt-1 block">relatórios em segundos</span>
+      <div class="market11-card market11-card--blue p-6 bg-slate-50 rounded-2xl border border-slate-100 text-center">
+        <span class="market11-icon" aria-hidden="true">↓</span>
+        <span class="market11-value text-3xl font-extrabold text-blue-600 block">até 95%</span>
+        <span class="market11-label text-sm font-semibold text-slate-800 mt-2 block">Tempo de consolidação*</span>
+        <span class="market11-note text-[11px] text-slate-400 mt-1 block">relatórios em segundos</span>
       </div>
-      <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-center">
-        <span class="text-3xl font-extrabold text-blue-600 block">↑ 40–70%</span>
-        <span class="text-sm font-semibold text-slate-800 mt-2 block">Informação à decisão*</span>
-        <span class="text-[11px] text-slate-400 mt-1 block">ciclos muito mais ágeis</span>
+      <div class="market11-card market11-card--green p-6 bg-slate-50 rounded-2xl border border-slate-100 text-center">
+        <span class="market11-icon" aria-hidden="true">↑</span>
+        <span class="market11-value text-3xl font-extrabold text-blue-600 block">40–70%</span>
+        <span class="market11-label text-sm font-semibold text-slate-800 mt-2 block">Informação à decisão*</span>
+        <span class="market11-note text-[11px] text-slate-400 mt-1 block">ciclos muito mais ágeis</span>
       </div>
-      <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-center">
-        <span class="text-3xl font-extrabold text-blue-600 block">↓ 10–25%</span>
-        <span class="text-sm font-semibold text-slate-800 mt-2 block">Custos de desvios*</span>
-        <span class="text-[11px] text-slate-400 mt-1 block">otimização real</span>
+      <div class="market11-card market11-card--amber p-6 bg-slate-50 rounded-2xl border border-slate-100 text-center">
+        <span class="market11-icon" aria-hidden="true">↓</span>
+        <span class="market11-value text-3xl font-extrabold text-blue-600 block">10–25%</span>
+        <span class="market11-label text-sm font-semibold text-slate-800 mt-2 block">Custos de desvios*</span>
+        <span class="market11-note text-[11px] text-slate-400 mt-1 block">otimização real</span>
       </div>
     </div>
     <div class="mt-6 text-center">
