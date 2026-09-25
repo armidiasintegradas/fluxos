@@ -2034,8 +2034,97 @@ header .flux-brand-logo{
   }
 }
 
+
+/* Transformação responsive refinement — approved visual */
+.flux-transform-accent{
+  width:112px;
+  height:4px;
+  margin:14px auto 18px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#31b7f4 0%,#3478f6 52%,#5b3df1 100%);
+  box-shadow:0 4px 14px -10px rgba(59,130,246,.55);
+}
+
+@media(min-width:768px){
+  .flux-transform-accent{
+    width:132px;
+    height:5px;
+    margin:16px auto 20px;
+  }
+}
+
+@media(min-width:1024px){
+  .flux-transform-accent{
+    width:160px;
+    height:6px;
+    margin:18px auto 22px;
+  }
+}
+
+@media(max-width:767px){
+  #transformacao>header{
+    text-align:center!important;
+    max-width:100%!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    margin-bottom:22px!important;
+  }
+  #transformacao>header .inline-flex{
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #transformacao>header h1{
+    font-size:clamp(2.35rem,11vw,3.15rem)!important;
+    line-height:.96!important;
+    letter-spacing:-.055em!important;
+    margin-bottom:0!important;
+  }
+  #transformacao>header>p:first-of-type{
+    text-align:center!important;
+    font-size:10px!important;
+    letter-spacing:.24em!important;
+    margin-bottom:10px!important;
+  }
+  #transformacao>header>p:last-of-type{
+    text-align:center!important;
+    font-size:14px!important;
+    line-height:1.5!important;
+    max-width:92%!important;
+    margin:0 auto!important;
+  }
+  #transformacao>header>div:last-child{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:6px!important;
+    margin-top:18px!important;
+    padding:5px!important;
+    border-radius:20px!important;
+  }
+  #transformacao>header>div:last-child button{
+    min-width:0!important;
+    min-height:52px!important;
+    padding:10px 8px!important;
+    font-size:10px!important;
+    line-height:1.25!important;
+    text-align:center!important;
+    white-space:normal!important;
+    border-radius:15px!important;
+  }
+}
+
+@media(min-width:768px) and (max-width:1023px){
+  #transformacao>header{
+    text-align:center!important;
+  }
+  #transformacao>header .inline-flex{
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-ICON-ASSET-1">
+<meta name="flux-build" content="20260925-TRANSFORM-REFINE-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -2229,7 +2318,7 @@ header .flux-brand-logo{
       <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-none mb-3">
         Toda a operação.
       </h1>
-      <div class="h-1 w-20 bg-gradient-to-r from-sky-400 via-blue-600 to-indigo-600 rounded-full mx-auto mb-4"></div>
+      <div class="flux-transform-accent" aria-hidden="true"></div>
       <p class="text-slate-600 text-sm md:text-base font-medium">
         Toda a operação conectada em um único ecossistema, com dados e decisões em tempo real.
       </p>
