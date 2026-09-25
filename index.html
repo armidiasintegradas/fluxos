@@ -1033,10 +1033,14 @@
     font-size:20px;
     line-height:1;
   }
-  .flux-mobile-nav a[data-primary="true"]{
+  .flux-mobile-nav a.active{
     color:#fff;
     background:linear-gradient(135deg,#2563eb,#4f46e5);
     box-shadow:0 8px 20px -10px rgba(37,99,235,.8);
+  }
+  .flux-mobile-nav a.active .material-symbols-outlined,
+  .flux-mobile-nav a.active span{
+    color:#fff;
   }
 
   /* Acessibilidade visual */
@@ -3614,7 +3618,7 @@ body.flux-scroll-lock{
 }
 
 </style>
-<meta name="flux-build" content="20260925-MOBILE-SCROLL-BRAND-LAB-1">
+<meta name="flux-build" content="20260925-MOBILE-NAV-SCROLLSPY-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -6106,12 +6110,100 @@ function initFluxEntry(){
   <a href="#simulador-economico"><span class="material-symbols-outlined">calculate</span>Simulador</a>
 </nav>
 <nav class="flux-mobile-nav" aria-label="Navegação rápida no celular">
-  <a href="#visao-geral"><span class="material-symbols-outlined">home</span><span>Início</span></a>
+  <a href="#visao-geral" class="active" aria-current="page"><span class="material-symbols-outlined">home</span><span>Início</span></a>
   <a href="#transformacao"><span class="material-symbols-outlined">hub</span><span>Fluxo</span></a>
-  <a href="#inteligencia" data-primary="true"><span class="material-symbols-outlined">psychology</span><span>Inteligência</span></a>
+  <a href="#inteligencia"><span class="material-symbols-outlined">psychology</span><span>Inteligência</span></a>
   <a href="#painel-tempo-real"><span class="material-symbols-outlined">monitoring</span><span>Painel</span></a>
   <a href="#simulador-economico"><span class="material-symbols-outlined">calculate</span><span>Simular</span></a>
 </nav>
 <!-- /FLUX RESPONSIVE NAV V5 -->
 
+<script>
+
+/* Mobile bottom-nav active section sync */
+(function(){
+  const mq=window.matchMedia('(max-width:767px)');
+  let ticking=false;
+
+  function mobileNavLinks(){
+    return Array.from(document.querySelectorAll('.flux-mobile-nav a[href^="#"]'));
+  }
+
+  function setMobileNavActive(link){
+    mobileNavLinks().forEach(a=>{
+      const active=a===link;
+      a.classList.toggle('active',active);
+      if(active) a.setAttribute('aria-current','page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function syncMobileNavToScroll(){
+    if(!mq.matches) return;
+    const links=mobileNavLinks();
+    if(!links.length) return;
+
+    const probeY=Math.min(window.innerHeight*.34,240);
+    let best=null;
+    let bestScore=Infinity;
+
+    links.forEach(link=>{
+      const id=decodeURIComponent((link.getAttribute('href')||'').slice(1));
+      const section=id&&document.getElementById(id);
+      if(!section) return;
+      const r=section.getBoundingClientRect();
+
+      // Prefer the section intersecting the reading line.
+      if(r.top<=probeY && r.bottom>=probeY){
+        const score=Math.abs(r.top-probeY);
+        if(score<bestScore){best=link;bestScore=score}
+        return;
+      }
+
+      // Fallback: nearest section to the reading line.
+      const distance=r.bottom<probeY ? probeY-r.bottom : r.top-probeY;
+      if(distance>=0 && distance<bestScore){best=link;bestScore=distance}
+    });
+
+    if(best) setMobileNavActive(best);
+  }
+
+  function requestMobileNavSync(){
+    if(ticking) return;
+    ticking=true;
+    requestAnimationFrame(()=>{
+      ticking=false;
+      syncMobileNavToScroll();
+    });
+  }
+
+  function initMobileBottomNav(){
+    const links=mobileNavLinks();
+    if(!links.length) return;
+
+    links.forEach(link=>{
+      link.addEventListener('click',()=>{
+        setMobileNavActive(link);
+        // Reconcile with actual scroll position after smooth/native anchor movement.
+        setTimeout(syncMobileNavToScroll,350);
+        setTimeout(syncMobileNavToScroll,800);
+      });
+    });
+
+    window.addEventListener('scroll',requestMobileNavSync,{passive:true});
+    window.addEventListener('resize',requestMobileNavSync,{passive:true});
+    window.addEventListener('hashchange',requestMobileNavSync);
+    mq.addEventListener?.('change',requestMobileNavSync);
+
+    requestMobileNavSync();
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initMobileBottomNav,{once:true});
+  }else{
+    initMobileBottomNav();
+  }
+})();
+
+</script>
 </body></html>
