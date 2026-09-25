@@ -1474,6 +1474,258 @@ header .flux-brand-logo{
 .flux-mobile-nav{
   display:none;
 }
+
+/* FLUX Responsive Stability V6 — mobile/tablet polish */
+/* Entrada: transição contínua, sem quadro branco entre splash e formulário */
+#flux-entry{
+  background:#020a1c;
+  transition:background-color .45s ease;
+  min-height:100%;
+  min-height:100dvh;
+}
+#flux-entry.welcome-stage{background:#f8fafc}
+#flux-splash{
+  backface-visibility:hidden;
+  transform:translateZ(0);
+  transition:opacity .58s cubic-bezier(.4,0,.2,1),visibility .58s step-end;
+}
+#flux-splash.is-done{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+#flux-welcome{
+  visibility:hidden;
+  opacity:0;
+  transform:translateY(12px) scale(.985);
+  transition:opacity .42s ease,transform .42s cubic-bezier(.2,.8,.2,1),visibility 0s linear .42s;
+}
+#flux-welcome.is-ready{
+  visibility:visible;
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
+  transition-delay:0s;
+}
+
+/* Por padrão, as navegações responsivas ficam fora do desktop. */
+.flux-tablet-nav,.flux-mobile-nav{display:none!important}
+
+@media (min-width:768px) and (max-width:1023px){
+  .flux-tablet-nav{
+    display:flex!important;
+    top:64px!important;
+    min-height:54px;
+  }
+  .flux-mobile-nav{display:none!important}
+
+  body{padding-bottom:24px!important}
+  main{max-width:100%!important;padding-left:18px!important;padding-right:18px!important}
+  main>section,main>div>section{scroll-margin-top:126px!important}
+
+  header>div{height:64px!important}
+  header .flux-brand-logo{max-width:155px!important;height:38px!important}
+  header a[href="#demonstracao"]{min-height:42px!important}
+
+  #visao-geral,#cadastro-projeto,#problema,#transformacao,#inteligencia,
+  #painel-tempo-real,#encontro-flux,#simulador-economico,#personalizacao-marca,
+  #resultados,#demonstracao{
+    min-width:0!important;
+  }
+
+  .project-profile-form{min-width:0}
+  .project-profile-form label{min-width:0}
+  .project-profile-form input{width:100%;min-width:0}
+
+  #transformacao .relative.z-20.w-full.grid{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  }
+  #transformacao .node-card{min-width:0!important}
+  #transformacao .node-card>div:first-child{min-width:0!important}
+  #transformacao .node-card p{overflow-wrap:anywhere}
+
+  .flux-result-section{padding-left:28px!important;padding-right:28px!important}
+  .flux-result-card{
+    grid-template-columns:90px minmax(0,1.35fr) 1px minmax(150px,.7fr)!important;
+    gap:18px!important;
+    padding-left:22px!important;
+    padding-right:22px!important;
+  }
+  .flux-result-value strong{font-size:clamp(2.7rem,7vw,4.35rem)!important}
+}
+
+@media (max-width:767px){
+  .flux-tablet-nav{display:none!important}
+  .flux-mobile-nav{display:grid!important}
+
+  html,body{max-width:100%;overflow-x:hidden}
+  body{padding-bottom:calc(82px + env(safe-area-inset-bottom))!important}
+  main{
+    width:100%!important;
+    max-width:100%!important;
+    padding:10px 10px 0!important;
+    row-gap:16px!important;
+  }
+  main>section,main>div>section{scroll-margin-top:72px!important}
+
+  /* Entrada mobile */
+  #flux-entry{
+    padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))!important;
+    overflow:hidden;
+  }
+  #flux-splash{position:fixed!important}
+  .flux-splash-inner{width:92vw!important}
+  .flux-splash-brand-wrap{
+    width:min(340px,76vw)!important;
+    max-width:76vw!important;
+  }
+  .flux-splash-brand{
+    width:100%!important;
+    height:auto!important;
+    object-fit:contain!important;
+    background:transparent!important;
+  }
+  .flux-splash-tag{
+    max-width:80vw!important;
+    margin:14px auto 0!important;
+    letter-spacing:.22em!important;
+    font-size:8px!important;
+  }
+  #flux-welcome{
+    width:min(100%,430px)!important;
+    max-height:calc(100dvh - 24px)!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain;
+    padding:22px 18px!important;
+    border-radius:22px!important;
+    box-shadow:0 22px 70px -35px rgba(15,23,42,.5)!important;
+  }
+  #flux-welcome .flux-canonical-brand-field{
+    margin-bottom:18px!important;
+  }
+  #flux-welcome h1{font-size:1.55rem!important;line-height:1.08!important}
+  #flux-welcome input{min-height:50px!important;font-size:16px!important}
+  #flux-welcome button[type="submit"]{min-height:52px!important}
+
+  /* Header mais limpo no celular */
+  header>div{height:58px!important;padding:0 10px!important}
+  header .flux-brand-logo{height:29px!important;max-width:112px!important}
+  header a[href="#demonstracao"]{
+    padding:8px 10px!important;
+    min-height:38px!important;
+    font-size:9px!important;
+  }
+  header button[onclick="exitFlux()"]{
+    width:38px!important;
+    min-width:38px!important;
+    height:38px!important;
+    min-height:38px!important;
+    padding:0!important;
+    justify-content:center!important;
+  }
+
+  /* Cards/seções */
+  section.rounded-3xl,.flux-result-section{border-radius:20px!important}
+  #visao-geral,#cadastro-projeto,#problema,#transformacao,#inteligencia,
+  #painel-tempo-real,#encontro-flux,#simulador-economico,#personalizacao-marca,
+  #resultados,#demonstracao{
+    padding-left:15px!important;
+    padding-right:15px!important;
+  }
+
+  #visao-geral .flux-live-dashboard{margin-left:0!important;margin-right:0!important}
+  .fld-side{padding-left:9px!important;padding-right:9px!important}
+  .fld-side button{min-height:42px!important}
+  .fld-kpis{gap:7px!important}
+
+  /* Transformação: nenhum conteúdo pode ultrapassar o card */
+  #transformacao{overflow:hidden!important}
+  #transformacao header>div:last-child{gap:4px!important}
+  #transformacao header>div:last-child button{
+    padding:8px 7px!important;
+    font-size:9px!important;
+  }
+  #transformacao .node-card{
+    width:100%!important;
+    min-width:0!important;
+  }
+  #transformacao .node-card>div:first-child{
+    min-width:0!important;
+    flex:1 1 auto!important;
+  }
+  #transformacao .node-card h3,
+  #transformacao .node-card p{
+    overflow-wrap:anywhere;
+  }
+
+  /* Resultado final */
+  .flux-result-section{overflow:hidden!important}
+  .flux-result-title{
+    max-width:100%!important;
+    font-size:clamp(1.9rem,9.3vw,2.7rem)!important;
+    letter-spacing:-.045em!important;
+  }
+  .flux-result-logo img{max-width:76vw!important;height:auto!important;max-height:66px!important}
+  .flux-result-card{
+    width:100%!important;
+    min-width:0!important;
+    grid-template-columns:54px minmax(0,1fr)!important;
+    gap:12px!important;
+    padding:16px 14px!important;
+  }
+  .flux-result-value{min-width:0!important}
+  .flux-result-value strong{
+    white-space:normal!important;
+    overflow-wrap:anywhere;
+    font-size:clamp(2rem,11vw,3rem)!important;
+  }
+  .flux-result-project{min-width:0!important}
+  .flux-result-copy br{display:none!important}
+  .flux-result-form{width:100%!important;min-width:0!important;padding:14px!important}
+  .flux-result-form input[type="tel"],
+  .flux-result-form input[type="email"],
+  .flux-result-form input[type="text"]{
+    min-width:0!important;
+    font-size:16px!important;
+  }
+  .flux-result-submit{
+    padding:10px 12px!important;
+    font-size:11px!important;
+    line-height:1.2!important;
+  }
+
+  /* Navegação inferior */
+  .flux-mobile-nav{
+    left:8px!important;
+    right:8px!important;
+    bottom:max(8px,env(safe-area-inset-bottom))!important;
+    height:62px!important;
+    padding:5px!important;
+    border-radius:19px!important;
+  }
+  .flux-mobile-nav a{
+    min-height:50px!important;
+    font-size:8px!important;
+    gap:3px!important;
+  }
+  .flux-mobile-nav .material-symbols-outlined{font-size:19px!important}
+}
+
+@media (max-width:374px){
+  main{padding-left:7px!important;padding-right:7px!important}
+  header .flux-brand-logo{max-width:96px!important}
+  header a[href="#demonstracao"]{font-size:8px!important;padding:7px 8px!important}
+  .flux-result-card{grid-template-columns:1fr!important;text-align:center!important}
+  .flux-result-icon{margin:0 auto!important}
+  .flux-result-value strong{font-size:2.35rem!important}
+  .flux-result-project{grid-column:1!important}
+  .problem-grid{gap:6px!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  #flux-splash,#flux-welcome,#flux-entry{transition:none!important}
+}
+
 </style>
 <meta name="flux-build" content="20260924-CANONICAL-BRAND-2">
 </head>
@@ -3591,11 +3843,26 @@ header .flux-brand-logo{
   }
   function showFluxEntry(playSplash=true){
     const entry=document.getElementById('flux-entry'), splash=document.getElementById('flux-splash'), welcome=document.getElementById('flux-welcome');
-    if(!entry)return;
-    entry.classList.add('is-visible'); document.body.style.overflow='hidden';
-    welcome.classList.remove('is-ready'); splash.classList.remove('is-done');
-    const reveal=()=>{splash.classList.add('is-done');setTimeout(()=>{welcome.classList.add('is-ready');document.getElementById('flux-entry-name')?.focus()},350)};
-    if(playSplash)setTimeout(reveal,3000); else reveal();
+    if(!entry||!splash||!welcome)return;
+    entry.classList.remove('welcome-stage');
+    entry.classList.add('is-visible');
+    document.body.style.overflow='hidden';
+    welcome.classList.remove('is-ready');
+    splash.classList.remove('is-done');
+
+    const reveal=()=>{
+      // O cartão entra por baixo do splash antes do fade, eliminando o frame branco intermediário.
+      welcome.classList.add('is-ready');
+      requestAnimationFrame(()=>{
+        entry.classList.add('welcome-stage');
+        splash.classList.add('is-done');
+      });
+      setTimeout(()=>{
+        document.getElementById('flux-entry-name')?.focus({preventScroll:true});
+      },650);
+    };
+
+    if(playSplash)setTimeout(reveal,2400); else reveal();
   }
   function enterFlux(e){
     e.preventDefault();
@@ -3604,7 +3871,7 @@ header .flux-brand-logo{
     if(!name||!org)return;
     localStorage.setItem(FLUX_ENTRY_KEY,JSON.stringify({name,org,enteredAt:Date.now()}));
     applyFluxIdentity(name,org);
-    const entry=document.getElementById('flux-entry'); entry.classList.remove('is-visible'); document.body.style.overflow='';
+    const entry=document.getElementById('flux-entry'); entry.classList.remove('is-visible','welcome-stage'); document.body.style.overflow='';
     window.scrollTo({top:0,behavior:'smooth'});
   }
   function exitFlux(){
