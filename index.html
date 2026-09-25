@@ -2365,8 +2365,214 @@ header .flux-brand-logo{
   }
 }
 
+
+/* Mobile simulator hours redesign — visual indicators */
+@media(max-width:767px){
+  #simulador-economico .sim-hours-step{
+    margin-top:24px!important;
+    padding-top:22px!important;
+  }
+
+  #simulador-economico .sim-hours-head{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+    margin-bottom:16px!important;
+  }
+
+  #simulador-economico .sim-hours-title{
+    display:grid!important;
+    grid-template-columns:46px minmax(0,1fr)!important;
+    gap:12px!important;
+    align-items:start!important;
+  }
+
+  #simulador-economico .sim-hours-title .sim-step-num{
+    width:46px!important;
+    height:46px!important;
+    min-width:46px!important;
+    font-size:1rem!important;
+    box-shadow:0 10px 22px -14px rgba(37,99,235,.65)!important;
+  }
+
+  #simulador-economico .sim-hours-title h4{
+    font-size:17px!important;
+    line-height:1.12!important;
+    letter-spacing:-.025em!important;
+    margin:1px 0 5px!important;
+  }
+
+  #simulador-economico .sim-hours-title p{
+    font-size:12px!important;
+    line-height:1.45!important;
+    color:#64748b!important;
+  }
+
+  #simulador-economico .sim-hours-badge{
+    justify-self:start!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    min-height:42px!important;
+    padding:9px 14px!important;
+    border-radius:14px!important;
+    font-size:13px!important;
+    line-height:1.15!important;
+    font-weight:900!important;
+    color:#e11d48!important;
+    background:linear-gradient(180deg,#fff7f8,#fff1f2)!important;
+    border:1px solid #fecdd3!important;
+    box-shadow:0 8px 20px -18px rgba(225,29,72,.5)!important;
+  }
+
+  #simulador-economico .sim-hours-grid{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;
+  }
+
+  #simulador-economico .sim-hour-card{
+    min-width:0!important;
+    min-height:182px!important;
+    padding:14px 12px 13px!important;
+    border-radius:20px!important;
+    border:1px solid #dbe6f2!important;
+    background:linear-gradient(180deg,#ffffff 0%,#fbfdff 100%)!important;
+    box-shadow:0 12px 28px -25px rgba(15,23,42,.35)!important;
+    gap:7px!important;
+    justify-content:flex-start!important;
+    overflow:hidden!important;
+  }
+
+  #simulador-economico .sim-hour-card>.material-symbols-outlined{
+    width:50px!important;
+    height:50px!important;
+    padding:0!important;
+    display:grid!important;
+    place-items:center!important;
+    border-radius:16px!important;
+    color:#fff!important;
+    font-size:27px!important;
+    font-variation-settings:'FILL' 1,'wght' 550!important;
+    box-shadow:0 10px 22px -15px rgba(37,99,235,.55)!important;
+  }
+
+  #simulador-economico .sim-hour-card:nth-child(1)>.material-symbols-outlined{
+    background:linear-gradient(145deg,#20b8f4,#2563eb)!important;
+  }
+  #simulador-economico .sim-hour-card:nth-child(2)>.material-symbols-outlined{
+    background:linear-gradient(145deg,#4f7cf7,#4f46e5)!important;
+  }
+  #simulador-economico .sim-hour-card:nth-child(3)>.material-symbols-outlined{
+    background:linear-gradient(145deg,#6366f1,#7c3aed)!important;
+  }
+  #simulador-economico .sim-hour-card:nth-child(4)>.material-symbols-outlined{
+    background:linear-gradient(145deg,#06b6d4,#0f8fd0)!important;
+  }
+  #simulador-economico .sim-hour-card:nth-child(5)>.material-symbols-outlined{
+    background:linear-gradient(145deg,#f59e0b,#ef4444)!important;
+  }
+
+  #simulador-economico .sim-hour-card b{
+    margin-top:2px!important;
+    font-size:12px!important;
+    line-height:1.2!important;
+    color:#475569!important;
+    font-weight:800!important;
+  }
+
+  #simulador-economico .sim-hour-card input{
+    width:100%!important;
+    max-width:92px!important;
+    height:58px!important;
+    padding:0!important;
+    margin-top:2px!important;
+    border:0!important;
+    border-radius:16px!important;
+    background:#f6f9fd!important;
+    text-align:center!important;
+    font-size:30px!important;
+    line-height:58px!important;
+    font-weight:950!important;
+    letter-spacing:-.04em!important;
+    color:#0f172a!important;
+    box-shadow:inset 0 0 0 1px #eef2f7!important;
+  }
+
+  #simulador-economico .sim-hour-card small{
+    margin-top:-1px!important;
+    font-size:10px!important;
+    line-height:1!important;
+    color:#94a3b8!important;
+    font-weight:700!important;
+    letter-spacing:.04em!important;
+  }
+
+  /* Retrabalho fecha a composição em largura total */
+  #simulador-economico .sim-hour-card:nth-child(5){
+    grid-column:1/-1!important;
+    min-height:128px!important;
+    display:grid!important;
+    grid-template-columns:52px minmax(0,1fr) 92px!important;
+    grid-template-rows:auto auto!important;
+    column-gap:12px!important;
+    row-gap:3px!important;
+    align-items:center!important;
+    text-align:left!important;
+    padding:14px!important;
+    border-color:#fed7aa!important;
+    background:linear-gradient(135deg,#fffdfa,#fff7ed)!important;
+  }
+
+  #simulador-economico .sim-hour-card:nth-child(5)>.material-symbols-outlined{
+    grid-column:1!important;
+    grid-row:1/3!important;
+    width:52px!important;
+    height:52px!important;
+    margin:0!important;
+  }
+
+  #simulador-economico .sim-hour-card:nth-child(5)>b{
+    grid-column:2!important;
+    grid-row:1!important;
+    margin:0!important;
+    font-size:13px!important;
+    color:#7c2d12!important;
+  }
+
+  #simulador-economico .sim-hour-card:nth-child(5)>input{
+    grid-column:3!important;
+    grid-row:1/3!important;
+    width:92px!important;
+    max-width:92px!important;
+    margin:0!important;
+    background:#fff!important;
+  }
+
+  #simulador-economico .sim-hour-card:nth-child(5)>small{
+    grid-column:2!important;
+    grid-row:2!important;
+    margin:0!important;
+    font-size:10px!important;
+    color:#c2410c!important;
+  }
+
+  #simulador-economico .sim-hour-card:focus-within{
+    border-color:#93c5fd!important;
+    box-shadow:0 0 0 3px rgba(59,130,246,.10)!important;
+  }
+}
+
+@media(max-width:374px){
+  #simulador-economico .sim-hours-grid{
+    grid-template-columns:1fr!important;
+  }
+  #simulador-economico .sim-hour-card:nth-child(5){
+    grid-column:1!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-TRANSFORM-MOBILE-FIX-2">
+<meta name="flux-build" content="20260925-SIM-HOURS-MOBILE-REDESIGN-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -3529,9 +3735,9 @@ header .flux-brand-logo{
           </div>
         </div>
 
-        <div class="sim-step mt-7 pt-6 border-t border-slate-200">
-          <div class="flex flex-wrap items-center justify-between gap-3 mb-4"><div class="flex items-center gap-3"><span class="sim-step-num">2</span><div><h4 class="text-sm font-extrabold text-slate-900">Horas Semanais em Processos Manuais</h4><p class="text-[11px] text-slate-500">Quanto tempo cada profissional dedica hoje a tarefas operacionais?</p></div></div><span class="sim-hours-badge" id="sim-total-hours-label">14h / sem por profissional</span></div>
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+        <div class="sim-step sim-hours-step mt-7 pt-6 border-t border-slate-200">
+          <div class="sim-hours-head flex flex-wrap items-center justify-between gap-3 mb-4"><div class="sim-hours-title flex items-center gap-3"><span class="sim-step-num">2</span><div><h4 class="text-sm font-extrabold text-slate-900">Horas Semanais em Processos Manuais</h4><p class="text-[11px] text-slate-500">Quanto tempo cada profissional dedica hoje a tarefas operacionais?</p></div></div><span class="sim-hours-badge" id="sim-total-hours-label">14h / sem por profissional</span></div>
+          <div class="sim-hours-grid grid grid-cols-2 sm:grid-cols-5 gap-2.5">
             <label class="sim-hour-card"><span class="material-symbols-outlined">search</span><b>Busca de Dados</b><input id="sim-h-busca" max="20" min="0" oninput="calculateSimulator()" type="number" value="3"><small>h/sem</small></label>
             <label class="sim-hour-card"><span class="material-symbols-outlined">fact_check</span><b>Controles</b><input id="sim-h-controles" max="20" min="0" oninput="calculateSimulator()" type="number" value="3"><small>h/sem</small></label>
             <label class="sim-hour-card"><span class="material-symbols-outlined">description</span><b>Relatórios</b><input id="sim-h-relatorios" max="20" min="0" oninput="calculateSimulator()" type="number" value="3"><small>h/sem</small></label>
