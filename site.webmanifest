@@ -1,6 +1,6 @@
 {
-  "name": "Fluxo OS",
-  "short_name": "Fluxo OS",
+  "name": "Flux OS",
+  "short_name": "Flux OS",
   "start_url": "/fluxos/?v=20260925-iconasset1",
   "scope": "/fluxos/",
   "display": "standalone",
