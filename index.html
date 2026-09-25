@@ -2123,8 +2123,157 @@ header .flux-brand-logo{
   }
 }
 
+
+/* Mobile module detail drawer refinement — Operação & Campo */
+@media(max-width:767px){
+  #module-detail-drawer{
+    margin-top:14px!important;
+    padding:16px!important;
+    border-radius:20px!important;
+    background:linear-gradient(180deg,#fbfdff 0%,#f8fbff 100%)!important;
+    border:1px solid #dce7f3!important;
+    box-shadow:0 14px 36px -28px rgba(15,23,42,.28)!important;
+  }
+
+  #module-detail-drawer > div:first-child{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+    margin-bottom:14px!important;
+  }
+
+  #module-detail-drawer > div:first-child > div:first-child{
+    display:grid!important;
+    grid-template-columns:48px minmax(0,1fr)!important;
+    gap:12px!important;
+    align-items:center!important;
+    min-width:0!important;
+  }
+
+  #drawer-badge{
+    width:48px!important;
+    height:48px!important;
+    min-width:48px!important;
+    min-height:48px!important;
+    border-radius:16px!important;
+    background:linear-gradient(180deg,#1fb3f3 0%,#0f8fd0 100%)!important;
+    color:#fff!important;
+    box-shadow:0 12px 24px -16px rgba(14,165,233,.55)!important;
+  }
+
+  #drawer-badge svg{
+    width:26px!important;
+    height:26px!important;
+    stroke-width:2.2!important;
+  }
+
+  #module-detail-drawer > div:first-child > div:first-child > div:last-child{
+    min-width:0!important;
+  }
+
+  #module-detail-drawer > div:first-child > div:first-child > div:last-child > div:first-child{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:7px!important;
+  }
+
+  #drawer-title{
+    margin:0!important;
+    font-size:18px!important;
+    line-height:1.05!important;
+    letter-spacing:-.025em!important;
+    font-weight:850!important;
+    color:#0f172a!important;
+  }
+
+  #drawer-tag{
+    display:inline-flex!important;
+    align-items:center!important;
+    width:auto!important;
+    max-width:100%!important;
+    min-height:30px!important;
+    padding:6px 10px!important;
+    border-radius:10px!important;
+    background:#dbeafe!important;
+    border:1px solid #bfdbfe!important;
+    color:#1d4ed8!important;
+    font-size:10px!important;
+    line-height:1.2!important;
+    font-weight:800!important;
+    white-space:normal!important;
+  }
+
+  #drawer-desc{
+    margin-top:7px!important;
+    font-size:13px!important;
+    line-height:1.45!important;
+    color:#64748b!important;
+    max-width:100%!important;
+  }
+
+  #module-detail-drawer > div:first-child > div:last-child{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  #module-detail-drawer > div:first-child > div:last-child > div{
+    min-width:0!important;
+    min-height:74px!important;
+    padding:11px 10px!important;
+    border-radius:15px!important;
+    background:#fff!important;
+    border:1px solid #dbe5f0!important;
+    text-align:left!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    box-shadow:none!important;
+  }
+
+  #module-detail-drawer > div:first-child > div:last-child > div > span:first-child{
+    font-size:9px!important;
+    line-height:1.2!important;
+    letter-spacing:.04em!important;
+    color:#94a3b8!important;
+    margin-bottom:5px!important;
+  }
+
+  #drawer-latency,
+  #drawer-health{
+    font-size:13px!important;
+    line-height:1.2!important;
+    min-width:0!important;
+    flex-wrap:wrap!important;
+  }
+
+  #drawer-health{
+    justify-content:flex-start!important;
+  }
+
+  #drawer-cards-grid{
+    gap:8px!important;
+    padding-top:0!important;
+  }
+
+  #drawer-cards-grid > div{
+    padding:13px!important;
+    border-radius:15px!important;
+    min-width:0!important;
+  }
+}
+
+@media(max-width:374px){
+  #module-detail-drawer > div:first-child > div:last-child{
+    grid-template-columns:1fr!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-TRANSFORM-REFINE-1">
+<meta name="flux-build" content="20260925-DRAWER-MOBILE-REFINE-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
