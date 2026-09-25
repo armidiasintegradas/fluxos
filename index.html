@@ -3357,8 +3357,264 @@ header .flux-brand-logo{
   .flux-skin-caption span{font-size:8.5px}
 }
 
+
+/* Mobile scroll recovery + brand lab compact showcase — 2026-09-25 */
+
+/* Official Flux OS mark, recolored by interface skin while preserving the official silhouette */
+.flux-official-mark{
+  display:block;
+  width:86px;
+  height:30px;
+  background:#fff;
+  -webkit-mask:url('/fluxos/assets/brand/flux-os-primary.svg?v=20260925-BRAND-SKIN-1') center/contain no-repeat;
+  mask:url('/fluxos/assets/brand/flux-os-primary.svg?v=20260925-BRAND-SKIN-1') center/contain no-repeat;
+}
+.flux-official-mark-phone{width:72px;height:26px;background:#0b1f4e}
+.skin-2 .flux-demo-side .flux-official-mark{background:#5eead4}
+.skin-2 .flux-phone-top .flux-official-mark{background:#5eead4}
+.skin-3 .flux-demo-side .flux-official-mark{background:#fbbf24}
+.skin-3 .flux-phone-top .flux-official-mark{background:#9a5b08}
+.skin-4 .flux-demo-side .flux-official-mark{background:#0f172a}
+.skin-4 .flux-phone-top .flux-official-mark{background:#334155}
+.flux-demo-brand{min-height:32px;display:flex;align-items:center;margin-bottom:20px}
+
+/* Scroll lock exists only while entry overlay is actually open */
+html.flux-scroll-lock,
+body.flux-scroll-lock{
+  overflow:hidden!important;
+  height:100%!important;
+}
+
+@media(max-width:767px){
+  html:not(.flux-scroll-lock),
+  body:not(.flux-scroll-lock){
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    height:auto!important;
+    min-height:100%!important;
+    position:static!important;
+    touch-action:pan-y!important;
+    overscroll-behavior-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+
+  body:not(.flux-scroll-lock){
+    width:100%!important;
+  }
+
+  main{
+    overflow:visible!important;
+    touch-action:pan-y!important;
+  }
+
+  #flux-entry:not(.is-visible){
+    display:none!important;
+    pointer-events:none!important;
+    visibility:hidden!important;
+  }
+
+  /* Brand lab: compact, fluid and swipe-friendly on mobile */
+  #personalizacao-marca.flux-brand-lab{
+    padding:20px 14px 18px!important;
+    overflow:hidden!important;
+  }
+
+  #personalizacao-marca .flux-brand-copy{
+    max-width:100%!important;
+  }
+
+  #personalizacao-marca .flux-brand-kicker{
+    margin-bottom:11px!important;
+    font-size:9px!important;
+    letter-spacing:.22em!important;
+  }
+
+  #personalizacao-marca .flux-brand-copy h2{
+    font-size:2.15rem!important;
+    line-height:.95!important;
+    max-width:95%!important;
+  }
+
+  #personalizacao-marca .flux-brand-copy>p{
+    margin-top:14px!important;
+    font-size:12px!important;
+    line-height:1.5!important;
+  }
+
+  #personalizacao-marca .flux-brand-callout{
+    margin-top:15px!important;
+    padding:11px 12px!important;
+    gap:10px!important;
+    border-radius:16px!important;
+  }
+
+  #personalizacao-marca .flux-brand-callout>.material-symbols-outlined{
+    width:38px!important;
+    height:38px!important;
+    flex:0 0 38px!important;
+    border-radius:12px!important;
+  }
+
+  /* Four choices fit in one compact segmented control */
+  #personalizacao-marca .flux-skin-selector{
+    width:100%!important;
+    margin:18px 0 10px!important;
+    padding:4px!important;
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:4px!important;
+    overflow:visible!important;
+    border:1px solid #e2e8f0!important;
+    border-radius:18px!important;
+    background:#f1f5f9!important;
+  }
+
+  #personalizacao-marca .flux-skin-btn{
+    width:100%!important;
+    min-width:0!important;
+    height:42px!important;
+    padding:0!important;
+    justify-content:center!important;
+    border:0!important;
+    border-radius:14px!important;
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+
+  #personalizacao-marca .flux-skin-btn b{
+    font-size:11px!important;
+  }
+
+  #personalizacao-marca .flux-skin-btn span{
+    display:none!important;
+  }
+
+  #personalizacao-marca .flux-skin-btn.active{
+    background:#2563eb!important;
+    color:#fff!important;
+    box-shadow:0 8px 18px -14px rgba(37,99,235,.8)!important;
+  }
+
+  /* The phone itself becomes the live demo to keep the section short */
+  #personalizacao-marca .flux-skin-stage{
+    margin-top:0!important;
+    padding:10px!important;
+    min-height:0!important;
+    grid-template-columns:1fr!important;
+    border-radius:22px!important;
+  }
+
+  #personalizacao-marca .flux-laptop{
+    display:none!important;
+  }
+
+  #personalizacao-marca .flux-phone{
+    width:100%!important;
+    height:auto!important;
+    min-height:385px!important;
+    padding:16px 14px 14px!important;
+    border-width:5px!important;
+    border-radius:25px!important;
+    box-shadow:0 20px 42px -30px rgba(15,23,42,.7)!important;
+  }
+
+  #personalizacao-marca .flux-phone-top{
+    min-height:32px!important;
+  }
+
+  #personalizacao-marca .flux-official-mark-phone{
+    width:82px!important;
+    height:28px!important;
+  }
+
+  #personalizacao-marca .flux-phone h4{
+    margin:22px 0 4px!important;
+    font-size:20px!important;
+  }
+
+  #personalizacao-marca .flux-phone>p{
+    margin-bottom:12px!important;
+    font-size:10px!important;
+  }
+
+  #personalizacao-marca .flux-phone-card{
+    padding:11px 12px!important;
+    margin-bottom:7px!important;
+  }
+
+  #personalizacao-marca .flux-phone-card span,
+  #personalizacao-marca .flux-phone-card small{
+    font-size:8px!important;
+  }
+
+  #personalizacao-marca .flux-phone-card strong{
+    font-size:22px!important;
+  }
+
+  #personalizacao-marca .flux-phone-mini{
+    height:88px!important;
+    padding:9px!important;
+  }
+
+  #personalizacao-marca .flux-phone nav{
+    margin-top:14px!important;
+  }
+
+  #personalizacao-marca .flux-skin-caption{
+    margin-top:9px!important;
+    padding:10px 11px!important;
+    border-radius:14px!important;
+    align-items:center!important;
+  }
+
+  #personalizacao-marca .flux-skin-caption b{
+    font-size:11px!important;
+  }
+
+  #personalizacao-marca .flux-skin-caption span{
+    font-size:8px!important;
+    line-height:1.35!important;
+  }
+
+  /* Proof cards become compact two-column tiles; 1 col on very small screens */
+  #personalizacao-marca .flux-brand-proof{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+    margin-top:12px!important;
+  }
+
+  #personalizacao-marca .flux-brand-proof article{
+    display:block!important;
+    min-width:0!important;
+    padding:11px!important;
+    border-radius:14px!important;
+  }
+
+  #personalizacao-marca .flux-brand-proof .material-symbols-outlined{
+    width:32px!important;
+    height:32px!important;
+    margin-bottom:8px!important;
+  }
+
+  #personalizacao-marca .flux-brand-proof b{
+    font-size:9.5px!important;
+    line-height:1.25!important;
+  }
+
+  #personalizacao-marca .flux-brand-proof p{
+    font-size:8px!important;
+    line-height:1.35!important;
+  }
+}
+
+@media(max-width:380px){
+  #personalizacao-marca .flux-brand-proof{
+    grid-template-columns:1fr!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-BRAND-LAB-4SKINS-1">
+<meta name="flux-build" content="20260925-MOBILE-SCROLL-BRAND-LAB-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -4675,7 +4931,7 @@ header .flux-brand-logo{
       <div class="flux-laptop">
         <div class="flux-screen">
           <aside class="flux-demo-side">
-            <div class="flux-demo-brand">Flux<span>OS</span></div>
+            <div class="flux-demo-brand"><span class="flux-official-mark" aria-label="Flux OS"></span></div>
             <nav>
               <i class="active"><span class="material-symbols-outlined">dashboard</span><em>Visão geral</em></i>
               <i><span class="material-symbols-outlined">domain</span><em>Obras</em></i>
@@ -4726,7 +4982,7 @@ header .flux-brand-logo{
       </div>
 
       <div class="flux-phone">
-        <div class="flux-phone-top"><b>Flux<span>OS</span></b><span class="material-symbols-outlined">notifications</span></div>
+        <div class="flux-phone-top"><span class="flux-official-mark flux-official-mark-phone" aria-label="Flux OS"></span><span class="material-symbols-outlined">notifications</span></div>
         <h4 id="skin-mobile-title">Bom dia!</h4>
         <p id="skin-mobile-subtitle">Acompanhe seus projetos em tempo real.</p>
         <div class="flux-phone-card"><span id="skin-mobile-kpi-label">Projetos em execução</span><strong id="skin-mobile-kpi">12</strong><small>▲ atualizado agora</small></div>
@@ -5525,7 +5781,7 @@ header .flux-brand-logo{
     if(!entry||!splash||!welcome)return;
     entry.classList.remove('welcome-stage');
     entry.classList.add('is-visible');
-    document.body.style.overflow='hidden';
+    document.body.classList.add('flux-scroll-lock');
     welcome.classList.remove('is-ready');
     splash.classList.remove('is-done');
 
@@ -5550,7 +5806,7 @@ header .flux-brand-logo{
     if(!name||!org)return;
     localStorage.setItem(FLUX_ENTRY_KEY,JSON.stringify({name,org,enteredAt:Date.now()}));
     applyFluxIdentity(name,org);
-    const entry=document.getElementById('flux-entry'); entry.classList.remove('is-visible','welcome-stage'); document.body.style.overflow='';
+    const entry=document.getElementById('flux-entry'); entry.classList.remove('is-visible','welcome-stage'); document.body.classList.remove('flux-scroll-lock'); document.documentElement.classList.remove('flux-scroll-lock');
     window.scrollTo({top:0,behavior:'smooth'});
   }
   function exitFlux(){
@@ -5571,7 +5827,7 @@ header .flux-brand-logo{
 },{passive:true});
 function initFluxEntry(){
     let session=null; try{session=JSON.parse(localStorage.getItem(FLUX_ENTRY_KEY)||'null')}catch(e){}
-    if(session?.name&&session?.org){applyFluxIdentity(session.name,session.org);return}
+    if(session?.name&&session?.org){applyFluxIdentity(session.name,session.org);document.body.classList.remove('flux-scroll-lock');document.documentElement.classList.remove('flux-scroll-lock');document.body.style.overflow='';document.documentElement.style.overflow='';return}
     showFluxEntry(true);
   }
 
