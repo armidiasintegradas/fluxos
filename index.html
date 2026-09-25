@@ -2035,94 +2035,6 @@ header .flux-brand-logo{
 }
 
 
-/* Transformação responsive refinement — approved visual */
-.flux-transform-accent{
-  width:112px;
-  height:4px;
-  margin:14px auto 18px;
-  border-radius:999px;
-  background:linear-gradient(90deg,#31b7f4 0%,#3478f6 52%,#5b3df1 100%);
-  box-shadow:0 4px 14px -10px rgba(59,130,246,.55);
-}
-
-@media(min-width:768px){
-  .flux-transform-accent{
-    width:132px;
-    height:5px;
-    margin:16px auto 20px;
-  }
-}
-
-@media(min-width:1024px){
-  .flux-transform-accent{
-    width:160px;
-    height:6px;
-    margin:18px auto 22px;
-  }
-}
-
-@media(max-width:767px){
-  #transformacao>header{
-    text-align:center!important;
-    max-width:100%!important;
-    margin-left:auto!important;
-    margin-right:auto!important;
-    margin-bottom:22px!important;
-  }
-  #transformacao>header .inline-flex{
-    margin-left:auto!important;
-    margin-right:auto!important;
-  }
-  #transformacao>header h1{
-    font-size:clamp(2.35rem,11vw,3.15rem)!important;
-    line-height:.96!important;
-    letter-spacing:-.055em!important;
-    margin-bottom:0!important;
-  }
-  #transformacao>header>p:first-of-type{
-    text-align:center!important;
-    font-size:10px!important;
-    letter-spacing:.24em!important;
-    margin-bottom:10px!important;
-  }
-  #transformacao>header>p:last-of-type{
-    text-align:center!important;
-    font-size:14px!important;
-    line-height:1.5!important;
-    max-width:92%!important;
-    margin:0 auto!important;
-  }
-  #transformacao>header>div:last-child{
-    width:100%!important;
-    display:grid!important;
-    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
-    gap:6px!important;
-    margin-top:18px!important;
-    padding:5px!important;
-    border-radius:20px!important;
-  }
-  #transformacao>header>div:last-child button{
-    min-width:0!important;
-    min-height:52px!important;
-    padding:10px 8px!important;
-    font-size:10px!important;
-    line-height:1.25!important;
-    text-align:center!important;
-    white-space:normal!important;
-    border-radius:15px!important;
-  }
-}
-
-@media(min-width:768px) and (max-width:1023px){
-  #transformacao>header{
-    text-align:center!important;
-  }
-  #transformacao>header .inline-flex{
-    margin-left:auto!important;
-    margin-right:auto!important;
-  }
-}
-
 
 /* Mobile module detail drawer redesign — aligned system */
 @media(max-width:767px){
@@ -2337,8 +2249,124 @@ header .flux-brand-logo{
   }
   #drawer-title{font-size:18px!important}
 }
+
+/* Transformação mobile — approved layout, collision-proof */
+#transformacao .flux-transform-accent{
+  display:block!important;
+  box-sizing:border-box!important;
+  padding:0!important;
+  border:0!important;
+  min-height:0!important;
+  max-height:6px!important;
+  width:160px!important;
+  height:6px!important;
+  margin:18px auto 22px!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,#31b7f4 0%,#3478f6 52%,#6938ef 100%)!important;
+  box-shadow:none!important;
+  flex:none!important;
+}
+
+@media(max-width:767px){
+  #transformacao{
+    padding-left:15px!important;
+    padding-right:15px!important;
+  }
+
+  #transformacao>header{
+    max-width:100%!important;
+    width:100%!important;
+    margin:0 auto 22px!important;
+    text-align:center!important;
+  }
+
+  #transformacao>header>.inline-flex{
+    margin-left:auto!important;
+    margin-right:auto!important;
+    padding:10px 15px!important;
+    border-radius:999px!important;
+    font-size:10px!important;
+    line-height:1!important;
+    letter-spacing:.15em!important;
+    gap:8px!important;
+  }
+
+  #transformacao .transform-kicker{
+    margin:24px 0 10px!important;
+    text-align:center!important;
+    font-size:10px!important;
+    line-height:1.1!important;
+    letter-spacing:.25em!important;
+  }
+
+  #transformacao .transform-title{
+    margin:0!important;
+    text-align:center!important;
+    font-size:clamp(2.55rem,10.8vw,3rem)!important;
+    line-height:.94!important;
+    letter-spacing:-.055em!important;
+  }
+
+  #transformacao .flux-transform-accent{
+    width:112px!important;
+    min-width:112px!important;
+    max-width:112px!important;
+    height:4px!important;
+    min-height:4px!important;
+    max-height:4px!important;
+    margin:14px auto 18px!important;
+    padding:0!important;
+    border-radius:999px!important;
+    overflow:hidden!important;
+  }
+
+  #transformacao .transform-copy{
+    width:92%!important;
+    max-width:92%!important;
+    margin:0 auto!important;
+    text-align:center!important;
+    font-size:13px!important;
+    line-height:1.48!important;
+    color:#64748b!important;
+  }
+
+  #transformacao .flux-transform-tabs{
+    width:100%!important;
+    max-width:100%!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:6px!important;
+    margin:20px auto 0!important;
+    padding:6px!important;
+    border-radius:20px!important;
+    box-sizing:border-box!important;
+  }
+
+  #transformacao .flux-transform-tabs button{
+    width:100%!important;
+    min-width:0!important;
+    min-height:52px!important;
+    padding:9px 8px!important;
+    border-radius:15px!important;
+    font-size:10px!important;
+    line-height:1.2!important;
+    text-align:center!important;
+    white-space:normal!important;
+  }
+}
+
+@media(min-width:768px) and (max-width:1023px){
+  #transformacao>header{text-align:center!important}
+  #transformacao .flux-transform-accent{
+    width:132px!important;
+    height:5px!important;
+    max-height:5px!important;
+    margin:16px auto 20px!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-DRAWER-MOBILE-REDESIGN-2">
+<meta name="flux-build" content="20260925-TRANSFORM-MOBILE-FIX-2">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -2528,17 +2556,17 @@ header .flux-brand-logo{
         <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
         03 — A TRANSFORMAÇÃO
       </div>
-      <p class="text-xs md:text-sm font-extrabold tracking-[0.25em] text-slate-400 uppercase mb-2">UMA PLATAFORMA.</p>
-      <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-none mb-3">
+      <p class="transform-kicker text-xs md:text-sm font-extrabold tracking-[0.25em] text-slate-400 uppercase mb-2">UMA PLATAFORMA.</p>
+      <h1 class="transform-title text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-none mb-3">
         Toda a operação.
       </h1>
       <div class="flux-transform-accent" aria-hidden="true"></div>
-      <p class="text-slate-600 text-sm md:text-base font-medium">
+      <p class="transform-copy text-slate-600 text-sm md:text-base font-medium">
         Toda a operação conectada em um único ecossistema, com dados e decisões em tempo real.
       </p>
 
       <!-- Seletor de Modo de Visualização do Bloco -->
-      <div class="flex items-center justify-center gap-2 mt-5 p-1 bg-slate-100/80 backdrop-blur rounded-2xl w-fit mx-auto border border-slate-200/60 shadow-inner">
+      <div class="flux-transform-tabs flex items-center justify-center gap-2 mt-5 p-1 bg-slate-100/80 backdrop-blur rounded-2xl w-fit mx-auto border border-slate-200/60 shadow-inner">
         <button id="btn-mode-flow" onclick="switchVisualMode('flow')" class="px-4 py-1.5 rounded-xl text-xs font-bold transition-all bg-white text-blue-700 shadow-sm">
           Fluxo em Rede (Convergência)
         </button>
