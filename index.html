@@ -1099,6 +1099,35 @@ header .flux-brand-logo{
   }
   .flux-core-official-brand img{width:min(195px,100%)}
 }
+/* Núcleo central — marca sem box/background */
+.flux-core-official-brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:auto!important;
+  padding:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.flux-core-official-brand img{
+  display:block;
+  width:min(240px,100%)!important;
+  height:auto!important;
+  object-fit:contain;
+}
+@media(max-width:767px){
+  .flux-core-official-brand{
+    min-height:auto!important;
+    padding:0!important;
+    border-radius:0!important;
+  }
+  .flux-core-official-brand img{
+    width:min(220px,100%)!important;
+  }
+}
+
 </style>
 <meta name="flux-build" content="20260924-CANONICAL-BRAND-2">
 </head>
@@ -1559,7 +1588,7 @@ header .flux-brand-logo{
             <!-- LOGOTIPO FLUX OS NO CENTRO -->
             <div class="my-2">
               <div class="flux-core-official-brand" aria-label="FLUX OS">
-                <img src="/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-2" alt="FLUX OS">
+                <img src="/fluxos/assets/brand/MarcaSite.png?v=20260924-NUCLEO-3" alt="FLUX OS">
               </div>
               <p class="text-xs font-extrabold tracking-[0.25em] text-slate-400 uppercase mt-2">
                 NÚCLEO CENTRAL
