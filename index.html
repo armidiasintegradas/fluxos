@@ -1986,8 +1986,37 @@ header .flux-brand-logo{
   }
 }
 
+
+/* Welcome logo exact approved treatment */
+#flux-welcome .flux-canonical-brand-field{
+  background:transparent!important;
+  box-shadow:none!important;
+  border:0!important;
+  padding:0!important;
+  border-radius:0!important;
+  width:max-content!important;
+  max-width:100%!important;
+}
+#flux-welcome .flux-canonical-brand-field img{
+  display:block!important;
+  width:auto!important;
+  height:58px!important;
+  max-width:min(280px,100%)!important;
+  object-fit:contain!important;
+  background:transparent!important;
+}
+@media(max-width:767px){
+  #flux-welcome .flux-canonical-brand-field{
+    margin-bottom:18px!important;
+  }
+  #flux-welcome .flux-canonical-brand-field img{
+    height:50px!important;
+    max-width:230px!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-MOBILE-SPLASH-WHITE-1">
+<meta name="flux-build" content="20260925-WELCOME-LOGO-CORRECT-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -2006,7 +2035,7 @@ header .flux-brand-logo{
     </div>
   </div>
   <div id="flux-welcome" class="bg-white rounded-[2rem] border border-slate-200 shadow-2xl p-7 sm:p-10">
-    <div class="flux-canonical-brand-field mb-8"><img src="/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-1" alt="FLUX OS" style="height:58px;width:auto;display:block"></div>
+    <div class="flux-canonical-brand-field mb-8"><img src="/fluxos/assets/brand/MarcaSite.png?v=20260925-WELCOME-LOGO-CORRECT-1" alt="FLUX OS" style="height:58px;width:auto;display:block"></div>
     <div class="mb-7"><span class="text-[11px] font-bold tracking-[.2em] uppercase text-blue-600">Bem-vindo</span><h1 class="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Vamos personalizar sua experiência.</h1><p class="mt-2 text-sm text-slate-500">São só duas informações para começar.</p></div>
     <form id="flux-entry-form" class="space-y-4" onsubmit="enterFlux(event)">
       <div><label for="flux-entry-name" class="block text-xs font-bold text-slate-700 mb-1.5">Como você gostaria de ser chamado?</label><input id="flux-entry-name" required autocomplete="name" class="w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Seu nome"></div>
