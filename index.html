@@ -1040,6 +1040,38 @@
 }
 /* /FLUX Responsive Experience V5 */
 
+
+/* Canonical FLUX OS Brand Application — 2026-09-24 */
+.flux-canonical-brand-field{
+  display:flex;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  padding:12px 16px;
+  border-radius:16px;
+  background:linear-gradient(145deg,#020817,#0b1634);
+}
+header .flux-brand-logo{
+  height:42px!important;
+  width:auto!important;
+  max-width:190px;
+  object-fit:contain;
+}
+@media(max-width:767px){
+  header .flux-brand-logo{
+    height:32px!important;
+    max-width:130px!important;
+  }
+  .flux-canonical-brand-field{
+    padding:10px 12px;
+    border-radius:14px;
+  }
+  .flux-canonical-brand-field img{
+    height:42px!important;
+    max-width:100%;
+    object-fit:contain;
+  }
+}
 </style>
 <meta name="flux-build" content="20260924-ICON-FINAL-1">
 </head>
@@ -1060,7 +1092,7 @@
     </div>
   </div>
   <div id="flux-welcome" class="bg-white rounded-[2rem] border border-slate-200 shadow-2xl p-7 sm:p-10">
-    <div class="flex items-center mb-8"><img src="/fluxos/assets/brand/MarcaSite.png?v=20260924-2" alt="FLUX OS" style="height:58px;width:auto;display:block"></div>
+    <div class="flux-canonical-brand-field mb-8"><img src="/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-1" alt="FLUX OS" style="height:58px;width:auto;display:block"></div>
     <div class="mb-7"><span class="text-[11px] font-bold tracking-[.2em] uppercase text-blue-600">Bem-vindo</span><h1 class="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">Vamos personalizar sua experiência.</h1><p class="mt-2 text-sm text-slate-500">São só duas informações para começar.</p></div>
     <form id="flux-entry-form" class="space-y-4" onsubmit="enterFlux(event)">
       <div><label for="flux-entry-name" class="block text-xs font-bold text-slate-700 mb-1.5">Como você gostaria de ser chamado?</label><input id="flux-entry-name" required autocomplete="name" class="w-full rounded-xl border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Seu nome"></div>
@@ -1092,25 +1124,25 @@
 </div>
 
 <!-- Header Fixo -->
-<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+<header class="sticky top-0 z-40 bg-slate-950/95 backdrop-blur-md border-b border-white/10 shadow-xs">
   <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
     <a class="flex items-center" href="#" aria-label="FLUX OS">
-      <img src="/fluxos/assets/brand/MarcaSite.png?v=20260924-2" alt="FLUX OS" class="flux-brand-logo" style="height:58px;width:auto;display:block">
+      <img src="/fluxos/assets/brand/MarcaAbertura.png?v=20260924-CANONICAL-1" alt="FLUX OS" class="flux-brand-logo" style="height:58px;width:auto;display:block">
     </a>
     
-    <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold text-slate-600">
-      <a class="hover:text-blue-600 transition-colors" href="#visao-geral">Visão Geral</a>
-      <a class="hover:text-blue-600 transition-colors" href="#problema">O Problema</a>
-      <a class="hover:text-blue-600 transition-colors" href="#inteligencia">Inteligência</a>
-      <a class="hover:text-blue-600 transition-colors" href="#painel-tempo-real">Painel</a><a class="hover:text-blue-600 transition-colors" href="#encontro-flux">Demonstração</a>
-      <a class="hover:text-blue-600 transition-colors" href="#simulador-economico">Simulador</a>
-      <a class="hover:text-blue-600 transition-colors" href="#personalizacao-marca">Marca Própria</a>
-      <a class="hover:text-blue-600 transition-colors" href="#resultados">Resultados</a>
+    <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold text-slate-300">
+      <a class="hover:text-white transition-colors" href="#visao-geral">Visão Geral</a>
+      <a class="hover:text-white transition-colors" href="#problema">O Problema</a>
+      <a class="hover:text-white transition-colors" href="#inteligencia">Inteligência</a>
+      <a class="hover:text-white transition-colors" href="#painel-tempo-real">Painel</a><a class="hover:text-white transition-colors" href="#encontro-flux">Demonstração</a>
+      <a class="hover:text-white transition-colors" href="#simulador-economico">Simulador</a>
+      <a class="hover:text-white transition-colors" href="#personalizacao-marca">Marca Própria</a>
+      <a class="hover:text-white transition-colors" href="#resultados">Resultados</a>
     </nav>
     
     <div class="flex items-center gap-2">
       <a class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-full shadow-sm transition-all hover:scale-105" href="#demonstracao">Solicitar demonstração</a>
-      <button type="button" onclick="exitFlux()" class="px-3 py-2.5 text-xs font-semibold text-slate-500 hover:text-rose-600 transition-colors flex items-center gap-1" aria-label="Sair e voltar à tela inicial"><span class="material-symbols-outlined text-sm">logout</span><span class="hidden sm:inline">Sair</span></button>
+      <button type="button" onclick="exitFlux()" class="px-3 py-2.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors flex items-center gap-1" aria-label="Sair e voltar à tela inicial"><span class="material-symbols-outlined text-sm">logout</span><span class="hidden sm:inline">Sair</span></button>
     </div>
   </div>
 </header>
