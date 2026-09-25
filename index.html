@@ -3004,8 +3004,34 @@ header .flux-brand-logo{
   }
 }
 
+
+/* Mobile dashboard nav status dots — inline alignment fix */
+@media(max-width:800px){
+  .fld-side button{
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    padding:9px 12px!important;
+    overflow:visible!important;
+  }
+
+  .fld-side button .status{
+    position:relative!important;
+    right:auto!important;
+    top:auto!important;
+    width:7px!important;
+    height:7px!important;
+    min-width:7px!important;
+    min-height:7px!important;
+    flex:0 0 7px!important;
+    margin-left:2px!important;
+    border-radius:50%!important;
+    z-index:2!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-MOBILE-PROJECT-NAME-SIZE-1">
+<meta name="flux-build" content="20260925-MOBILE-NAV-DOTS-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
