@@ -2888,8 +2888,71 @@ header .flux-brand-logo{
   #resultados .market11-card--amber .market11-value{color:#ea580c!important}
 }
 
+
+/* Mobile final opportunity title — fixed 5-line standard */
+.flux-result-title-mobile{display:none}
+
+@media(max-width:767px){
+  .flux-result-title{
+    display:none!important;
+  }
+
+  .flux-result-title-mobile{
+    display:flex!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 auto 20px!important;
+    padding:0!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:1px!important;
+    text-align:center!important;
+    color:#0f172a!important;
+  }
+
+  .flux-result-mobile-line{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:0!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+    color:#0f172a!important;
+    font-size:clamp(2rem,9.7vw,2.75rem)!important;
+    line-height:.94!important;
+    letter-spacing:-.055em!important;
+    font-weight:900!important;
+  }
+
+  .flux-result-mobile-project{
+    max-width:92%!important;
+    margin-bottom:12px!important;
+    color:#0f172a!important;
+    font-size:clamp(1.35rem,6.2vw,1.8rem)!important;
+    line-height:1.05!important;
+    letter-spacing:-.035em!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  .flux-result-mobile-accent{
+    color:#2563eb!important;
+  }
+}
+
+@media(max-width:390px){
+  .flux-result-mobile-line{
+    font-size:clamp(1.82rem,9.4vw,2.3rem)!important;
+  }
+  .flux-result-mobile-project{
+    font-size:clamp(1.25rem,5.9vw,1.6rem)!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260925-MARKET11-STEPS-1">
+<meta name="flux-build" content="20260925-FINAL-TITLE-MOBILE-5LINES-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -4339,6 +4402,14 @@ header .flux-brand-logo{
         <span class="user-name-display">Alex</span>, identificamos uma
         <strong>oportunidade real de ganho</strong>
         para a sua operação.
+      </h2>
+
+      <h2 class="flux-result-title-mobile" aria-label="Oportunidade identificada">
+        <span class="flux-result-mobile-line flux-result-mobile-project user-org-display">Seu projeto</span>
+        <span class="flux-result-mobile-line">Identificamos uma</span>
+        <span class="flux-result-mobile-line flux-result-mobile-accent">oportunidade</span>
+        <span class="flux-result-mobile-line flux-result-mobile-accent">real de ganho</span>
+        <span class="flux-result-mobile-line">para sua operação.</span>
       </h2>
 
       <div class="flux-result-card">
