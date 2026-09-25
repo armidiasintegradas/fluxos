@@ -1137,6 +1137,337 @@ header .flux-brand-logo{
   }
 }
 
+
+/* Resultado final / oportunidade — layout premium */
+.flux-result-section{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(37,99,235,.055),transparent 34%),
+    linear-gradient(180deg,#fff 0%,#fff 70%,#f8fbff 100%);
+  border:1px solid #e7edf5;
+  border-radius:28px;
+  padding:44px 28px 30px;
+  box-shadow:0 18px 60px -48px rgba(15,23,42,.3);
+  text-align:center;
+}
+.flux-result-section:after{
+  content:"";
+  position:absolute;
+  right:-120px;
+  bottom:-180px;
+  width:520px;
+  height:360px;
+  border-radius:50%;
+  border:60px solid rgba(37,99,235,.025);
+  transform:rotate(-28deg);
+  pointer-events:none;
+}
+.flux-result-inner{
+  position:relative;
+  z-index:1;
+  max-width:900px;
+  margin:0 auto;
+}
+.flux-result-kicker{
+  color:#94a3b8;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+.flux-result-logo{
+  display:flex;
+  justify-content:center;
+  margin:18px auto 14px;
+}
+.flux-result-logo img{
+  display:block;
+  width:auto;
+  height:86px;
+  object-fit:contain;
+}
+.flux-result-badge{
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:8px 18px;
+  border:1px solid #bfdbfe;
+  border-radius:999px;
+  background:linear-gradient(180deg,#f8fbff,#eff6ff);
+  color:#2563eb;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.11em;
+  box-shadow:0 6px 18px -15px rgba(37,99,235,.65);
+}
+.flux-result-badge .material-symbols-outlined{
+  font-size:19px;
+  font-variation-settings:'FILL' 1,'wght' 650;
+}
+.flux-result-title{
+  max-width:790px;
+  margin:0 auto;
+  color:#0f172a;
+  font-size:clamp(2.15rem,5vw,4.15rem);
+  line-height:.98;
+  letter-spacing:-.055em;
+  font-weight:850;
+}
+.flux-result-title>span{color:#0f172a}
+.flux-result-title strong{
+  display:block;
+  color:#2563eb;
+  font-weight:850;
+}
+.flux-result-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:110px minmax(0,1.4fr) 1px minmax(180px,.65fr);
+  align-items:center;
+  gap:24px;
+  max-width:820px;
+  margin:28px auto 16px;
+  padding:22px 28px;
+  border:1px solid #c9dcf7;
+  border-radius:26px;
+  background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(239,246,255,.88));
+  box-shadow:0 18px 45px -38px rgba(37,99,235,.7),inset 0 0 0 1px rgba(255,255,255,.8);
+  text-align:left;
+}
+.flux-result-card:before,
+.flux-result-card:after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:34px;
+  height:36px;
+  transform:translateY(-50%);
+  opacity:.7;
+  background:
+    linear-gradient(#2563eb,#2563eb) 0 50%/16px 3px no-repeat,
+    linear-gradient(45deg,transparent 44%,#93c5fd 45% 55%,transparent 56%) 14px 1px/16px 16px no-repeat,
+    linear-gradient(-45deg,transparent 44%,#93c5fd 45% 55%,transparent 56%) 14px 19px/16px 16px no-repeat;
+}
+.flux-result-card:before{left:-56px}
+.flux-result-card:after{right:-56px;transform:translateY(-50%) scaleX(-1)}
+.flux-result-icon{
+  width:82px;
+  height:82px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(145deg,#dbeafe,#eff6ff);
+  border:1px solid #bfdbfe;
+  box-shadow:inset 0 0 0 8px rgba(255,255,255,.48);
+  color:#2563eb;
+}
+.flux-result-icon .material-symbols-outlined{
+  font-size:46px;
+  font-variation-settings:'wght' 650;
+}
+.flux-result-value small,.flux-result-project small{
+  display:block;
+  color:#7c8aa4;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.04em;
+  margin-bottom:3px;
+}
+.flux-result-value strong{
+  display:block;
+  color:#2563eb;
+  font-size:clamp(2.75rem,6vw,4.9rem);
+  line-height:.9;
+  font-weight:900;
+  letter-spacing:-.055em;
+  white-space:nowrap;
+  text-shadow:0 6px 22px rgba(37,99,235,.12);
+}
+.flux-result-divider{
+  width:1px;
+  height:82px;
+  background:#c7d8f1;
+}
+.flux-result-project strong{
+  display:block;
+  color:#2563eb;
+  font-size:16px;
+  line-height:1.25;
+  font-weight:850;
+}
+.flux-result-copy{
+  max-width:760px;
+  margin:12px auto 20px;
+  color:#64748b;
+  font-size:15px;
+  line-height:1.6;
+}
+.flux-result-copy strong{
+  color:#2563eb;
+  font-weight:850;
+}
+.flux-result-copy .user-org-display{
+  color:#475569;
+  font-weight:650;
+}
+.flux-result-form-wrap{
+  max-width:620px;
+  margin:0 auto;
+}
+.flux-result-form{
+  display:grid;
+  gap:12px;
+  padding:20px 22px 22px;
+  border:1px solid #d9e3f0;
+  border-radius:22px;
+  background:rgba(248,250,252,.9);
+  text-align:left;
+  box-shadow:0 16px 36px -34px rgba(15,23,42,.55);
+}
+.flux-result-form>label>span{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:5px;
+  color:#334155;
+  font-size:12px;
+  font-weight:750;
+}
+.flux-result-form>label>span .material-symbols-outlined{
+  width:25px;
+  height:25px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:#eff6ff;
+  color:#315da8;
+  font-size:16px;
+}
+.flux-result-form input[type="tel"],
+.flux-result-form input[type="email"],
+.flux-result-form input[type="text"]{
+  width:100%;
+  min-height:46px;
+  padding:0 14px;
+  border:1px solid #cbd5e1;
+  border-radius:12px;
+  background:#fff;
+  color:#0f172a;
+  font-size:14px;
+  box-shadow:inset 0 1px 2px rgba(15,23,42,.02);
+}
+.flux-result-form input:focus{
+  border-color:#60a5fa;
+  box-shadow:0 0 0 3px rgba(59,130,246,.12);
+  outline:none;
+}
+.flux-result-consent{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  padding-top:2px;
+}
+.flux-result-consent input{
+  width:19px;
+  height:19px;
+  margin-top:1px;
+  border-radius:5px;
+}
+.flux-result-consent label{
+  color:#718096;
+  font-size:11px;
+  line-height:1.45;
+}
+.flux-result-submit{
+  min-height:54px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(100deg,#2145e8 0%,#2563eb 62%,#149dfc 100%);
+  color:white;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.01em;
+  box-shadow:0 12px 26px -16px rgba(37,99,235,.9);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+@media(hover:hover){
+  .flux-result-submit:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 30px -16px rgba(37,99,235,.9);
+  }
+}
+.flux-result-submit .material-symbols-outlined{font-size:21px}
+.flux-result-footer{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid #edf1f6;
+  color:#94a3b8;
+  font-size:10px;
+}
+@media(max-width:767px){
+  .flux-result-section{
+    padding:28px 16px 22px!important;
+    border-radius:22px;
+  }
+  .flux-result-kicker{font-size:10px}
+  .flux-result-logo{margin-top:14px}
+  .flux-result-logo img{height:64px}
+  .flux-result-badge{
+    margin-bottom:16px;
+    padding:7px 13px;
+    font-size:9px;
+  }
+  .flux-result-title{
+    font-size:clamp(2rem,10vw,2.85rem);
+    line-height:1;
+  }
+  .flux-result-card{
+    grid-template-columns:62px 1fr;
+    gap:14px;
+    margin-top:22px;
+    padding:18px 16px;
+    border-radius:20px;
+  }
+  .flux-result-card:before,.flux-result-card:after{display:none}
+  .flux-result-icon{
+    width:58px;
+    height:58px;
+  }
+  .flux-result-icon .material-symbols-outlined{font-size:32px}
+  .flux-result-value strong{
+    font-size:clamp(2.3rem,12vw,3.3rem);
+  }
+  .flux-result-divider{display:none}
+  .flux-result-project{
+    grid-column:1/-1;
+    padding-top:12px;
+    border-top:1px solid #d9e3f0;
+  }
+  .flux-result-project strong{font-size:14px}
+  .flux-result-copy{
+    font-size:13px;
+    line-height:1.55;
+    margin:14px auto 18px;
+  }
+  .flux-result-form{
+    padding:16px;
+    border-radius:18px;
+  }
+  .flux-result-submit{
+    min-height:52px;
+    font-size:12px;
+  }
+}
+
 </style>
 <meta name="flux-build" content="20260924-CANONICAL-BRAND-2">
 </head>
@@ -2567,44 +2898,78 @@ header .flux-brand-logo{
   </section>
 
   <!-- 13 — FECHAMENTO COMERCIAL & CAPTURA -->
-  <section class="bg-white rounded-3xl p-8 sm:p-14 card-border shadow-md text-center relative" id="demonstracao">
-    <div class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-4">13 — Encerramento Personalizado</div>
-    <div class="max-w-2xl mx-auto space-y-4">
-      <div class="flex items-center justify-center">
-        <img src="/fluxos/assets/brand/MarcaSite.png?v=20260924-ENCERRAMENTO-1" alt="FLUX OS" class="w-auto h-[62px] sm:h-[78px] object-contain">
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        <span class="user-name-display text-blue-600">Alex</span>, encontramos uma oportunidade que merece ser validada.
-      </h2>
-      <p class="text-xs sm:text-sm text-slate-500" id="cta-headline-saving-text">Destacamos <strong class="text-blue-600 font-extrabold text-sm sm:text-base"><span id="cta-project-saving" class="">R$&nbsp;477.383</span> de potencial estimado no projeto analisado (<span id="cta-project-name" class="">Residencial Alfa / Projeto Base</span>)</strong>. Agora precisamos confrontar esta simulação com os dados reais da <span class="user-org-display font-semibold text-indigo-600">AR Mídias Integradas</span>.</p>
+  <section class="flux-result-section" id="demonstracao">
+    <div class="flux-result-inner">
+      <div class="flux-result-kicker">13 — ENCERRAMENTO PERSONALIZADO</div>
 
-      <div class="pt-6 max-w-md mx-auto">
-        <form class="space-y-3 bg-slate-50 p-5 rounded-2xl border border-slate-200 text-left" onsubmit="handleCtaSubmit(event)">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">WhatsApp para contato direto</label>
-            <input class="w-full text-xs font-medium rounded-xl border-slate-300 py-2 bg-white" placeholder="(11) 99999-9999" required="" type="tel">
+      <div class="flux-result-logo">
+        <img src="/fluxos/assets/brand/MarcaSite.png?v=20260924-RESULTADO-1" alt="FLUX OS">
+      </div>
+
+      <div class="flux-result-badge">
+        <span class="material-symbols-outlined">bar_chart</span>
+        OPORTUNIDADE IDENTIFICADA
+      </div>
+
+      <h2 class="flux-result-title">
+        <span class="user-name-display">Alex</span>, identificamos uma
+        <strong>oportunidade real de ganho</strong>
+        para a sua operação.
+      </h2>
+
+      <div class="flux-result-card">
+        <div class="flux-result-icon">
+          <span class="material-symbols-outlined">trending_up</span>
+        </div>
+
+        <div class="flux-result-value">
+          <small>POTENCIAL ESTIMADO</small>
+          <strong id="cta-project-saving">R$&nbsp;477.383</strong>
+        </div>
+
+        <div class="flux-result-divider"></div>
+
+        <div class="flux-result-project">
+          <small>NO PROJETO</small>
+          <strong id="cta-project-name">Residencial Alfa / Projeto Base</strong>
+        </div>
+      </div>
+
+      <p class="flux-result-copy">
+        Agora, o próximo passo é <strong>validar este cenário com os dados reais</strong><br class="hidden sm:block">
+        da <span class="user-org-display">sua empresa</span> e transformar essa oportunidade em ação e resultados concretos.
+      </p>
+
+      <div class="flux-result-form-wrap">
+        <form class="flux-result-form" onsubmit="handleCtaSubmit(event)">
+          <label>
+            <span><span class="material-symbols-outlined">chat</span>WhatsApp para contato direto</span>
+            <input placeholder="(81) 99999-9999" required type="tel">
+          </label>
+
+          <label>
+            <span><span class="material-symbols-outlined">mail</span>E-mail corporativo</span>
+            <input placeholder="nome@empresa.com.br" required type="email">
+          </label>
+
+          <label>
+            <span><span class="material-symbols-outlined">business_center</span>Cargo / Função (opcional)</span>
+            <input placeholder="Diretor de Operações" type="text">
+          </label>
+
+          <div class="flux-result-consent">
+            <input id="cta-consent" required type="checkbox">
+            <label for="cta-consent">Autorizo o contato técnico para validação das métricas simuladas.</label>
           </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">E-mail corporativo</label>
-            <input class="w-full text-xs font-medium rounded-xl border-slate-300 py-2 bg-white" placeholder="alex@armidias.com.br" required="" type="email">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Cargo / Função (opcional)</label>
-            <input class="w-full text-xs font-medium rounded-xl border-slate-300 py-2 bg-white" placeholder="Diretor de Operações" type="text">
-          </div>
-          <div class="flex items-start gap-2 pt-1">
-            <input class="mt-0.5 rounded border-slate-300 text-blue-600 focus:ring-blue-500" id="cta-consent" required="" type="checkbox">
-            <label class="text-[11px] text-slate-500" for="cta-consent">
-              Autorizo o contato técnico para validação das métricas simuladas.
-            </label>
-          </div>
-          <button class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-2" type="submit">
-            QUERO VER ISSO NA PRÁTICA <span class="material-symbols-outlined text-sm">arrow_forward</span>
+
+          <button class="flux-result-submit" type="submit">
+            QUERO VER ISSO NA PRÁTICA
+            <span class="material-symbols-outlined">arrow_forward</span>
           </button>
         </form>
       </div>
 
-      <div class="mt-10 pt-6 border-t border-slate-100 text-[11px] text-slate-400">
+      <div class="flux-result-footer">
         © 2026 FLUX OS. Todos os direitos reservados. · Design & Tecnologia por AR Mídias Integradas
       </div>
     </div>
