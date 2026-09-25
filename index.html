@@ -1726,8 +1726,268 @@ header .flux-brand-logo{
   #flux-splash,#flux-welcome,#flux-entry{transition:none!important}
 }
 
+
+/* MOBILE/TABLET FINAL FIX PACK — 2026-09-24 */
+
+/* ---------- MOBILE ---------- */
+@media (max-width:767px){
+
+  /* SPLASH: usa a marca transparente apropriada no mobile e elimina qualquer bloco branco */
+  #flux-entry,
+  #flux-splash,
+  #flux-splash .flux-bg{
+    background:#020a1c!important;
+  }
+  .flux-splash-brand{
+    content:url('/fluxos/assets/brand/MarcaSite.png?v=20260924-MOBILE-SPLASH-FIX')!important;
+    width:min(320px,72vw)!important;
+    max-width:72vw!important;
+    height:auto!important;
+    object-fit:contain!important;
+    background:transparent!important;
+    mix-blend-mode:normal!important;
+    filter:none!important;
+  }
+  .flux-splash-brand-wrap{
+    width:auto!important;
+    max-width:76vw!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    filter:none!important;
+  }
+  .flux-splash-brand-wrap::before,
+  .flux-splash-brand-wrap::after{display:none!important}
+  .flux-flow-line{width:min(240px,58vw)!important}
+  .flux-splash-tag{color:#dbeafe!important}
+
+  /* Welcome */
+  #flux-welcome{
+    width:calc(100vw - 24px)!important;
+    max-width:430px!important;
+    max-height:calc(100dvh - 28px)!important;
+    padding:20px 18px!important;
+    border-radius:22px!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+  }
+  #flux-welcome .flux-canonical-brand-field{
+    width:max-content!important;
+    max-width:100%!important;
+    padding:10px 12px!important;
+    margin-bottom:18px!important;
+  }
+  #flux-welcome .flux-canonical-brand-field img{
+    height:42px!important;
+    width:auto!important;
+    max-width:230px!important;
+  }
+  #flux-welcome h1{
+    font-size:clamp(1.65rem,7.4vw,2rem)!important;
+    line-height:1.03!important;
+    letter-spacing:-.035em!important;
+  }
+  #flux-welcome p{font-size:14px!important}
+  #flux-welcome input{
+    width:100%!important;
+    min-width:0!important;
+    min-height:52px!important;
+    font-size:16px!important;
+  }
+
+  /* Inteligência: campo e botão empilhados, sem invasão */
+  #inteligencia .space-y-3 > .relative.bg-white.border{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    padding:12px!important;
+    align-items:stretch!important;
+  }
+  #inteligencia .space-y-3 > .relative.bg-white.border > div{
+    min-width:0!important;
+    width:100%!important;
+  }
+  #inteligencia #ai-custom-prompt{
+    width:100%!important;
+    min-width:0!important;
+    font-size:16px!important;
+    line-height:1.35!important;
+  }
+  #inteligencia .space-y-3 > .relative.bg-white.border > button{
+    width:100%!important;
+    min-height:48px!important;
+    justify-content:center!important;
+    border-radius:12px!important;
+    font-size:12px!important;
+  }
+  #inteligencia .space-y-3 > .flex.flex-wrap.items-center{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  #inteligencia .space-y-3 > .flex.flex-wrap.items-center > span{
+    margin:0 0 2px!important;
+  }
+  #inteligencia .space-y-3 > .flex.flex-wrap.items-center > button{
+    width:100%!important;
+    min-height:42px!important;
+    text-align:left!important;
+    justify-content:flex-start!important;
+    white-space:normal!important;
+  }
+
+  /* Mensagens da IA */
+  #inteligencia .mt-6 .flex.justify-end > div{
+    max-width:100%!important;
+    width:100%!important;
+  }
+  #inteligencia .mt-6 .grid.grid-cols-2{
+    grid-template-columns:1fr 1fr!important;
+  }
+
+  /* Painéis escuros / preview da marca: remove corte lateral */
+  #personalizacao-marca .lg\:col-span-7.bg-\[\#0c1322\],
+  #personalizacao-marca .bg-\[\#0c1322\]{
+    width:100%!important;
+    min-width:0!important;
+    overflow:hidden!important;
+    padding:14px!important;
+  }
+  #personalizacao-marca .bg-\[\#0c1322\] > .flex.items-center.justify-between{
+    gap:8px!important;
+    flex-wrap:wrap!important;
+  }
+  #personalizacao-marca .bg-\[\#0c1322\] .grid.grid-cols-3{
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  #personalizacao-marca .bg-\[\#0c1322\] .grid.grid-cols-3 > div{
+    min-width:0!important;
+  }
+  #preview-saving-metric{
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+    font-size:1.25rem!important;
+  }
+  #personalizacao-marca .bg-\[\#0c1322\] > .bg-slate-900\/70{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  #preview-primary-btn{
+    width:100%!important;
+    min-height:44px!important;
+  }
+
+  /* Checkbox: impede herança dos estilos dos inputs textuais */
+  .flux-result-consent{
+    display:grid!important;
+    grid-template-columns:20px minmax(0,1fr)!important;
+    gap:10px!important;
+    align-items:start!important;
+  }
+  .flux-result-consent input[type="checkbox"]{
+    -webkit-appearance:checkbox!important;
+    appearance:checkbox!important;
+    width:18px!important;
+    min-width:18px!important;
+    max-width:18px!important;
+    height:18px!important;
+    min-height:18px!important;
+    max-height:18px!important;
+    padding:0!important;
+    margin:2px 0 0!important;
+    border-radius:3px!important;
+    box-shadow:none!important;
+    transform:none!important;
+  }
+  .flux-result-consent label{
+    min-width:0!important;
+    line-height:1.45!important;
+    font-size:11px!important;
+  }
+
+  /* Simulador: evita estouro e quebra números longos */
+  #simulador-economico,
+  #simulador-economico *{min-width:0}
+  #simulador-economico .grid.grid-cols-2{
+    grid-template-columns:1fr!important;
+  }
+  #simulador-economico .grid.grid-cols-3{
+    grid-template-columns:1fr!important;
+  }
+  #simulador-economico strong,
+  #simulador-economico [id*="sim-"]{
+    overflow-wrap:anywhere;
+  }
+
+  /* Automação: ponte central mais compacta no mobile */
+  #automation-flow .auto07-layout{
+    grid-template-columns:1fr!important;
+    gap:.8rem!important;
+  }
+  #automation-flow .auto07-bridge{
+    min-height:150px!important;
+    padding:.2rem!important;
+  }
+  #automation-flow .auto07-arrows{
+    width:72px!important;
+    height:52px!important;
+    margin:.15rem auto!important;
+  }
+  #automation-flow .auto07-arrows i{
+    width:26px!important;
+    height:26px!important;
+    border-width:0 7px 7px 0!important;
+  }
+
+  /* Universal overflow guards for dense sections */
+  #inteligencia,#automation-flow,#personalizacao-marca,#simulador-economico,
+  #painel-tempo-real,#demonstracao{
+    max-width:100%!important;
+    overflow:hidden!important;
+  }
+  #inteligencia *,#automation-flow *,#personalizacao-marca *,#simulador-economico *,
+  #painel-tempo-real *,#demonstracao *{
+    box-sizing:border-box;
+  }
+}
+
+/* ---------- TABLET ---------- */
+@media (min-width:768px) and (max-width:1023px){
+
+  #inteligencia .space-y-3 > .relative.bg-white.border{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:10px!important;
+  }
+  #inteligencia #ai-custom-prompt{min-width:0!important}
+  #inteligencia .space-y-3 > .relative.bg-white.border > button{
+    min-width:112px!important;
+    min-height:44px!important;
+  }
+
+  #personalizacao-marca .bg-\[\#0c1322\] .grid.grid-cols-3{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  #personalizacao-marca .bg-\[\#0c1322\]{
+    min-width:0!important;
+    overflow:hidden!important;
+  }
+  #preview-saving-metric{
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  .flux-result-consent input[type="checkbox"]{
+    width:18px!important;
+    height:18px!important;
+    min-height:18px!important;
+    padding:0!important;
+  }
+}
+
 </style>
-<meta name="flux-build" content="20260924-CANONICAL-BRAND-2">
+<meta name="flux-build" content="20260924-MOBILE-FINAL-FIX-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
