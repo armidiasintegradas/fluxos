@@ -5078,7 +5078,7 @@ header .flux-brand-logo{
     const totalHoursPerWeek = hBusca + hControles + hRelatorios + hConferencia + hRetrabalho;
     document.getElementById('sim-total-hours-label').textContent = `${totalHoursPerWeek}h / sem por profissional`;
       const summaryValueEl = document.getElementById('sim-hours-summary-value');
-      if (summaryValueEl) summaryValueEl.textContent = totalHours + ' horas por semana';
+      if (summaryValueEl) summaryValueEl.textContent = totalHoursPerWeek + ' horas por semana';
 
     const monthlyHoursManual = totalHoursPerWeek * 4.33;
     const hourlyRate = costPerson / 160;
