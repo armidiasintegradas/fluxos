@@ -3777,7 +3777,7 @@ body.flux-scroll-lock{
 }
 
 </style>
-<meta name="flux-build" content="20260928-WHATSAPP-PNG-EXACT-1">
+<meta name="flux-build" content="20260928-ENTRY-ANDROID-FIX-1">
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900 pb-16">
 <!-- ENTRADA FLUX OS -->
@@ -5963,14 +5963,49 @@ body.flux-scroll-lock{
     if(playSplash)setTimeout(reveal,2400); else reveal();
   }
   function enterFlux(e){
-    e.preventDefault();
-    const name=document.getElementById('flux-entry-name').value.trim();
-    const org=document.getElementById('flux-entry-org').value.trim();
-    if(!name||!org)return;
-    localStorage.setItem(FLUX_ENTRY_KEY,JSON.stringify({name,org,enteredAt:Date.now()}));
+    if(e){e.preventDefault();e.stopPropagation();}
+    const form=document.getElementById('flux-entry-form');
+    if(form?.dataset.submitting==='1') return false;
+    const nameEl=document.getElementById('flux-entry-name');
+    const orgEl=document.getElementById('flux-entry-org');
+    const name=(nameEl?.value||'').trim();
+    const org=(orgEl?.value||'').trim();
+    if(!name||!org){
+      try{document.getElementById('flux-entry-form')?.reportValidity()}catch(_){}
+      return false;
+    }
+
+    if(form) form.dataset.submitting='1';
+
+    // First complete the visible transition. Storage must never be able to trap
+    // the user on the entry screen (some Android/privacy modes can block it).
     applyFluxIdentity(name,org);
-    const entry=document.getElementById('flux-entry'); entry.classList.remove('is-visible','welcome-stage'); document.body.classList.remove('flux-scroll-lock'); document.documentElement.classList.remove('flux-scroll-lock');
-    window.scrollTo({top:0,behavior:'smooth'});
+    const entry=document.getElementById('flux-entry');
+    if(entry){
+      entry.classList.remove('is-visible','welcome-stage');
+      entry.setAttribute('aria-hidden','true');
+    }
+    document.body.classList.remove('flux-scroll-lock');
+    document.documentElement.classList.remove('flux-scroll-lock');
+    document.body.style.overflow='';
+    document.documentElement.style.overflow='';
+    document.body.style.position='';
+    document.documentElement.style.position='';
+
+    const payload=JSON.stringify({name,org,enteredAt:Date.now()});
+    try{localStorage.setItem(FLUX_ENTRY_KEY,payload)}
+    catch(_){
+      try{sessionStorage.setItem(FLUX_ENTRY_KEY,payload)}catch(__){}
+    }
+
+    // Use deterministic scroll after the modal is gone; smooth scrolling on
+    // some Android browsers can compete with the keyboard/viewport animation.
+    requestAnimationFrame(()=>{
+      window.scrollTo(0,0);
+      setTimeout(()=>window.scrollTo(0,0),80);
+    });
+    setTimeout(()=>{if(form) form.dataset.submitting='0'},500);
+    return false;
   }
   function exitFlux(){
     localStorage.removeItem(FLUX_ENTRY_KEY);
@@ -5989,11 +6024,35 @@ body.flux-scroll-lock{
   splash.style.setProperty('--flux-y',y+'px');
 },{passive:true});
 function initFluxEntry(){
-    let session=null; try{session=JSON.parse(localStorage.getItem(FLUX_ENTRY_KEY)||'null')}catch(e){}
-    if(session?.name&&session?.org){applyFluxIdentity(session.name,session.org);document.body.classList.remove('flux-scroll-lock');document.documentElement.classList.remove('flux-scroll-lock');document.body.style.overflow='';document.documentElement.style.overflow='';return}
+    let session=null;
+    try{session=JSON.parse(localStorage.getItem(FLUX_ENTRY_KEY)||'null')}catch(e){}
+    if(!session){
+      try{session=JSON.parse(sessionStorage.getItem(FLUX_ENTRY_KEY)||'null')}catch(e){}
+    }
+    if(session?.name&&session?.org){
+      applyFluxIdentity(session.name,session.org);
+      const entry=document.getElementById('flux-entry');
+      if(entry){entry.classList.remove('is-visible','welcome-stage');entry.setAttribute('aria-hidden','true')}
+      document.body.classList.remove('flux-scroll-lock');
+      document.documentElement.classList.remove('flux-scroll-lock');
+      document.body.style.overflow='';
+      document.documentElement.style.overflow='';
+      document.body.style.position='';
+      document.documentElement.style.position='';
+      return;
+    }
     showFluxEntry(true);
   }
 
+
+/* Flux entry submit hardening */
+  document.addEventListener('DOMContentLoaded',()=>{
+    const form=document.getElementById('flux-entry-form');
+    if(form&&!form.dataset.fluxBound){
+      form.dataset.fluxBound='1';
+      form.addEventListener('submit',enterFlux,{passive:false});
+    }
+  });
 
   function saveProjectProfile(e){
     if(e)e.preventDefault();
